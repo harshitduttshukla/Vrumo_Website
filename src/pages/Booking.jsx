@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin, User, Phone, CarFront, Zap } from 'lucide-react';
+import { Calendar, Clock, MapPin, User, Phone, CarFront, Zap, Sparkles } from 'lucide-react';
 
 const Booking = () => {
     const [formData, setFormData] = useState({
@@ -36,46 +36,61 @@ const Booking = () => {
     };
 
     return (
-        <div className="bg-background min-h-screen py-20 relative overflow-hidden">
-            {/* Decorative background elements */}
-            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 rounded-bl-[200px] -z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 rounded-tr-[150px] -z-10 pointer-events-none" />
+        <div className="bg-background min-h-screen py-24 relative overflow-hidden selection:bg-primary selection:text-white">
+            {/* Elegant Background Gradients */}
+            <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full -z-10 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-secondary/5 to-transparent rounded-tr-full -z-10 blur-3xl pointer-events-none" />
 
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-12">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center mb-16 space-y-4">
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6"
+                        className="w-20 h-20 bg-gradient-to-br from-primary to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/20 transform rotate-3"
                     >
-                        <Zap className="w-10 h-10" />
+                        <Sparkles className="w-10 h-10 text-white" />
                     </motion.div>
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-secondary mb-4">
-                        Book Your <span className="text-primary">Service</span>
-                    </h1>
-                    <p className="text-gray-600 text-lg">
-                        Reserve your doorstep wash in under 2 minutes. Our experts are ready to shine your ride!
-                    </p>
+                    
+                    <motion.h1 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-6xl font-extrabold text-secondary tracking-tight"
+                    >
+                        Book Your <span className="text-gradient">Service</span>
+                    </motion.h1>
+                    
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-gray-600 text-xl font-medium max-w-2xl mx-auto"
+                    >
+                        Reserve your premium doorstep detailing in under 2 minutes. Experience the Vrumo difference today.
+                    </motion.p>
                 </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border border-gray-100"
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="glass rounded-[2.5rem] p-8 md:p-14 border border-gray-100/50 shadow-2xl relative"
                 >
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                    <form onSubmit={handleSubmit} className="space-y-10">
 
                         {/* Personal Details */}
-                        <div className="space-y-6">
-                            <h2 className="text-xl font-bold border-b pb-2 text-secondary flex items-center">
-                                <User className="w-5 h-5 mr-3 text-primary" /> Personal Details
-                            </h2>
-                            <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-8">
+                            <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
+                                <div className="p-2 bg-primary/10 rounded-xl">
+                                    <User className="w-6 h-6 text-primary" />
+                                </div>
+                                <h2 className="text-2xl font-extrabold text-secondary">Personal Details</h2>
+                            </div>
+                            
+                            <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                                    <div className="relative">
-                                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Full Name</label>
+                                    <div className="relative group">
+                                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                         <input
                                             type="text"
                                             name="name"
@@ -83,14 +98,14 @@ const Booking = () => {
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                                    <div className="relative">
-                                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Phone Number</label>
+                                    <div className="relative group">
+                                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                         <input
                                             type="tel"
                                             name="phone"
@@ -98,16 +113,16 @@ const Booking = () => {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             placeholder="+91 98765 43210"
-                                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
                                         />
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">Doorstep Location</label>
-                                <div className="relative">
-                                    <MapPin className="absolute left-4 top-4 text-gray-400 w-5 h-5" />
+                                <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Doorstep Location</label>
+                                <div className="relative group">
+                                    <MapPin className="absolute left-4 top-5 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                     <textarea
                                         name="location"
                                         required
@@ -115,31 +130,35 @@ const Booking = () => {
                                         value={formData.location}
                                         onChange={handleChange}
                                         placeholder="Enter your full address"
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none"
+                                        className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all resize-none shadow-sm"
                                     ></textarea>
                                 </div>
                             </div>
                         </div>
 
                         {/* Service Configuration */}
-                        <div className="space-y-6 pt-4">
-                            <h2 className="text-xl font-bold border-b pb-2 text-secondary flex items-center">
-                                <CarFront className="w-5 h-5 mr-3 text-primary" /> Service Configuration
-                            </h2>
+                        <div className="space-y-8 pt-4">
+                            <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
+                                <div className="p-2 bg-primary/10 rounded-xl">
+                                    <CarFront className="w-6 h-6 text-primary" />
+                                </div>
+                                <h2 className="text-2xl font-extrabold text-secondary">Service Configuration</h2>
+                            </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-3">Vehicle Type</label>
-                                    <div className="flex bg-gray-100 p-1 rounded-xl">
+                                    <label className="block text-sm font-bold text-gray-700 mb-3 ml-1">Vehicle Type</label>
+                                    <div className="flex bg-gray-100/50 p-1.5 rounded-2xl ring-1 ring-gray-200">
                                         {['Car', 'Bike'].map(type => (
                                             <button
                                                 type="button"
                                                 key={type}
                                                 onClick={() => setFormData({ ...formData, vehicleType: type })}
-                                                className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${formData.vehicleType === type
-                                                        ? 'bg-white shadow-sm text-secondary'
-                                                        : 'text-gray-500 hover:text-gray-700'
-                                                    }`}
+                                                className={`flex-1 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
+                                                    formData.vehicleType === type
+                                                        ? 'bg-white shadow-md text-secondary'
+                                                        : 'text-gray-500 hover:text-gray-900'
+                                                }`}
                                             >
                                                 {type}
                                             </button>
@@ -148,50 +167,56 @@ const Booking = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Select Package</label>
-                                    <select
-                                        name="serviceType"
-                                        required
-                                        value={formData.serviceType}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer"
-                                    >
-                                        <option value="" disabled>Choose a service</option>
-                                        <option value="Basic Wash">Basic Wash (₹99)</option>
-                                        <option value="Interior Cleaning">Interior Cleaning (₹199)</option>
-                                        <option value="Premium Wash">Premium Wash (₹399)</option>
-                                        <option value="Deep Cleaning">Deep Cleaning (₹999)</option>
-                                        <option value="Ceramic Coating">Ceramic Coating (₹4999)</option>
-                                    </select>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Select Package</label>
+                                    <div className="relative">
+                                        <select
+                                            name="serviceType"
+                                            required
+                                            value={formData.serviceType}
+                                            onChange={handleChange}
+                                            className="w-full px-5 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all appearance-none cursor-pointer shadow-sm font-medium"
+                                        >
+                                            <option value="" disabled className="text-gray-400">Choose a service</option>
+                                            <option value="Basic Wash">Basic Wash (₹99)</option>
+                                            <option value="Interior Cleaning">Interior Cleaning (₹199)</option>
+                                            <option value="Premium Wash">Premium Wash (₹399)</option>
+                                            <option value="Deep Cleaning">Deep Cleaning (₹999)</option>
+                                            <option value="Ceramic Coating">Ceramic Coating (₹4999)</option>
+                                        </select>
+                                        {/* Custom chevron */}
+                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-500">
+                                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Preferred Date</label>
-                                    <div className="relative">
-                                        <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10" />
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Preferred Date</label>
+                                    <div className="relative group">
+                                        <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10 group-focus-within:text-primary transition-colors" />
                                         <input
                                             type="date"
                                             name="date"
                                             required
                                             value={formData.date}
                                             onChange={handleChange}
-                                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all cursor-pointer relative"
+                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all cursor-pointer relative shadow-sm font-medium"
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Preferred Time Slot</label>
-                                    <div className="relative">
-                                        <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Preferred Time Slot</label>
+                                    <div className="relative group">
+                                        <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10 group-focus-within:text-primary transition-colors" />
                                         <select
                                             name="time"
                                             required
                                             value={formData.time}
                                             onChange={handleChange}
-                                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer"
+                                            className="w-full pl-12 pr-10 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all appearance-none cursor-pointer shadow-sm font-medium"
                                         >
                                             <option value="" disabled>Select Time Slot</option>
                                             <option value="09:00 AM">09:00 AM - 11:00 AM</option>
@@ -199,20 +224,28 @@ const Booking = () => {
                                             <option value="02:00 PM">02:00 PM - 04:00 PM</option>
                                             <option value="04:00 PM">04:00 PM - 06:00 PM</option>
                                         </select>
+                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-500">
+                                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <motion.button
-                            whileHover={{ scale: 1.02 }}
+                            whileHover={{ scale: 1.01, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             type="submit"
-                            className="w-full py-4 bg-primary text-secondary rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(255,184,0,0.3)] hover:bg-yellow-400 hover:shadow-[0_0_30px_rgba(255,184,0,0.5)] transition-all flex items-center justify-center gap-3 mt-8"
+                            className="w-full py-5 bg-secondary text-white rounded-2xl font-bold text-lg shadow-xl shadow-secondary/20 border border-secondary hover:bg-gray-800 transition-all flex items-center justify-center gap-3 mt-12 relative overflow-hidden group"
                         >
-                            Verify & Confirm Booking
-                            <Zap className="w-5 h-5 fill-secondary" />
+                            <span className="relative z-10 flex items-center gap-3">
+                                Verify & Confirm Booking
+                                <Zap className="w-5 h-5 text-primary" />
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                         </motion.button>
+                        
+                        <p className="text-center text-sm text-gray-500 font-medium">Secured booking via 128-bit encryption.</p>
                     </form>
                 </motion.div>
             </div>

@@ -1,44 +1,62 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #000000;
-    --primary: #FFB800; /* Yellow accent */
-    --primary-foreground: #000000;
-    --secondary: #0A192F; /* Dark Blue */
-    --secondary-foreground: #ffffff;
-    --accent: #E2E8F0;
-    --accent-foreground: #0F172A;
-  }
+@theme {
+  --color-primary: #10B981; /* Matching App's Emerald green */
+  --color-secondary: #0F172A; /* Slate 900 */
+  --color-background: #FFFFFF;
+  --color-foreground: #0F172A;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
-  .bg-primary { background-color: var(--primary); }
-  .text-primary { color: var(--primary); }
+  .glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
   
-  .bg-secondary { background-color: var(--secondary); }
-  .text-secondary { color: var(--secondary); }
+  .glass-dark {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .text-gradient {
+    background-image: linear-gradient(to right, var(--color-primary), #eab308);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--secondary);
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E5A600;
+  background: #94a3b8;
+}
+
+/* Base selection */
+::selection {
+  background: var(--color-primary);
+  color: white;
 }
