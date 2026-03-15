@@ -1,89 +1,181 @@
 import { Link } from 'react-router-dom';
-import { Droplets, Instagram, Twitter, Facebook, MapPin, Phone, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { 
+  Droplets, 
+  Instagram, 
+  Twitter, 
+  Facebook, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  ArrowRight,
+  ExternalLink
+} from 'lucide-react';
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
+    const footerSections = [
+        {
+            title: 'Company',
+            links: [
+                { name: 'Services', path: '/services' },
+                { name: 'How it Works', path: '/how-it-works' },
+                { name: 'Pricing Plans', path: '/pricing' },
+                { name: 'Book Appointment', path: '/booking' },
+            ]
+        },
+        {
+            title: 'Services',
+            links: [
+                { name: 'Exterior Wash', path: '/services' },
+                { name: 'Full Deep Cleaning', path: '/services' },
+                { name: 'Ceramic Coating', path: '/services' },
+                { name: 'Bike Polish', path: '/services' },
+            ]
+        },
+        {
+            title: 'Quick Actions',
+            links: [
+                { name: 'Privacy Policy', path: '#' },
+                { name: 'Terms of Service', path: '#' },
+                { name: 'Support', path: 'mailto:support@vrumo.in' },
+            ]
+        }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    };
+
     return (
-        <footer className="bg-[#0b1426] text-gray-400 pt-20 pb-8 border-t border-gray-800">
+        <footer className="bg-secondary text-gray-400 pt-24 pb-12 border-t border-gray-800/50 relative overflow-hidden">
+            {/* Background Decorative Element */}
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/3 translate-y-1/3"></div>
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 relative">
-                    {/* Brand - Span 4 */}
-                    <div className="space-y-6 md:col-span-4 lg:col-span-5 pr-4">
-                        <Link to="/" className="flex items-center space-x-2 group w-max">
-                            <div className="bg-gradient-to-br from-primary to-emerald-400 p-2.5 rounded-xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
-                                <Droplets className="h-6 w-6 text-white" />
-                            </div>
-                            <span className="font-extrabold text-2xl tracking-wide text-white uppercase italic">
-                                Vru<span className="text-primary">mo</span>
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20"
+                >
+                    {/* Brand Section */}
+                    <motion.div variants={itemVariants} className="lg:col-span-4 space-y-8">
+                        <Link to="/" className="flex items-center space-x-3 group w-max">
+                            <motion.div 
+                                whileHover={{ scale: 1.05, rotate: 5 }}
+                                className="bg-linear-to-br from-primary to-emerald-400 p-2.5 rounded-2xl shadow-lg shadow-primary/20 transition-transform"
+                            >
+                                <Droplets className="h-7 w-7 text-white" />
+                            </motion.div>
+                            <span className="font-extrabold text-3xl tracking-tight text-white uppercase italic">
+                                Vru<span className="text-primary font-black">mo</span>
                             </span>
                         </Link>
-                        <p className="text-sm leading-loose max-w-sm text-gray-400 font-medium pt-2">
-                            Elevating vehicle care with professional doorstep detailing. We bring the showroom shine right to your driveway using premium echo-friendly products.
+                        
+                        <p className="text-lg leading-relaxed text-gray-400 max-w-sm font-medium">
+                            Vrumo : Premium Vehicle Care, Right at Your Doorstep. Professional detailing delivered to your location.
                         </p>
-                        <div className="flex space-x-4 pt-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
-                                <Instagram className="h-5 w-5" />
+
+                        <div className="flex items-center gap-4">
+                            {[
+                                { icon: Instagram, href: '#' },
+                                { icon: Twitter, href: '#' },
+                                { icon: Facebook, href: '#' }
+                            ].map((social, i) => (
+                                <motion.a
+                                    key={i}
+                                    href={social.href}
+                                    whileHover={{ y: -4, backgroundColor: 'var(--color-primary)', color: '#fff' }}
+                                    className="w-11 h-11 rounded-xl bg-gray-800/50 flex items-center justify-center text-gray-400 border border-gray-700/50 transition-colors"
+                                >
+                                    <social.icon className="h-5 w-5" />
+                                </motion.a>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Nav Sections */}
+                    {footerSections.map((section, idx) => (
+                        <motion.div variants={itemVariants} key={idx} className="lg:col-span-2">
+                            <h3 className="text-white font-bold text-lg mb-8 tracking-wide flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary ring-4 ring-primary/10"></span>
+                                {section.title}
+                            </h3>
+                            <ul className="space-y-4">
+                                {section.links.map((link, lIdx) => (
+                                    <li key={lIdx}>
+                                        <Link 
+                                            to={link.path}
+                                            className="group flex items-center text-gray-400 hover:text-white transition-all duration-300 w-max"
+                                        >
+                                            <ArrowRight className="w-0 h-4 group-hover:w-4 opacity-0 group-hover:opacity-100 group-hover:mr-2 text-primary transition-all duration-300" />
+                                            <span className="font-medium">{link.name}</span>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
+
+                    {/* Contact Section */}
+                    <motion.div variants={itemVariants} className="lg:col-span-2">
+                        <h3 className="text-white font-bold text-lg mb-8 tracking-wide flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary ring-4 ring-primary/10"></span>
+                            Stay Connected
+                        </h3>
+                        <div className="space-y-6">
+                            <a href="tel:+919876543210" className="group block">
+                                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Call Us</p>
+                                <p className="text-white group-hover:text-primary transition-colors font-semibold">+91 98765 43210</p>
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
-                                <Twitter className="h-5 w-5" />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
-                                <Facebook className="h-5 w-5" />
+                            <a href="mailto:support@vrumo.in" className="group block">
+                                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Us</p>
+                                <p className="text-white group-hover:text-primary transition-colors font-semibold">support@vrumo.in</p>
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
+                </motion.div>
 
-                    {/* Quick Links - Span 2 */}
-                    <div className="md:col-span-3 lg:col-span-2">
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wide">Company</h3>
-                        <ul className="space-y-4">
-                            <li><Link to="/services" className="hover:text-primary transition-colors font-medium">Services</Link></li>
-                            <li><Link to="/how-it-works" className="hover:text-primary transition-colors font-medium">How it Works</Link></li>
-                            <li><Link to="/pricing" className="hover:text-primary transition-colors font-medium">Pricing Plans</Link></li>
-                            <li><Link to="/booking" className="hover:text-primary transition-colors font-medium">Book Appointment</Link></li>
-                        </ul>
+                {/* Bottom Bar */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="pt-12 border-t border-gray-800/80 flex flex-col sm:flex-row justify-between items-center gap-6"
+                >
+                    <div className="flex flex-col sm:flex-row items-center gap-2 text-sm font-medium">
+                        <p>© {currentYear} Vrumo Services.</p>
+                        <span className="hidden sm:block text-gray-600">•</span>
+                        <p className="text-gray-500">All rights reserved.</p>
                     </div>
-
-                    {/* Services - Span 3 */}
-                    <div className="md:col-span-5 lg:col-span-2">
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wide">Popular Services</h3>
-                        <ul className="space-y-4">
-                            <li><Link to="/services" className="hover:text-primary transition-colors font-medium cursor-pointer">Car Deep Cleaning</Link></li>
-                            <li><Link to="/services" className="hover:text-primary transition-colors font-medium cursor-pointer">Ceramic Coating</Link></li>
-                            <li><Link to="/services" className="hover:text-primary transition-colors font-medium cursor-pointer">Bike Polishing</Link></li>
-                            <li><Link to="/services" className="hover:text-primary transition-colors font-medium cursor-pointer">Premium Wash</Link></li>
-                        </ul>
+                    
+                    <div className="flex items-center gap-4 bg-gray-800/30 px-6 py-2 rounded-full border border-gray-700/30">
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Operational In</span>
+                        <div className="flex items-center gap-2 text-white text-sm font-bold italic">
+                            <MapPin className="w-3.5 h-3.5 text-primary" />
+                            Lucknow, UP
+                        </div>
                     </div>
-
-                    {/* Contact - Span 3 */}
-                    <div className="col-span-1 md:col-span-12 lg:col-span-3 lg:pl-4">
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wide">Contact Us</h3>
-                        <ul className="space-y-5">
-                            <li className="flex items-start">
-                                <MapPin className="h-5 w-5 text-primary mr-4 mt-0.5 shrink-0" />
-                                <span className="font-medium">123 Glow Avenue, Tech Park Phase 2, City 400001</span>
-                            </li>
-                            <li className="flex items-center">
-                                <Phone className="h-5 w-5 text-primary mr-4 shrink-0" />
-                                <span className="font-medium">+91 98765 43210</span>
-                            </li>
-                            <li className="flex items-center">
-                                <Mail className="h-5 w-5 text-primary mr-4 shrink-0" />
-                                <span>support@vrumo.in</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="pt-8 border-t border-gray-800/80 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium">
-                    <p>© {new Date().getFullYear()} Vrumo Services. All rights reserved.</p>
-                    <div className="flex space-x-6">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                    </div>
-                </div>
+                </motion.div>
             </div>
         </footer>
     );
 };
 
 export default Footer;
+
