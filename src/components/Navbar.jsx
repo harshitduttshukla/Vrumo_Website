@@ -127,9 +127,9 @@ const Navbar = () => {
                                     Book Now
                                 </Link>
                             </div>
-                            <div className="pt-8 border-t border-gray-100 flex flex-col items-center text-center">
+                            <div className="pt-8 border-t border-gray-100 flex flex-col items-center text-center px-4">
                                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">The Vrumo Promise</p>
-                                <p className="text-xs font-bold text-secondary uppercase tracking-tighter">Premium Vehicle Care, Right at Your Doorstep.</p>
+                                <p className="text-xs font-bold text-secondary uppercase tracking-tighter max-w-full">Premium Vehicle Care, Right at Your Doorstep.</p>
                             </div>
                         </div>
                     </motion.div>
