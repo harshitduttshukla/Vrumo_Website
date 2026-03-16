@@ -27,10 +27,60 @@ const Navbar = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
-    const navItemVariants = {
-        hover: {
-            y: -2,
-            transition: { duration: 0.2, ease: "easeOut" }
+    // Premium Motion Variants
+    const navContainerVariants = {
+        hidden: { y: -100, opacity: 0 },
+        visible: { 
+            y: 0, 
+            opacity: 1,
+            transition: { 
+                duration: 1.2, 
+                ease: [0.16, 1, 0.3, 1],
+                staggerChildren: 0.08,
+                delayChildren: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: -12 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    const logoVariants = {
+        hidden: { opacity: 0, scale: 0.9, filter: 'blur(10px)' },
+        visible: { 
+            opacity: 1, 
+            scale: 1, 
+            filter: 'blur(0px)',
+            transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    const mobileMenuVariants = {
+        hidden: { opacity: 0, scale: 0.95, y: -20, filter: 'blur(10px)' },
+        visible: { 
+            opacity: 1, 
+            scale: 1, 
+            y: 0, 
+            filter: 'blur(0px)',
+            transition: { 
+                duration: 0.4, 
+                ease: [0.16, 1, 0.3, 1],
+                staggerChildren: 0.05,
+                delayChildren: 0.1
+            }
+        },
+        exit: { 
+            opacity: 0, 
+            scale: 0.95, 
+            y: -20, 
+            filter: 'blur(10px)',
+            transition: { duration: 0.3, ease: 'easeIn' }
         }
     };
 
@@ -39,105 +89,123 @@ const Navbar = () => {
             className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-4 sm:pt-6"
         >
             <motion.nav
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                variants={navContainerVariants}
+                initial="hidden"
+                animate="visible"
                 className={`
                     pointer-events-auto
                     relative flex items-center justify-between
                     w-[95%] max-w-4xl px-4 sm:px-8
-                    transition-all duration-500 ease-in-out
+                    transition-all duration-700 ease-[0.16,1,0.3,1]
                     rounded-full border
                     ${scrolled 
-                        ? 'bg-white/80 backdrop-blur-xl border-white/20 shadow-navbar py-2 sm:py-3' 
-                        : 'bg-white/40 backdrop-blur-md border-white/40 shadow-glass py-4 sm:py-5'
+                        ? 'bg-white/90 backdrop-blur-2xl border-white/20 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] py-2 sm:py-3' 
+                        : 'bg-white/40 backdrop-blur-md border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.05)] py-4 sm:py-5'
                     }
                 `}
             >
                 {/* Desktop Left Links */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-10">
                     {leftLinks.map((link) => (
-                        <NavLink key={link.name} link={link} isActive={location.pathname === link.path} />
+                        <motion.div key={link.name} variants={itemVariants}>
+                            <NavLink link={link} isActive={location.pathname === link.path} />
+                        </motion.div>
                     ))}
                 </div>
 
                 {/* Center Logo */}
-                <div className="flex-1 md:flex-none flex justify-center md:px-8">
+                <motion.div 
+                    variants={logoVariants}
+                    className="flex-1 md:flex-none flex justify-center md:px-8"
+                >
                     <Link to="/" className="relative group">
-                        <motion.span 
-                            whileHover={{ scale: 1.05 }}
-                            className="text-2xl sm:text-3xl font-heading font-extrabold tracking-[-0.04em] text-secondary flex items-center"
-                        >
+                        <div className="relative z-10 text-2xl sm:text-3xl font-heading font-bold tracking-tight text-secondary flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
                             VRUMO
-                            <motion.span 
-                                initial={{ scale: 0.5, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="w-1.5 h-1.5 bg-primary rounded-full ml-1"
-                            />
-                        </motion.span>
-                        <motion.div 
-                            className="absolute -inset-x-2 -inset-y-1 bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity blur-lg"
-                        />
+                        </div>
+                        <div className="absolute -inset-x-3 -inset-y-1 bg-primary/5 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl" />
                     </Link>
-                </div>
+                </motion.div>
 
                 {/* Desktop Right Links */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-10">
                     {rightLinks.map((link) => (
-                        <NavLink key={link.name} link={link} isActive={location.pathname === link.path} />
+                        <motion.div key={link.name} variants={itemVariants}>
+                            <NavLink link={link} isActive={location.pathname === link.path} />
+                        </motion.div>
                     ))}
-                    <Link
-                        to="/booking"
-                        className="bg-secondary text-white px-6 py-2.5 rounded-full font-body font-bold text-[14px] tracking-wide transition-all hover:bg-primary active:scale-95 shadow-lg shadow-secondary/10"
+                    <motion.div 
+                        variants={itemVariants}
+                        whileHover={{ 
+                            scale: 1.05,
+                            y: -2,
+                            boxShadow: "0 20px 40px -10px rgba(0, 210, 255, 0.3)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
                     >
-                        Book Now
-                    </Link>
+                        <Link
+                            to="/booking"
+                            className="bg-secondary text-white px-8 py-3 rounded-full font-body font-bold text-xs uppercase tracking-widest relative overflow-hidden group shadow-lg"
+                        >
+                            <span className="relative z-10">Book Now</span>
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                        </Link>
+                    </motion.div>
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <div className="md:hidden flex items-center">
+                <motion.div variants={itemVariants} className="md:hidden flex items-center">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="p-2 text-secondary hover:text-primary transition-colors focus:outline-none"
+                        className="p-2.5 text-secondary hover:text-primary transition-colors focus:outline-none relative"
                         aria-label="Toggle menu"
                     >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={isOpen ? 'close' : 'open'}
+                                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                                {isOpen ? <X size={26} /> : <Menu size={26} />}
+                            </motion.div>
+                        </AnimatePresence>
                     </button>
-                </div>
+                </motion.div>
 
                 {/* Mobile Menu Overlay */}
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 right-0 mt-4 p-4 bg-white/90 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-premium md:hidden pointer-events-auto"
+                            variants={mobileMenuVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className="absolute top-full left-0 right-0 mt-4 p-5 bg-white/95 backdrop-blur-3xl rounded-4xl border border-white/30 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] md:hidden pointer-events-auto"
                         >
-                            <div className="flex flex-col space-y-4 items-center py-4">
+                            <div className="flex flex-col space-y-5 items-center py-6">
                                 {[...leftLinks, ...rightLinks].map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        to={link.path}
-                                        onClick={() => setIsOpen(false)}
-                                        className={`font-body text-xl font-medium tracking-tight transition-colors ${
-                                            location.pathname === link.path ? 'text-primary' : 'text-secondary hover:text-primary'
-                                        }`}
-                                    >
-                                        {link.name}
-                                    </Link>
+                                    <motion.div key={link.name} variants={itemVariants}>
+                                        <Link
+                                            to={link.path}
+                                            onClick={() => setIsOpen(false)}
+                                            className={`font-body text-2xl font-semibold tracking-tight transition-all duration-300 ${
+                                                location.pathname === link.path ? 'text-primary' : 'text-secondary hover:text-primary'
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    </motion.div>
                                 ))}
-                                <div className="pt-4 w-full">
+                                <motion.div variants={itemVariants} className="pt-6 w-full">
                                     <Link
                                         to="/booking"
                                         onClick={() => setIsOpen(false)}
-                                        className="block w-full text-center bg-secondary text-white py-4 rounded-2xl font-body font-bold tracking-wide shadow-lg hover:bg-primary transition-all active:scale-95"
+                                        className="block w-full text-center bg-secondary text-white py-5 rounded-3xl font-body font-bold text-lg tracking-wider shadow-2xl hover:bg-primary transition-all active:scale-[0.98]"
                                     >
                                         Book Now
                                     </Link>
-                                </div>
+                                </motion.div>
                             </div>
                         </motion.div>
                     )}
@@ -151,21 +219,27 @@ const NavLink = ({ link, isActive }) => {
     return (
         <Link
             to={link.path}
-            className="group relative"
+            className="group relative inline-block overflow-hidden"
         >
             <motion.span
                 whileHover={{ y: -2 }}
                 className={`
-                    relative z-10 text-[14px] font-body font-medium tracking-wide transition-colors duration-300
+                    relative z-10 text-[14px] font-body font-bold tracking-wide transition-colors duration-500 flex items-center gap-1.5
                     ${isActive ? 'text-primary' : 'text-secondary/70 group-hover:text-secondary'}
                 `}
             >
                 {link.name}
-                <span className={`
-                    absolute -bottom-1 left-0 w-0 h-0.5 bg-primary/30 transition-all duration-300 rounded-full
-                    ${isActive ? 'w-full !bg-primary' : 'group-hover:w-full'}
-                `} />
+                {isActive && (
+                    <motion.div 
+                        layoutId="navActiveDot"
+                        className="w-1 h-1 bg-primary rounded-full transition-all"
+                    />
+                )}
             </motion.span>
+            <span className={`
+                absolute bottom-0 left-0 w-full h-[2px] bg-primary transform scale-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left
+                ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'}
+            `} />
         </Link>
     );
 };

@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #10B981; /* Vrumo Emerald */
+  --color-primary: #00D2FF; /* Vrumo Electric Cyan */
   --color-secondary: #0F172A; /* Deep Navy */
-  --color-accent: #3B82F6; /* Luxury Royal Blue */
+  --color-accent: #00A3FF; /* Premium Azure */
   --color-silver: #94A3B8;
   --color-background: #FAFAFA; /* Slightly off-white for premium feel */
   --color-foreground: #0F172A;
@@ -13,21 +13,26 @@
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Inter', sans-serif;
   
-  --shadow-premium: 0 20px 50px -12px rgba(15, 23, 42, 0.12);
-  --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
-  --shadow-navbar: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --shadow-premium: 0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03);
+  --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.04);
+  --shadow-navbar: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-body);
+  font-weight: 450; /* Slightly refined weight for better Inter rendering */
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 @layer utilities {
@@ -47,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #34D399 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #00A3FF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -55,10 +60,10 @@ h1, h2, h3, h4, h5, h6 {
 
   .bg-mesh {
     background-color: #ffffff;
-    background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+    background-image: radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.05) 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, rgba(0, 163, 255, 0.05) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.05) 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, rgba(0, 163, 255, 0.05) 0px, transparent 50%);
   }
 }
 

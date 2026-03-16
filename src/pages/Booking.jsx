@@ -46,7 +46,7 @@ const Booking = () => {
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-20 h-20 bg-linear-to-br from-primary to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/20 transform rotate-3"
+                        className="w-20 h-20 bg-linear-to-br from-primary to-accent rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/20 transform rotate-3"
                     >
                         <Sparkles className="w-10 h-10 text-white" />
                     </motion.div>
@@ -54,9 +54,9 @@ const Booking = () => {
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-heading font-extrabold text-secondary tracking-tight uppercase italic"
+                        className="text-5xl md:text-7xl font-heading font-bold text-secondary tracking-tight"
                     >
-                        Book Your <span className="text-primary not-italic">Service</span>
+                        Book Your <span className="text-primary">Service</span>
                     </motion.h1>
                     
                     <motion.p 
@@ -72,8 +72,11 @@ const Booking = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="glass rounded-[2.5rem] p-8 md:p-14 border border-gray-100/50 shadow-2xl relative"
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ 
+                        boxShadow: "0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03)"
+                    }}
+                    className="glass rounded-[2.5rem] p-8 md:p-14 border border-white/50 shadow-2xl relative bg-white/40 backdrop-blur-xl transition-shadow duration-700"
                 >
                     <form onSubmit={handleSubmit} className="space-y-10">
 
@@ -83,7 +86,7 @@ const Booking = () => {
                                 <div className="p-2 bg-primary/10 rounded-xl">
                                     <User className="w-6 h-6 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-heading font-extrabold text-secondary uppercase tracking-tight">Personal Details</h2>
+                                <h2 className="text-2xl font-heading font-bold text-secondary tracking-tight">Personal Details</h2>
                             </div>
                             
                             <div className="grid md:grid-cols-2 gap-8">
@@ -142,7 +145,7 @@ const Booking = () => {
                                 <div className="p-2 bg-primary/10 rounded-xl">
                                     <CarFront className="w-6 h-6 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-heading font-extrabold text-secondary uppercase tracking-tight">Service Configuration</h2>
+                                <h2 className="text-2xl font-heading font-bold text-secondary tracking-tight">Service Configuration</h2>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-8">
@@ -167,7 +170,7 @@ const Booking = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Select Package</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-[0.2em]">Select Package</label>
                                     <div className="relative">
                                         <select
                                             name="serviceType"
@@ -233,16 +236,20 @@ const Booking = () => {
                         </div>
 
                         <motion.button
-                            whileHover={{ scale: 1.01, y: -2 }}
+                            whileHover={{ 
+                                scale: 1.01, 
+                                y: -4,
+                                boxShadow: "0 20px 40px -10px rgba(15, 23, 42, 0.3)" 
+                            }}
                             whileTap={{ scale: 0.98 }}
                             type="submit"
-                            className="w-full py-5 bg-secondary text-white rounded-2xl font-body font-bold text-lg shadow-xl shadow-secondary/20 border border-secondary hover:bg-gray-800 transition-all flex items-center justify-center gap-3 mt-12 relative overflow-hidden group uppercase tracking-widest"
+                            className="w-full py-5 bg-secondary text-white rounded-2xl font-body font-bold text-lg shadow-xl border border-secondary transition-all flex items-center justify-center gap-3 mt-12 relative overflow-hidden group tracking-[0.15em] uppercase"
                         >
-                            <span className="relative z-10 flex items-center gap-3">
+                            <span className="relative z-10 flex items-center gap-3 group-hover:scale-105 transition-transform duration-500">
                                 Verify & Confirm Booking
-                                <Zap className="w-5 h-5 text-primary" />
+                                <Zap className="w-5 h-5 text-primary group-hover:rotate-12 transition-transform duration-500" />
                             </span>
-                            <div className="absolute inset-0 bg-linear-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
                         </motion.button>
                         
                         <p className="text-center text-sm text-[#A1A1AA] font-body font-medium tracking-wide">Secured booking via 128-bit encryption.</p>

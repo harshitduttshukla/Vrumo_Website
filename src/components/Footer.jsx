@@ -104,7 +104,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="relative bg-[#05070A] text-[#94A3B8] pt-32 pb-12 overflow-hidden border-t border-white/5">
+        <footer className="relative bg-[#05070A] text-silver pt-32 pb-12 overflow-hidden border-t border-white/5">
             {/* Soft Ambient Background Elements */}
             <motion.div 
                 animate={{ 
@@ -138,7 +138,7 @@ const Footer = () => {
                         <div className="space-y-8">
                             <Link to="/" className="inline-block group">
                                 <motion.div variants={logoVariants} className="flex items-center gap-1">
-                                    <span className="text-4xl font-heading font-black tracking-[0.05em] text-white underline decoration-primary/0 decoration-4 underline-offset-[12px] group-hover:decoration-primary/50 transition-all duration-700">
+                                    <span className="text-4xl font-heading font-bold tracking-[0.05em] text-white underline decoration-primary/0 decoration-4 underline-offset-[12px] group-hover:decoration-primary/50 transition-all duration-700">
                                         VRUMO
                                         <motion.span 
                                             animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
@@ -164,11 +164,13 @@ const Footer = () => {
                                     href="#"
                                     variants={linkVariants}
                                     whileHover={{ 
-                                        y: -6, 
+                                        y: -8, 
+                                        scale: 1.1,
                                         backgroundColor: 'rgba(255, 255, 255, 0.08)', 
-                                        borderColor: 'rgba(16, 185, 129, 0.5)',
-                                        boxShadow: "0 10px 30px -10px rgba(16, 185, 129, 0.2)"
+                                        borderColor: 'rgba(0, 210, 255, 0.4)',
+                                        boxShadow: "0 20px 40px -10px rgba(0, 210, 255, 0.2)"
                                     }}
+                                    whileTap={{ scale: 0.9 }}
                                     className="w-11 h-11 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center text-[#94A3B8] hover:text-white transition-all duration-500"
                                 >
                                     <SocialIcon size={18} />
@@ -236,8 +238,12 @@ const Footer = () => {
                     {/* Exclusive Membership Card */}
                     <motion.div variants={columnVariants} className="lg:col-span-3">
                         <motion.div 
-                            whileHover={{ y: -5, boxShadow: "0 20px 40px -20px rgba(0,0,0,0.5)" }}
-                            className="p-8 rounded-[2rem] bg-linear-to-br from-white/[0.04] to-transparent border border-white/5 relative overflow-hidden group transition-all duration-500"
+                            whileHover={{ 
+                                y: -10, 
+                                boxShadow: "0 40px 100px -20px rgba(0,0,0,0.8)",
+                                borderColor: "rgba(0, 210, 255, 0.3)"
+                            }}
+                            className="p-8 rounded-[2rem] bg-linear-to-br from-white/[0.04] to-transparent border border-white/5 relative overflow-hidden group transition-all duration-700 backdrop-blur-md"
                         >
                             {/* Animated Ambient Shimmer */}
                             <motion.div 
@@ -268,19 +274,19 @@ const Footer = () => {
                                         className="w-full bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-sm font-body text-white placeholder:text-[#3F3F46] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all duration-500 backdrop-blur-sm"
                                     />
                                     <motion.button 
-                                        whileHover={{ scale: 1.05, x: 2 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="absolute right-2 top-2 bottom-2 aspect-square bg-primary text-secondary rounded-xl flex items-center justify-center hover:bg-white transition-all duration-500 shadow-lg shadow-primary/20"
+                                        whileHover={{ scale: 1.1, x: 2, boxShadow: "0 0 20px rgba(0, 210, 255, 0.4)" }}
+                                        whileTap={{ scale: 0.9 }}
+                                        className="absolute right-2 top-2 bottom-2 aspect-square bg-primary text-secondary rounded-xl flex items-center justify-center hover:bg-white transition-all duration-500 shadow-lg shadow-primary/20 group/btn"
                                     >
-                                        <ArrowRight size={18} />
+                                        <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                                     </motion.button>
                                 </div>
                             </div>
 
                             <div className="mt-10 flex items-center gap-3">
                                 <div className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                 </div>
                                 <span className="text-[10px] font-heading font-black text-[#475569] uppercase tracking-[0.25em]">
                                     Lucknow Live Ops

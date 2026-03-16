@@ -37,7 +37,7 @@ const HowItWorks = () => {
         <div className="bg-background min-h-screen py-24 relative overflow-hidden selection:bg-primary selection:text-white">
             {/* Background elements */}
             <div className="absolute top-[20%] right-[-5%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] -z-10"></div>
-            <div className="absolute bottom-[10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/5 blur-[120px] -z-10"></div>
+            <div className="absolute bottom-[10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px] -z-10"></div>
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-24 space-y-6">
@@ -53,16 +53,16 @@ const HowItWorks = () => {
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-heading font-extrabold text-secondary tracking-tight uppercase italic"
+                        className="text-5xl md:text-7xl font-heading font-bold text-secondary tracking-tight"
                     >
-                        How It <span className="text-primary not-italic">Works</span>
+                        How It <span className="text-primary">Works</span>
                     </motion.h1>
                     
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-[#64748B] max-w-2xl mx-auto font-body font-medium leading-relaxed tracking-wide italic"
+                        className="text-lg sm:text-xl text-[#64748B] max-w-2xl mx-auto font-body font-normal leading-relaxed tracking-wide"
                     >
                         Our seamless process is designed for your ultimate convenience. We bring the professional detailing shop directly to your driveway.
                     </motion.p>
@@ -109,13 +109,19 @@ const HowItWorks = () => {
                                     w-full md:w-1/2 pl-24 md:pl-0 pt-2 md:pt-4
                                     ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}
                                 `}>
-                                    <div className="glass p-8 lg:p-10 rounded-4xl relative hover:ring-2 hover:ring-primary/40 hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
-                                        <div className="absolute -top-5 -left-5 md:-top-6 md:-left-6 w-12 h-12 md:w-14 md:h-14 bg-linear-to-br from-secondary to-gray-800 text-white font-heading font-black text-xl md:text-2xl rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform">
+                                    <motion.div 
+                                        whileHover={{ 
+                                            y: -10,
+                                            boxShadow: "0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03)"
+                                        }}
+                                        className="glass p-8 lg:p-10 rounded-4xl relative border border-white/50 transition-all duration-500 group-hover:border-primary/20 backdrop-blur-md"
+                                    >
+                                        <div className="absolute -top-5 -left-5 md:-top-6 md:-left-6 w-12 h-12 md:w-14 md:h-14 bg-linear-to-br from-secondary to-gray-800 text-white font-heading font-bold text-xl md:text-2xl rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500">
                                             {step.number}
                                         </div>
-                                        <h3 className="text-2xl lg:text-3xl font-heading font-extrabold text-secondary mb-4 group-hover:text-primary transition-colors uppercase tracking-tight">{step.title}</h3>
-                                        <p className="text-[#64748B] font-body font-medium leading-relaxed text-base tracking-wide">{step.description}</p>
-                                    </div>
+                                        <h3 className="text-2xl lg:text-3xl font-heading font-bold text-secondary mb-4 group-hover:text-primary transition-colors tracking-tight">{step.title}</h3>
+                                        <p className="text-[#64748B] font-body font-normal leading-relaxed text-base tracking-wide">{step.description}</p>
+                                    </motion.div>
                                 </div>
                             </motion.div>
                         ))}
