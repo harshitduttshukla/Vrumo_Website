@@ -50,8 +50,8 @@ const ServiceCard = ({ title, badge, image, link }) => (
             </div>
         </div>
         <div className="space-y-1">
-            <h3 className="text-xs sm:text-sm font-black text-secondary uppercase tracking-tight leading-tight px-1">{title}</h3>
-            <p className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Explore Details</p>
+            <h3 className="text-xs sm:text-sm font-heading font-extrabold text-secondary uppercase tracking-tight leading-tight px-1">{title}</h3>
+            <p className="text-[8px] sm:text-[10px] font-body text-gray-400 font-bold uppercase tracking-widest">Explore Details</p>
         </div>
     </motion.div>
 );
@@ -64,8 +64,8 @@ const VisualCard = ({ title, subtext, image, dark = false }) => (
         <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
         <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 space-y-1 sm:space-y-2">
-            <h4 className="text-primary font-black text-[8px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em]">{subtext}</h4>
-            <h3 className="text-lg sm:text-2xl font-black leading-tight tracking-tighter text-white">
+            <h4 className="text-primary font-heading font-black text-[8px] sm:text-xs uppercase tracking-[0.3em]">{subtext}</h4>
+            <h3 className="text-lg sm:text-2xl font-heading font-extrabold leading-tight tracking-tighter text-white">
                 {title.split(' ').map((word, i) => (
                     <span key={i} className="block">{word}</span>
                 ))}
@@ -83,8 +83,8 @@ const StatCard = ({ number, label, icon: Icon }) => (
             <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
         </div>
         <div>
-            <div className="text-2xl sm:text-3xl font-black text-secondary tracking-tighter leading-none">{number}</div>
-            <div className="text-[8px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{label}</div>
+            <div className="text-2xl sm:text-3xl font-heading font-extrabold text-secondary tracking-tighter leading-none">{number}</div>
+            <div className="text-[8px] sm:text-[10px] font-body font-bold text-gray-400 uppercase tracking-widest mt-1">{label}</div>
         </div>
     </motion.div>
 );
@@ -100,7 +100,7 @@ const Home = () => {
                         <motion.div 
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-secondary/10 max-w-[90vw]"
+                            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary text-white text-[10px] font-body font-bold uppercase tracking-[0.2em] shadow-lg shadow-secondary/10 max-w-[90vw]"
                         >
                             <Sparkles className="w-3 h-3 text-primary shrink-0" />
                             <span className="truncate sm:whitespace-normal">Vrumo : Premium Vehicle Care, Right at Your Doorstep.</span>
@@ -109,7 +109,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl sm:text-6xl md:text-7xl font-black text-secondary tracking-tighter uppercase italic leading-[0.95] sm:leading-[0.9]"
+                            className="text-4xl sm:text-6xl md:text-7xl font-heading font-extrabold text-secondary tracking-[-0.05em] uppercase italic leading-[0.95] sm:leading-[0.9]"
                         >
                             Premium Vehicle Care <br className="hidden sm:block" />
                             <span className="text-primary not-italic tracking-normal">At Your Doorstep</span>
@@ -118,9 +118,9 @@ const Home = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="text-gray-500 font-medium max-w-2xl mx-auto italic text-sm"
+                            className="text-[#64748B] font-body font-medium max-w-2xl mx-auto italic text-sm leading-relaxed tracking-wide"
                         >
-                            Vrumo : Premium Vehicle Care, Right at Your Doorstep. Experience professional washing, detailing, and deep cleaning without leaving your home or office.
+                            Experience professional washing, detailing, and deep cleaning without leaving your home or office. Precision care, meticulously delivered.
                         </motion.p>
                     </div>
 
@@ -184,10 +184,10 @@ const Home = () => {
 
                     {/* Quick CTA Actions */}
                     <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 px-4">
-                        <Link to="/booking" className="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all flex items-center justify-center gap-3 active:scale-95">
+                        <Link to="/booking" className="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-body font-bold uppercase tracking-widest shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all flex items-center justify-center gap-3 active:scale-95">
                             Book Your Wash <ArrowRight className="w-5 h-5 text-white/50" />
                         </Link>
-                        <Link to="/services" className="w-full sm:w-auto bg-white text-secondary border border-gray-100 px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3 active:scale-95">
+                        <Link to="/services" className="w-full sm:w-auto bg-white text-secondary border border-gray-100 px-10 py-5 rounded-2xl font-body font-bold uppercase tracking-widest shadow-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3 active:scale-95">
                             Explore Services
                         </Link>
                     </div>
@@ -199,9 +199,9 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                         <div className="space-y-4 max-w-2xl">
-                            <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">What we do best</span>
-                            <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-tighter leading-none italic uppercase">Professional <span className="text-primary not-italic uppercase">Detailing</span></h2>
-                            <p className="text-gray-400 font-bold max-w-lg text-sm uppercase">We combine traditional craftsmanship with modern technology.</p>
+                            <span className="text-primary font-body font-bold uppercase tracking-[0.3em] text-[10px]">What we do best</span>
+                            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-secondary tracking-tighter leading-none italic uppercase">Professional <span className="text-primary not-italic uppercase">Detailing</span></h2>
+                            <p className="text-[#64748B] font-body font-medium max-w-lg text-sm uppercase tracking-wide">We combine traditional craftsmanship with modern technology.</p>
                         </div>
                         <div className="hidden md:flex gap-4">
                             <div className="flex -space-x-4">
@@ -212,8 +212,8 @@ const Home = () => {
                                 ))}
                             </div>
                             <div className="text-left">
-                                <div className="text-xl font-black text-secondary tracking-tighter">4.9/5</div>
-                                <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Average Rating</div>
+                                <div className="text-xl font-heading font-black text-secondary tracking-tighter">4.9/5</div>
+                                <div className="text-[10px] font-body font-bold text-gray-400 uppercase tracking-widest">Average Rating</div>
                             </div>
                         </div>
                     </div>
@@ -235,8 +235,8 @@ const Home = () => {
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-primary group-hover:text-white transition-colors duration-500 mb-6">
                                     <feature.icon className="w-7 h-7" />
                                 </div>
-                                <h3 className="text-xl font-black text-secondary uppercase tracking-tight mb-3">{feature.title}</h3>
-                                <p className="text-sm text-gray-400 font-bold uppercase tracking-wider leading-relaxed">{feature.desc}</p>
+                                <h3 className="text-xl font-heading font-extrabold text-secondary uppercase tracking-tight mb-3">{feature.title}</h3>
+                                <p className="text-sm font-body text-[#71717A] font-medium uppercase tracking-wider leading-relaxed">{feature.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -248,29 +248,28 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] border border-primary/20">
+                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-body font-extrabold uppercase tracking-[0.3em] border border-primary/20">
                                 <Droplets className="w-3 h-3" />
                                 Seeing is Believing
                             </div>
-                            <h2 className="text-5xl md:text-7xl font-black text-secondary tracking-tighter leading-none italic uppercase">Dramatic <br /><span className="text-primary not-italic">Transformations</span></h2>
-                            <p className="text-gray-400 font-bold max-w-lg text-sm italic uppercase">Witness the difference professional detailing makes on everyday vehicles in Lucknow.</p>
+                            <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-secondary tracking-tighter leading-none italic uppercase">Dramatic <br /><span className="text-primary not-italic">Transformations</span></h2>
+                            <p className="text-[#64748B] font-body font-medium max-w-lg text-sm italic uppercase tracking-wide">Witness the difference professional detailing makes on everyday vehicles in Lucknow.</p>
                             
                             <div className="space-y-6 pt-4">
                                 {[
                                     { text: "90% Less Water usage", icon: CheckCircle2 },
                                     { text: "Bio-Degradable Detailing Solutions", icon: CheckCircle2 },
                                     { text: "Professional Grade Equipment", icon: CheckCircle2 }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4">
+                                ].map((item, i) => (                                    <div key={i} className="flex items-center gap-4">
                                         <div className="bg-primary/20 p-1.5 rounded-full">
                                             <item.icon className="w-4 h-4 text-primary" />
                                         </div>
-                                        <span className="text-sm font-black text-secondary uppercase tracking-widest">{item.text}</span>
+                                        <span className="text-sm font-body font-bold text-secondary uppercase tracking-widest">{item.text}</span>
                                     </div>
                                 ))}
                             </div>
 
-                            <Link to="/booking" className="inline-flex items-center gap-4 bg-secondary text-white px-10 py-6 rounded-4xl font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95 group">
+                            <Link to="/booking" className="inline-flex items-center gap-4 bg-secondary text-white px-10 py-6 rounded-4xl font-body font-bold uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95 group">
                                 Start Transformation <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
@@ -294,13 +293,13 @@ const Home = () => {
                                         <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-primary/90 text-white px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] shadow-lg backdrop-blur-sm">After</div>
                                     </div>
                                     <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20">
-                                        <p className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest bg-secondary/80 backdrop-blur-md px-4 py-2 rounded-xl inline-block">
+                                        <p className="text-white text-[9px] sm:text-[10px] font-body font-bold uppercase tracking-widest bg-secondary/80 backdrop-blur-md px-4 py-2 rounded-xl inline-block">
                                             <span className="hidden sm:inline">Hover to See Magic</span>
                                             <span className="sm:hidden">Tap to See Magic</span>
                                         </p>
                                     </div>
                                 </div>
-                                <h4 className="text-base sm:text-lg font-black text-secondary uppercase tracking-tight ml-2 sm:ml-4">Premium Sedan Grooming</h4>
+                                <h4 className="text-base sm:text-lg font-heading font-extrabold text-secondary uppercase tracking-tight ml-2 sm:ml-4">Premium Sedan Grooming</h4>
                             </motion.div>
 
                             {/* Transformation 2: Bike */}
@@ -322,13 +321,13 @@ const Home = () => {
                                         <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-primary/90 text-white px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] shadow-lg backdrop-blur-sm">After</div>
                                     </div>
                                     <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20">
-                                        <p className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest bg-secondary/80 backdrop-blur-md px-4 py-2 rounded-xl inline-block">
+                                        <p className="text-white text-[9px] sm:text-[10px] font-body font-bold uppercase tracking-widest bg-secondary/80 backdrop-blur-md px-4 py-2 rounded-xl inline-block">
                                             <span className="hidden sm:inline">Hover to See Magic</span>
                                             <span className="sm:hidden">Tap to See Magic</span>
                                         </p>
                                     </div>
                                 </div>
-                                <h4 className="text-base sm:text-lg font-black text-secondary uppercase tracking-tight ml-2 sm:ml-4">Classic Bike Detailing</h4>
+                                <h4 className="text-base sm:text-lg font-heading font-extrabold text-secondary uppercase tracking-tight ml-2 sm:ml-4">Classic Bike Detailing</h4>
                             </motion.div>
                         </div>
                     </div>
@@ -343,14 +342,14 @@ const Home = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="space-y-8"
                     >
-                        <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-secondary tracking-tighter leading-none uppercase italic px-4">Ready For The <br /> <span className="text-primary not-italic tracking-normal">Royal treatment?</span></h2>
-                        <p className="text-base sm:text-xl text-gray-500 font-medium max-w-2xl mx-auto italic px-6">Join 2000+ happy vehicle owners in Lucknow who trust Vrumo for their doorstep care.</p>
+                        <h2 className="text-4xl sm:text-6xl md:text-8xl font-heading font-extrabold text-secondary tracking-tighter leading-[0.9] uppercase italic px-4">Ready For The <br /> <span className="text-primary not-italic tracking-normal">Royal treatment?</span></h2>
+                        <p className="text-base sm:text-xl text-[#64748B] font-body font-medium max-w-2xl mx-auto italic px-6 tracking-wide leading-relaxed">Join 2000+ happy vehicle owners in Lucknow who trust Vrumo for their doorstep care.</p>
                         
                         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 pt-6 px-4">
-                            <Link to="/booking" className="w-full sm:w-auto bg-secondary text-white px-12 py-6 rounded-3xl sm:rounded-4xl font-black text-lg sm:text-xl uppercase tracking-widest hover:bg-primary shadow-2xl transition-all active:scale-95 text-center">
+                            <Link to="/booking" className="w-full sm:w-auto bg-secondary text-white px-12 py-6 rounded-3xl sm:rounded-4xl font-body font-bold text-lg sm:text-xl uppercase tracking-widest hover:bg-primary shadow-2xl transition-all active:scale-95 text-center">
                                 Book Now
                             </Link>
-                            <Link to="/contact" className="w-full sm:w-auto bg-[#F8F9FA] border-2 border-transparent px-12 py-6 rounded-3xl sm:rounded-4xl font-black text-lg sm:text-xl uppercase tracking-widest hover:bg-white hover:border-gray-100 transition-all active:scale-95 shadow-sm text-secondary text-center">
+                            <Link to="/contact" className="w-full sm:w-auto bg-[#F8F9FA] border-2 border-transparent px-12 py-6 rounded-3xl sm:rounded-4xl font-body font-bold text-lg sm:text-xl uppercase tracking-widest hover:bg-white hover:border-gray-100 transition-all active:scale-95 shadow-sm text-secondary text-center">
                                 Contact Us
                             </Link>
                         </div>

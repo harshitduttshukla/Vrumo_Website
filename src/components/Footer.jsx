@@ -1,181 +1,331 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  Droplets, 
-  Instagram, 
-  Twitter, 
-  Facebook, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  ArrowRight,
-  ExternalLink
+import {
+    Instagram,
+    Twitter,
+    Facebook,
+    Youtube,
+    MapPin,
+    Phone,
+    Mail,
+    ArrowRight,
+    Zap,
+    ShieldCheck,
+    Globe,
+    ChevronRight,
+    Clock,
+    Sparkles
 } from 'lucide-react';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
-    const footerSections = [
+    const sections = [
+        {
+            title: 'Solutions',
+            links: [
+                { name: 'Ceramic Coating', path: '/services' },
+                { name: 'Full Deep Detailing', path: '/services' },
+                { name: 'Interior Revival', path: '/services' },
+                { name: 'Signature Wash', path: '/services' },
+                { name: 'Bike Precision', path: '/services' },
+            ]
+        },
+        {
+            title: 'Resources',
+            links: [
+                { name: 'Vehicle Care Guide', path: '#' },
+                { name: 'Service Registry', path: '#' },
+                { name: 'Support Hub', path: '#' },
+                { name: 'Safety Standards', path: '#' },
+                { name: 'FAQ Centre', path: '#' },
+            ]
+        },
         {
             title: 'Company',
             links: [
-                { name: 'Services', path: '/services' },
-                { name: 'How it Works', path: '/how-it-works' },
-                { name: 'Pricing Plans', path: '/pricing' },
-                { name: 'Book Appointment', path: '/booking' },
-            ]
-        },
-        {
-            title: 'Services',
-            links: [
-                { name: 'Exterior Wash', path: '/services' },
-                { name: 'Full Deep Cleaning', path: '/services' },
-                { name: 'Ceramic Coating', path: '/services' },
-                { name: 'Bike Polish', path: '/services' },
-            ]
-        },
-        {
-            title: 'Quick Actions',
-            links: [
-                { name: 'Privacy Policy', path: '#' },
-                { name: 'Terms of Service', path: '#' },
-                { name: 'Support', path: 'mailto:support@vrumo.in' },
+                { name: 'Our Heritage', path: '/about' },
+                { name: 'The Process', path: '/how-it-works' },
+                { name: 'Sustainability', path: '#' },
+                { name: 'Join the Pursuit', path: '#' },
+                { name: 'Contact Concierge', path: '/contact' },
             ]
         }
     ];
 
+    // Premium Motion Variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
+                staggerChildren: 0.12,
+                delayChildren: 0.2,
+                ease: [0.16, 1, 0.3, 1]
             }
         }
     };
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
+    const columnVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    const linkVariants = {
+        hidden: { opacity: 0, x: -10 },
+        visible: { 
+            opacity: 1, 
+            x: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const lineVariants = {
+        hidden: { scaleX: 0, opacity: 0 },
+        visible: { 
+            scaleX: 1, 
+            opacity: 1,
+            transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
+        }
+    };
+
+    const logoVariants = {
+        hidden: { opacity: 0, scale: 0.95, filter: "blur(10px)" },
+        visible: { 
+            opacity: 1, 
+            scale: 1, 
+            filter: "blur(0px)",
+            transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] }
+        }
     };
 
     return (
-        <footer className="bg-secondary text-gray-400 pt-24 pb-12 border-t border-gray-800/50 relative overflow-hidden">
-            {/* Background Decorative Element */}
-            <div className="absolute bottom-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-[80px] sm:blur-[120px] -z-10 translate-x-1/4 translate-y-1/4"></div>
-            
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div 
+        <footer className="relative bg-[#05070A] text-[#94A3B8] pt-32 pb-12 overflow-hidden border-t border-white/5">
+            {/* Soft Ambient Background Elements */}
+            <motion.div 
+                animate={{ 
+                    opacity: [0.1, 0.15, 0.1],
+                    scale: [1, 1.05, 1],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px] pointer-events-none" 
+            />
+            <div className="absolute bottom-[-150px] right-[-100px] w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none opacity-20" />
+
+            {/* Top Border Reveal */}
+            <motion.div 
+                variants={lineVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="absolute top-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent via-white/15 to-transparent origin-center"
+            />
+
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full relative z-10">
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-20 lg:gap-x-12 mb-28"
                 >
-                    {/* Brand Section */}
-                    <motion.div variants={itemVariants} className="lg:col-span-4 space-y-8">
-                        <Link to="/" className="flex items-center space-x-3 group w-max">
-                            <motion.div 
-                                whileHover={{ scale: 1.05, rotate: 5 }}
-                                className="bg-linear-to-br from-primary to-emerald-400 p-2.5 rounded-2xl shadow-lg shadow-primary/20 transition-transform"
+                    {/* Brand Identity Block */}
+                    <motion.div variants={columnVariants} className="lg:col-span-4 space-y-12">
+                        <div className="space-y-8">
+                            <Link to="/" className="inline-block group">
+                                <motion.div variants={logoVariants} className="flex items-center gap-1">
+                                    <span className="text-4xl font-heading font-black tracking-[0.05em] text-white underline decoration-primary/0 decoration-4 underline-offset-[12px] group-hover:decoration-primary/50 transition-all duration-700">
+                                        VRUMO
+                                        <motion.span 
+                                            animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                            className="text-primary"
+                                        >.</motion.span>
+                                    </span>
+                                </motion.div>
+                            </Link>
+                            <motion.p 
+                                variants={linkVariants}
+                                className="text-[15px] font-body font-medium leading-[1.8] text-[#64748B] max-w-sm tracking-wide italic"
                             >
-                                <Droplets className="h-7 w-7 text-white" />
-                            </motion.div>
-                            <span className="font-extrabold text-3xl tracking-tight text-white uppercase italic">
-                                Vru<span className="text-primary font-black">mo</span>
-                            </span>
-                        </Link>
-                        
-                        <p className="text-lg leading-relaxed text-gray-400 max-w-sm font-medium">
-                            Vrumo : Premium Vehicle Care, Right at Your Doorstep. Professional detailing delivered to your location.
-                        </p>
+                                Precision vehicle care, meticulously delivered to your doorstep. We redefine detailing through scientific excellence and luxury convenience.
+                            </motion.p>
+                        </div>
 
-                        <div className="flex items-center gap-4">
-                            {[
-                                { icon: Instagram, href: '#' },
-                                { icon: Twitter, href: '#' },
-                                { icon: Facebook, href: '#' }
-                            ].map((social, i) => (
+                        {/* Social Interaction Grid */}
+                        <div className="flex flex-wrap gap-3">
+                            {[Instagram, Twitter, Facebook, Youtube].map((SocialIcon, i) => (
                                 <motion.a
                                     key={i}
-                                    href={social.href}
-                                    whileHover={{ y: -4, backgroundColor: 'var(--color-primary)', color: '#fff' }}
-                                    className="w-11 h-11 rounded-xl bg-gray-800/50 flex items-center justify-center text-gray-400 border border-gray-700/50 transition-colors"
+                                    href="#"
+                                    variants={linkVariants}
+                                    whileHover={{ 
+                                        y: -6, 
+                                        backgroundColor: 'rgba(255, 255, 255, 0.08)', 
+                                        borderColor: 'rgba(16, 185, 129, 0.5)',
+                                        boxShadow: "0 10px 30px -10px rgba(16, 185, 129, 0.2)"
+                                    }}
+                                    className="w-11 h-11 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center text-[#94A3B8] hover:text-white transition-all duration-500"
                                 >
-                                    <social.icon className="h-5 w-5" />
+                                    <SocialIcon size={18} />
                                 </motion.a>
+                            ))}
+                        </div>
+
+                        {/* Contact Rows with Micro-interactions */}
+                        <div className="space-y-6 pt-4">
+                            {[
+                                { icon: MapPin, text: 'Lucknow, Uttar Pradesh', sub: 'Regional Distribution' },
+                                { icon: Phone, text: '+91 63882 93612', sub: 'Priority Concierge' },
+                                { icon: Mail, text: 'concierge@vrumo.in', sub: 'Est. Response 2H' }
+                            ].map((contact, i) => (
+                                <motion.div 
+                                    key={i} 
+                                    variants={linkVariants}
+                                    className="flex items-center gap-5 group cursor-pointer"
+                                    whileHover={{ x: 5 }}
+                                >
+                                    <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-500">
+                                        <contact.icon size={15} />
+                                    </div>
+                                    <div className="flex flex-col space-y-0.5">
+                                        <span className="text-[14px] font-body font-bold text-white/90 group-hover:text-white transition-colors tracking-wide">{contact.text}</span>
+                                        <span className="text-[10px] uppercase tracking-[0.15em] text-[#475569] font-black">{contact.sub}</span>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
 
-                    {/* Nav Sections */}
-                    {footerSections.map((section, idx) => (
-                        <motion.div variants={itemVariants} key={idx} className="lg:col-span-2">
-                            <h3 className="text-white font-bold text-lg mb-8 tracking-wide flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary ring-4 ring-primary/10"></span>
-                                {section.title}
-                            </h3>
-                            <ul className="space-y-4">
-                                {section.links.map((link, lIdx) => (
-                                    <li key={lIdx}>
-                                        <Link 
-                                            to={link.path}
-                                            className="group flex items-center text-gray-400 hover:text-white transition-all duration-300 w-max"
-                                        >
-                                            <ArrowRight className="w-0 h-4 group-hover:w-4 opacity-0 group-hover:opacity-100 group-hover:mr-2 text-primary transition-all duration-300" />
-                                            <span className="font-medium">{link.name}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    ))}
+                    {/* Navigation Matrix */}
+                    <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-12 sm:gap-8">
+                        {sections.map((section, idx) => (
+                            <motion.div variants={columnVariants} key={idx} className="space-y-10">
+                                <h4 className="text-[11px] font-heading font-black text-white uppercase tracking-[0.3em] flex items-center gap-3">
+                                    <motion.div 
+                                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                        transition={{ duration: 2, repeat: Infinity }}
+                                        className="w-1.5 h-1.5 rounded-full bg-primary" 
+                                    />
+                                    {section.title}
+                                </h4>
+                                <ul className="space-y-5">
+                                    {section.links.map((link, lIdx) => (
+                                        <motion.li key={lIdx} variants={linkVariants}>
+                                            <Link
+                                                to={link.path}
+                                                className="group text-[14px] font-body text-[#64748B] hover:text-white flex items-center gap-2 transition-all duration-300"
+                                            >
+                                                <ChevronRight size={12} className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-primary" />
+                                                <span className="relative overflow-hidden inline-block">
+                                                    {link.name}
+                                                    <span className="absolute bottom-0 left-0 w-full h-px bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                                                </span>
+                                            </Link>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ))}
+                    </div>
 
-                    {/* Contact Section */}
-                    <motion.div variants={itemVariants} className="lg:col-span-2">
-                        <h3 className="text-white font-bold text-lg mb-8 tracking-wide flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary ring-4 ring-primary/10"></span>
-                            Stay Connected
-                        </h3>
-                        <div className="space-y-6">
-                            <a href="tel:+919876543210" className="group block">
-                                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Call Us</p>
-                                <p className="text-white group-hover:text-primary transition-colors font-semibold">+91 98765 43210</p>
-                            </a>
-                            <a href="mailto:support@vrumo.in" className="group block">
-                                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Us</p>
-                                <p className="text-white group-hover:text-primary transition-colors font-semibold">support@vrumo.in</p>
-                            </a>
-                        </div>
+                    {/* Exclusive Membership Card */}
+                    <motion.div variants={columnVariants} className="lg:col-span-3">
+                        <motion.div 
+                            whileHover={{ y: -5, boxShadow: "0 20px 40px -20px rgba(0,0,0,0.5)" }}
+                            className="p-8 rounded-[2rem] bg-linear-to-br from-white/[0.04] to-transparent border border-white/5 relative overflow-hidden group transition-all duration-500"
+                        >
+                            {/* Animated Ambient Shimmer */}
+                            <motion.div 
+                                animate={{ 
+                                    left: ["-100%", "200%"],
+                                }}
+                                transition={{ duration: 3, repeat: Infinity, repeatDelay: 5, ease: "linear" }}
+                                className="absolute top-0 h-full w-1/2 bg-linear-to-r from-transparent via-white/[0.03] to-transparent skew-x-[-20deg]"
+                            />
+
+                            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700">
+                                <Sparkles size={48} className="text-primary" />
+                            </div>
+                            
+                            <h4 className="text-[15px] font-heading font-black text-white mb-4 flex items-center gap-3">
+                                <Zap size={16} className="text-primary fill-primary/20" />
+                                Private Circle
+                            </h4>
+                            <p className="text-[13px] font-body text-[#64748B] mb-8 leading-relaxed tracking-wide">
+                                Join the elite tier for priority booking slots and automotive insights in Lucknow.
+                            </p>
+                            
+                            <div className="space-y-3">
+                                <div className="relative group/input">
+                                    <input 
+                                        type="email" 
+                                        placeholder="your@email.com" 
+                                        className="w-full bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-sm font-body text-white placeholder:text-[#3F3F46] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all duration-500 backdrop-blur-sm"
+                                    />
+                                    <motion.button 
+                                        whileHover={{ scale: 1.05, x: 2 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="absolute right-2 top-2 bottom-2 aspect-square bg-primary text-secondary rounded-xl flex items-center justify-center hover:bg-white transition-all duration-500 shadow-lg shadow-primary/20"
+                                    >
+                                        <ArrowRight size={18} />
+                                    </motion.button>
+                                </div>
+                            </div>
+
+                            <div className="mt-10 flex items-center gap-3">
+                                <div className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </div>
+                                <span className="text-[10px] font-heading font-black text-[#475569] uppercase tracking-[0.25em]">
+                                    Lucknow Live Ops
+                                </span>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </motion.div>
 
-                {/* Bottom Bar */}
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="pt-12 border-t border-gray-800/80 flex flex-col sm:flex-row justify-between items-center gap-6"
+                {/* Bottom Signature Bar */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                    className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
                 >
-                    <div className="flex flex-col sm:flex-row items-center gap-2 text-sm font-medium">
-                        <p>© {currentYear} Vrumo Services.</p>
-                        <span className="hidden sm:block text-gray-600">•</span>
-                        <p className="text-gray-500">All rights reserved.</p>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 bg-gray-800/30 px-6 py-2 rounded-full border border-gray-700/30">
-                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Operational In</span>
-                        <div className="flex items-center gap-2 text-white text-sm font-bold italic">
-                            <MapPin className="w-3.5 h-3.5 text-primary" />
-                            Lucknow, UP
+                    <div className="flex flex-col md:flex-row items-center gap-6 md:gap-14">
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10">
+                                <ShieldCheck size={18} className="text-primary/60" />
+                            </div>
+                            <span className="text-[11px] font-heading font-black text-[#475569] uppercase tracking-[0.3em] italic">
+                                Secure Protocol
+                            </span>
                         </div>
+                        <p className="text-[12px] font-body text-[#334155] font-black uppercase tracking-[0.2em]">
+                            © {currentYear} VRUMO PRECISION. CRAFTED FOR THE DISCERNING.
+                        </p>
+                    </div>
+
+                    <div className="flex items-center gap-12 text-[11px] font-body text-[#334155] font-black uppercase tracking-[0.2em]">
+                        {['Privacy', 'Engagement', 'Security'].map((item) => (
+                            <Link key={item} to="#" className="hover:text-white transition-all duration-500 relative group">
+                                {item}
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full" />
+                            </Link>
+                        ))}
                     </div>
                 </motion.div>
             </div>
+
+            {/* Subtle Gradient Shadow At Very Bottom */}
+            <div className="absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-primary/5 to-transparent pointer-events-none" />
         </footer>
     );
 };
 
 export default Footer;
-

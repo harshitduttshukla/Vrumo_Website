@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Droplets } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -10,132 +10,163 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 10);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
+    const leftLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
-        { name: 'How it Works', path: '/how-it-works' },
         { name: 'Pricing', path: '/pricing' },
+    ];
+
+    const rightLinks = [
+        { name: 'How it Works', path: '/how-it-works' },
         { name: 'Contact', path: '/contact' },
     ];
 
+    const navItemVariants = {
+        hover: {
+            y: -2,
+            transition: { duration: 0.2, ease: "easeOut" }
+        }
+    };
+
     return (
-        <nav
-            className={`fixed w-full z-50 transition-all duration-300 ${
-                scrolled
-                    ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-2'
-                    : 'bg-white py-4'
-            }`}
+        <header 
+            className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-4 sm:pt-6"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    {/* Logo - Left */}
-                    <div className="flex-1 flex items-center justify-start">
-                        <Link to="/" className="flex items-center space-x-3 group">
-                            <motion.div 
-                                whileHover={{ scale: 1.1 }}
-                                className="bg-primary p-2 rounded-xl shadow-lg shadow-primary/20 transition-transform"
-                            >
-                                <Droplets className="h-6 w-6 text-white" />
-                            </motion.div>
-                            <span className="font-black text-2xl tracking-tighter text-secondary uppercase italic">
-                                Vru<span className="text-primary tracking-normal">mo</span>
-                            </span>
-                        </Link>
-                    </div>
-
-                    {/* Desktop Menu - Center */}
-                    <div className="hidden md:flex flex-2 items-center justify-center space-x-2">
-                        {navLinks.map((link) => {
-                            const isActive = location.pathname === link.path;
-                            return (
-                                <Link
-                                    key={link.name}
-                                    to={link.path}
-                                    className={`px-4 py-2 rounded-full font-bold text-[15px] tracking-tight transition-all duration-200 ${
-                                        isActive
-                                            ? 'text-primary'
-                                            : 'text-secondary hover:text-primary hover:bg-gray-50'
-                                    }`}
-                                >
-                                    {link.name}
-                                </Link>
-                            );
-                        })}
-                    </div>
-
-                    {/* Book Now - Right */}
-                    <div className="hidden md:flex flex-1 items-center justify-end">
-                        <Link
-                            to="/booking"
-                            className="bg-secondary text-white px-8 py-3.5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-primary transition-all duration-300 shadow-xl shadow-secondary/10 active:scale-95"
-                        >
-                            Book Now
-                        </Link>
-                    </div>
-
-                    {/* Mobile Menu Button - Right */}
-                    <div className="md:hidden flex items-center justify-end flex-1">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="p-3 rounded-xl text-secondary hover:bg-gray-100 transition-colors focus:outline-none"
-                        >
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                        </button>
-                    </div>
+            <motion.nav
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={`
+                    pointer-events-auto
+                    relative flex items-center justify-between
+                    w-[95%] max-w-4xl px-4 sm:px-8
+                    transition-all duration-500 ease-in-out
+                    rounded-full border
+                    ${scrolled 
+                        ? 'bg-white/80 backdrop-blur-xl border-white/20 shadow-navbar py-2 sm:py-3' 
+                        : 'bg-white/40 backdrop-blur-md border-white/40 shadow-glass py-4 sm:py-5'
+                    }
+                `}
+            >
+                {/* Desktop Left Links */}
+                <div className="hidden md:flex items-center space-x-8">
+                    {leftLinks.map((link) => (
+                        <NavLink key={link.name} link={link} isActive={location.pathname === link.path} />
+                    ))}
                 </div>
-            </div>
 
-            {/* Mobile Menu Dropdown */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-2xl"
+                {/* Center Logo */}
+                <div className="flex-1 md:flex-none flex justify-center md:px-8">
+                    <Link to="/" className="relative group">
+                        <motion.span 
+                            whileHover={{ scale: 1.05 }}
+                            className="text-2xl sm:text-3xl font-heading font-extrabold tracking-[-0.04em] text-secondary flex items-center"
+                        >
+                            VRUMO
+                            <motion.span 
+                                initial={{ scale: 0.5, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="w-1.5 h-1.5 bg-primary rounded-full ml-1"
+                            />
+                        </motion.span>
+                        <motion.div 
+                            className="absolute -inset-x-2 -inset-y-1 bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity blur-lg"
+                        />
+                    </Link>
+                </div>
+
+                {/* Desktop Right Links */}
+                <div className="hidden md:flex items-center space-x-8">
+                    {rightLinks.map((link) => (
+                        <NavLink key={link.name} link={link} isActive={location.pathname === link.path} />
+                    ))}
+                    <Link
+                        to="/booking"
+                        className="bg-secondary text-white px-6 py-2.5 rounded-full font-body font-bold text-[14px] tracking-wide transition-all hover:bg-primary active:scale-95 shadow-lg shadow-secondary/10"
                     >
-                        <div className="px-6 pt-4 pb-8 space-y-2">
-                            {navLinks.map((link) => {
-                                const isActive = location.pathname === link.path;
-                                return (
+                        Book Now
+                    </Link>
+                </div>
+
+                {/* Mobile Menu Toggle */}
+                <div className="md:hidden flex items-center">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="p-2 text-secondary hover:text-primary transition-colors focus:outline-none"
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+
+                {/* Mobile Menu Overlay */}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 right-0 mt-4 p-4 bg-white/90 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-premium md:hidden pointer-events-auto"
+                        >
+                            <div className="flex flex-col space-y-4 items-center py-4">
+                                {[...leftLinks, ...rightLinks].map((link) => (
                                     <Link
                                         key={link.name}
                                         to={link.path}
                                         onClick={() => setIsOpen(false)}
-                                        className={`block px-5 py-4 rounded-xl text-lg font-black tracking-tight ${
-                                            isActive
-                                                ? 'text-primary bg-primary/5 italic'
-                                                : 'text-secondary hover:bg-gray-50'
+                                        className={`font-body text-xl font-medium tracking-tight transition-colors ${
+                                            location.pathname === link.path ? 'text-primary' : 'text-secondary hover:text-primary'
                                         }`}
                                     >
                                         {link.name}
                                     </Link>
-                                );
-                            })}
-                            <div className="pt-6">
-                                <Link
-                                    to="/booking"
-                                    onClick={() => setIsOpen(false)}
-                                    className="block w-full text-center bg-secondary text-white px-8 py-4.5 rounded-xl font-black uppercase tracking-widest shadow-xl"
-                                >
-                                    Book Now
-                                </Link>
+                                ))}
+                                <div className="pt-4 w-full">
+                                    <Link
+                                        to="/booking"
+                                        onClick={() => setIsOpen(false)}
+                                        className="block w-full text-center bg-secondary text-white py-4 rounded-2xl font-body font-bold tracking-wide shadow-lg hover:bg-primary transition-all active:scale-95"
+                                    >
+                                        Book Now
+                                    </Link>
+                                </div>
                             </div>
-                            <div className="pt-8 border-t border-gray-100 flex flex-col items-center text-center px-4">
-                                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">The Vrumo Promise</p>
-                                <p className="text-xs font-bold text-secondary uppercase tracking-tighter max-w-full">Premium Vehicle Care, Right at Your Doorstep.</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.nav>
+        </header>
+    );
+};
+
+const NavLink = ({ link, isActive }) => {
+    return (
+        <Link
+            to={link.path}
+            className="group relative"
+        >
+            <motion.span
+                whileHover={{ y: -2 }}
+                className={`
+                    relative z-10 text-[14px] font-body font-medium tracking-wide transition-colors duration-300
+                    ${isActive ? 'text-primary' : 'text-secondary/70 group-hover:text-secondary'}
+                `}
+            >
+                {link.name}
+                <span className={`
+                    absolute -bottom-1 left-0 w-0 h-0.5 bg-primary/30 transition-all duration-300 rounded-full
+                    ${isActive ? 'w-full !bg-primary' : 'group-hover:w-full'}
+                `} />
+            </motion.span>
+        </Link>
     );
 };
 

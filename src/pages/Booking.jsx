@@ -38,15 +38,15 @@ const Booking = () => {
     return (
         <div className="bg-background min-h-screen py-24 relative overflow-hidden selection:bg-primary selection:text-white">
             {/* Elegant Background Gradients */}
-            <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full -z-10 blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-secondary/5 to-transparent rounded-tr-full -z-10 blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-linear-to-bl from-primary/10 to-transparent rounded-bl-full -z-10 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-secondary/5 to-transparent rounded-tr-full -z-10 blur-3xl pointer-events-none" />
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16 space-y-4">
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-20 h-20 bg-gradient-to-br from-primary to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/20 transform rotate-3"
+                        className="w-20 h-20 bg-linear-to-br from-primary to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-primary/20 transform rotate-3"
                     >
                         <Sparkles className="w-10 h-10 text-white" />
                     </motion.div>
@@ -54,18 +54,18 @@ const Booking = () => {
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-extrabold text-secondary tracking-tight"
+                        className="text-5xl md:text-6xl font-heading font-extrabold text-secondary tracking-tight uppercase italic"
                     >
-                        Book Your <span className="text-gradient">Service</span>
+                        Book Your <span className="text-primary not-italic">Service</span>
                     </motion.h1>
                     
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-gray-600 text-xl font-medium max-w-2xl mx-auto"
+                        className="text-[#64748B] text-xl font-body font-medium max-w-2xl mx-auto italic tracking-wide"
                     >
-                        Reserve your premium doorstep detailing in under 2 minutes. Experience the Vrumo difference today.
+                        Reserve your premium doorstep detailing. Experience the Vrumo difference.
                     </motion.p>
                 </div>
 
@@ -83,12 +83,12 @@ const Booking = () => {
                                 <div className="p-2 bg-primary/10 rounded-xl">
                                     <User className="w-6 h-6 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-secondary">Personal Details</h2>
+                                <h2 className="text-2xl font-heading font-extrabold text-secondary uppercase tracking-tight">Personal Details</h2>
                             </div>
                             
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Full Name</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Full Name</label>
                                     <div className="relative group">
                                         <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                         <input
@@ -98,12 +98,12 @@ const Booking = () => {
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
+                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm font-body font-medium"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Phone Number</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Phone Number</label>
                                     <div className="relative group">
                                         <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                         <input
@@ -113,14 +113,14 @@ const Booking = () => {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             placeholder="+91 98765 43210"
-                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
+                                            className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all shadow-sm font-body font-medium"
                                         />
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Doorstep Location</label>
+                                <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Doorstep Location</label>
                                 <div className="relative group">
                                     <MapPin className="absolute left-4 top-5 text-gray-400 w-5 h-5 group-focus-within:text-primary transition-colors" />
                                     <textarea
@@ -130,7 +130,7 @@ const Booking = () => {
                                         value={formData.location}
                                         onChange={handleChange}
                                         placeholder="Enter your full address"
-                                        className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all resize-none shadow-sm"
+                                        className="w-full pl-12 pr-4 py-4 bg-white/50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-white outline-none transition-all resize-none shadow-sm font-body font-medium"
                                     ></textarea>
                                 </div>
                             </div>
@@ -142,21 +142,21 @@ const Booking = () => {
                                 <div className="p-2 bg-primary/10 rounded-xl">
                                     <CarFront className="w-6 h-6 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-secondary">Service Configuration</h2>
+                                <h2 className="text-2xl font-heading font-extrabold text-secondary uppercase tracking-tight">Service Configuration</h2>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-3 ml-1">Vehicle Type</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-3 ml-1 uppercase tracking-widest">Vehicle Type</label>
                                     <div className="flex bg-gray-100/50 p-1.5 rounded-2xl ring-1 ring-gray-200">
                                         {['Car', 'Bike'].map(type => (
                                             <button
                                                 type="button"
                                                 key={type}
                                                 onClick={() => setFormData({ ...formData, vehicleType: type })}
-                                                className={`flex-1 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
+                                                className={`flex-1 py-3 text-sm font-body font-bold rounded-xl transition-all duration-300 ${
                                                     formData.vehicleType === type
-                                                        ? 'bg-white shadow-md text-secondary'
+                                                        ? 'bg-secondary text-white shadow-xl'
                                                         : 'text-gray-500 hover:text-gray-900'
                                                 }`}
                                             >
@@ -167,7 +167,7 @@ const Booking = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Select Package</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Select Package</label>
                                     <div className="relative">
                                         <select
                                             name="serviceType"
@@ -193,7 +193,7 @@ const Booking = () => {
 
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Preferred Date</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Preferred Date</label>
                                     <div className="relative group">
                                         <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10 group-focus-within:text-primary transition-colors" />
                                         <input
@@ -208,7 +208,7 @@ const Booking = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Preferred Time Slot</label>
+                                    <label className="block text-[10px] font-body font-bold text-[#64748B] mb-2 ml-1 uppercase tracking-widest">Preferred Time Slot</label>
                                     <div className="relative group">
                                         <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10 group-focus-within:text-primary transition-colors" />
                                         <select
@@ -236,16 +236,16 @@ const Booking = () => {
                             whileHover={{ scale: 1.01, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             type="submit"
-                            className="w-full py-5 bg-secondary text-white rounded-2xl font-bold text-lg shadow-xl shadow-secondary/20 border border-secondary hover:bg-gray-800 transition-all flex items-center justify-center gap-3 mt-12 relative overflow-hidden group"
+                            className="w-full py-5 bg-secondary text-white rounded-2xl font-body font-bold text-lg shadow-xl shadow-secondary/20 border border-secondary hover:bg-gray-800 transition-all flex items-center justify-center gap-3 mt-12 relative overflow-hidden group uppercase tracking-widest"
                         >
                             <span className="relative z-10 flex items-center gap-3">
                                 Verify & Confirm Booking
                                 <Zap className="w-5 h-5 text-primary" />
                             </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                            <div className="absolute inset-0 bg-linear-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         </motion.button>
                         
-                        <p className="text-center text-sm text-gray-500 font-medium">Secured booking via 128-bit encryption.</p>
+                        <p className="text-center text-sm text-[#A1A1AA] font-body font-medium tracking-wide">Secured booking via 128-bit encryption.</p>
                     </form>
                 </motion.div>
             </div>

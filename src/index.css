@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&family=Inter:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -5,19 +6,28 @@
   --color-secondary: #0F172A; /* Deep Navy */
   --color-accent: #3B82F6; /* Luxury Royal Blue */
   --color-silver: #94A3B8;
-  --color-background: #FFFFFF;
+  --color-background: #FAFAFA; /* Slightly off-white for premium feel */
   --color-foreground: #0F172A;
+
+  /* Typography Variables */
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
   
   --shadow-premium: 0 20px 50px -12px rgba(15, 23, 42, 0.12);
   --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
+  --shadow-navbar: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 @layer utilities {

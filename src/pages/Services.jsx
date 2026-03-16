@@ -70,7 +70,7 @@ const Services = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-extrabold text-secondary mb-6 tracking-tight"
+                        className="text-5xl md:text-6xl font-heading font-extrabold text-secondary mb-6 tracking-tight"
                     >
                         Our <span className="text-gradient">Services</span>
                     </motion.h1>
@@ -78,7 +78,7 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-gray-600 font-medium leading-relaxed"
+                        className="text-lg text-gray-600 font-body font-medium leading-relaxed tracking-wide"
                     >
                         We offer a comprehensive range of detailing services designed to restore, protect, and maintain your vehicle's appearance.
                     </motion.p>
@@ -89,10 +89,10 @@ const Services = () => {
                     <div key={idx} className="mb-32 relative">
                         <div className="mb-12 border-b border-gray-100 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
                             <div>
-                                <h2 className="text-4xl font-extrabold text-secondary mb-3">{category.title}</h2>
-                                <p className="text-gray-500 text-lg">{category.description}</p>
+                                <h2 className="text-4xl font-heading font-extrabold text-secondary mb-3">{category.title}</h2>
+                                <p className="text-[#64748B] font-body font-medium text-lg leading-relaxed">{category.description}</p>
                             </div>
-                            <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent rounded-full"></div>
+                            <div className="w-24 h-1 bg-linear-to-r from-primary to-transparent rounded-full"></div>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -108,23 +108,23 @@ const Services = () => {
                                     }`}
                                 >
                                     {service.popular && (
-                                        <div className="absolute top-5 right-5 bg-gradient-to-r from-primary to-emerald-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                        <div className="absolute top-5 right-5 bg-linear-to-r from-primary to-emerald-400 text-white text-[10px] font-heading font-extrabold px-4 py-1.5 rounded-full shadow-sm uppercase tracking-widest">
                                             Popular
                                         </div>
                                     )}
 
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-[100px] -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 
-                                    <div className="w-16 h-16 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-primary/20 group-hover:to-primary/5 transition-all duration-300 shadow-sm border border-gray-100 group-hover:border-primary/20">
+                                    <div className="w-16 h-16 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-primary/20 group-hover:to-primary/5 transition-all duration-300 shadow-sm border border-gray-100 group-hover:border-primary/20">
                                         <service.icon className="h-8 w-8 text-secondary group-hover:text-primary transition-colors duration-300" />
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-secondary mb-2">{service.name}</h3>
-                                    <div className="text-4xl font-extrabold text-primary mb-8 tracking-tight">{service.price}</div>
+                                    <h3 className="text-2xl font-heading font-bold text-secondary mb-2">{service.name}</h3>
+                                    <div className="text-4xl font-heading font-black text-primary mb-8 tracking-tighter italic whitespace-nowrap">{service.price}</div>
 
-                                    <ul className="space-y-4 mb-8 flex-grow">
+                                    <ul className="space-y-4 mb-8 grow">
                                         {service.features.map((feature, fIdx) => (
-                                            <li key={fIdx} className="flex items-start text-gray-600 font-medium">
+                                            <li key={fIdx} className="flex items-start text-[#64748B] font-body font-medium tracking-wide">
                                                 <div className="bg-primary/20 p-1 rounded-full mr-3 mt-0.5">
                                                     <Check className="w-3 h-3 text-primary" />
                                                 </div>
@@ -135,7 +135,7 @@ const Services = () => {
 
                                     <Link
                                         to={`/booking?service=${encodeURIComponent(service.name)}`}
-                                        className={`block w-full py-4 text-center font-bold rounded-xl transition-all duration-300 ${
+                                        className={`block w-full py-4 text-center font-body font-bold rounded-xl transition-all duration-300 tracking-wide uppercase text-sm ${
                                             service.popular 
                                             ? 'bg-secondary text-white hover:bg-gray-800 shadow-lg shadow-secondary/20 hover:shadow-secondary/40' 
                                             : 'bg-white text-secondary border border-gray-200 hover:border-primary hover:bg-gray-50'

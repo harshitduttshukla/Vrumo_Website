@@ -44,7 +44,7 @@ const HowItWorks = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm mb-2"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-body font-bold text-[10px] sm:text-xs mb-2 uppercase tracking-widest"
                     >
                         <Sparkles className="w-4 h-4" />
                         Simple Process
@@ -53,16 +53,16 @@ const HowItWorks = () => {
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-extrabold text-secondary tracking-tight"
+                        className="text-5xl md:text-6xl font-heading font-extrabold text-secondary tracking-tight uppercase italic"
                     >
-                        How It <span className="text-gradient">Works</span>
+                        How It <span className="text-primary not-italic">Works</span>
                     </motion.h1>
                     
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed"
+                        className="text-lg text-[#64748B] max-w-2xl mx-auto font-body font-medium leading-relaxed tracking-wide italic"
                     >
                         Our seamless process is designed for your ultimate convenience. We bring the professional detailing shop directly to your driveway.
                     </motion.p>
@@ -70,10 +70,10 @@ const HowItWorks = () => {
 
                 <div className="relative">
                     {/* Central Connecting Line (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-1 -ml-0.5 bg-gradient-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
+                    <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-1 -ml-0.5 bg-linear-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
 
                     {/* Left Line (Mobile) */}
-                    <div className="md:hidden absolute left-8 top-4 bottom-4 w-1 bg-gradient-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
+                    <div className="md:hidden absolute left-8 top-4 bottom-4 w-1 bg-linear-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
 
                     {/* Steps */}
                     <div className="space-y-16 lg:space-y-24">
@@ -90,11 +90,11 @@ const HowItWorks = () => {
                             >
                                 {/* Center Icon */}
                                 <div className={`
-                                    hidden md:flex flex-col items-center justify-center w-32 flex-shrink-0 z-10
+                                    hidden md:flex flex-col items-center justify-center w-32 shrink-0 z-10
                                     ${index % 2 === 0 ? 'md:ml-auto md:-translate-x-16 lg:-translate-x-24' : 'md:mr-auto md:translate-x-16 lg:translate-x-24'}
                                 `}>
-                                    <div className="w-20 h-20 rounded-[2rem] flex items-center justify-center shadow-xl bg-white border border-gray-100 group-hover:scale-110 group-hover:shadow-2xl transition-all duration-500 relative">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div className="w-20 h-20 rounded-4xl flex items-center justify-center shadow-xl bg-white border border-gray-100 group-hover:scale-110 group-hover:shadow-2xl transition-all duration-500 relative">
+                                        <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                         <step.icon className="w-10 h-10 text-secondary group-hover:text-primary transition-colors duration-300 relative z-10" />
                                     </div>
                                 </div>
@@ -109,12 +109,12 @@ const HowItWorks = () => {
                                     w-full md:w-1/2 pl-24 md:pl-0 pt-2 md:pt-4
                                     ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}
                                 `}>
-                                    <div className="glass p-8 lg:p-10 rounded-[2.5rem] relative hover:ring-2 hover:ring-primary/40 hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
-                                        <div className="absolute -top-5 -left-5 md:-top-6 md:-left-6 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-secondary to-gray-800 text-white font-black text-xl md:text-2xl rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform">
+                                    <div className="glass p-8 lg:p-10 rounded-4xl relative hover:ring-2 hover:ring-primary/40 hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
+                                        <div className="absolute -top-5 -left-5 md:-top-6 md:-left-6 w-12 h-12 md:w-14 md:h-14 bg-linear-to-br from-secondary to-gray-800 text-white font-heading font-black text-xl md:text-2xl rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform">
                                             {step.number}
                                         </div>
-                                        <h3 className="text-2xl lg:text-3xl font-bold text-secondary mb-4 group-hover:text-primary transition-colors">{step.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed text-lg font-medium">{step.description}</p>
+                                        <h3 className="text-2xl lg:text-3xl font-heading font-extrabold text-secondary mb-4 group-hover:text-primary transition-colors uppercase tracking-tight">{step.title}</h3>
+                                        <p className="text-[#64748B] font-body font-medium leading-relaxed text-base tracking-wide">{step.description}</p>
                                     </div>
                                 </div>
                             </motion.div>
