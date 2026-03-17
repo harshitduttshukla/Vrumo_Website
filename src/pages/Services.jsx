@@ -12,6 +12,7 @@ const serviceCategories = [
                 price: '₹199',
                 features: ['High-pressure foam wash', 'Tyre cleaning', 'Exterior polish'],
                 icon: Droplet,
+                image: '/images/car_foam_wash.png',
                 popular: false
             },
             {
@@ -19,6 +20,7 @@ const serviceCategories = [
                 price: '₹399',
                 features: ['Vacuuming', 'Dashboard polishing', 'Door trim clean'],
                 icon: Hand,
+                image: '/images/car_interior.png',
                 popular: false
             },
             {
@@ -26,6 +28,7 @@ const serviceCategories = [
                 price: '₹999',
                 features: ['Complete interior Detailing', 'Exterior deep wash', 'Engine bay cleaning'],
                 icon: Sparkles,
+                image: '/images/hero_main.png',
                 popular: true
             },
             {
@@ -33,6 +36,7 @@ const serviceCategories = [
                 price: '₹2999',
                 features: ['Premium paint protection', 'Multi-stage wash', 'Hydrophobic finish'],
                 icon: Zap,
+                image: '/images/ceramic_coating.png',
                 popular: false
             },
         ],
@@ -46,6 +50,7 @@ const serviceCategories = [
                 price: '₹99',
                 features: ['Foam wash', 'Chain cleaning', 'Tyre shine'],
                 icon: Droplet,
+                image: '/images/bike_foam_wash.png',
                 popular: false
             },
             {
@@ -53,6 +58,7 @@ const serviceCategories = [
                 price: '₹249',
                 features: ['Wax polish restoration', 'Body shine', 'Plastic trim care'],
                 icon: Sparkles,
+                image: '/images/bike_polishing.png',
                 popular: true
             },
         ],
@@ -109,23 +115,33 @@ const Services = () => {
                                             ? "0 40px 100px -20px rgba(0, 210, 255, 0.15), 0 20px 50px -12px rgba(0, 210, 255, 0.1)"
                                             : "0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03)"
                                     }}
-                                    className={`glass rounded-3xl p-8 transition-all duration-300 group relative overflow-hidden flex flex-col ${
+                                    className={`glass rounded-3xl transition-all duration-300 group relative overflow-hidden flex flex-col ${
                                         service.popular 
                                         ? 'ring-2 ring-primary shadow-xl scale-105 z-10 bg-white' 
                                         : 'hover:ring-1 hover:ring-primary/20 bg-white/50'
                                     }`}
                                 >
-                                    {service.popular && (
-                                        <div className="absolute top-5 right-5 bg-linear-to-r from-primary to-accent text-white text-[10px] font-heading font-extrabold px-4 py-1.5 rounded-full shadow-sm uppercase tracking-widest z-20">
-                                            Popular
-                                        </div>
-                                    )}
-
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-[100px] -z-10 group-hover:scale-110 transition-transform duration-700"></div>
-
-                                    <div className="w-16 h-16 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-primary group-hover:to-accent group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-500 shadow-sm border border-gray-100 group-hover:border-transparent">
-                                        <service.icon className="h-8 w-8 text-secondary group-hover:text-white transition-colors duration-500" />
+                                    {/* Top Image Banner */}
+                                    <div className="relative aspect-16/10 overflow-hidden">
+                                        <img 
+                                            src={service.image} 
+                                            alt={service.name} 
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                                        />
+                                        <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent"></div>
+                                        {service.popular && (
+                                            <div className="absolute top-4 right-4 bg-linear-to-r from-primary to-accent text-white text-[9px] font-heading font-extrabold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest z-20">
+                                                Popular
+                                            </div>
+                                        )}
                                     </div>
+
+                                    <div className="p-8 grow flex flex-col relative">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[80px] -z-10 group-hover:scale-110 transition-transform duration-700"></div>
+
+                                        <div className="w-14 h-14 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-primary group-hover:to-accent group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-500 shadow-sm border border-gray-100 group-hover:border-transparent">
+                                            <service.icon className="h-7 w-7 text-secondary group-hover:text-white transition-colors duration-500" />
+                                        </div>
 
                                     <h3 className="text-2xl font-heading font-bold text-secondary mb-2 tracking-tight">{service.name}</h3>
                                     <div className="text-4xl font-heading font-bold text-primary mb-10 tracking-tight italic">{service.price}</div>
@@ -153,6 +169,7 @@ const Services = () => {
                                             Select Package
                                         </Link>
                                     </motion.div>
+                                    </div>
                                 </motion.div>
                             ))}
                         </div>

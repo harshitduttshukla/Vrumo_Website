@@ -38,7 +38,7 @@ const Footer = () => {
                 { name: 'Service Registry', path: '#' },
                 { name: 'Support Hub', path: '#' },
                 { name: 'Safety Standards', path: '#' },
-                { name: 'FAQ Centre', path: '#' },
+                { name: 'FAQ Centre', path: '/faq' },
             ]
         },
         {

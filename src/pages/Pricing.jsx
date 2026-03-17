@@ -59,6 +59,18 @@ const pricingPlans = [
         features: ["Foam Wash", "Chain Lubrication", "Tyre Shine", "Chrome Polish"],
         popular: false,
         buttonText: "Book Now"
+    },
+    {
+        name: "Bike Polish",
+        type: "Bike",
+        badge: "Deep Shine",
+        subtitle: "Premium body restoration",
+        price: "249",
+        unit: "/ wash",
+        image: "/images/bike_polishing.png",
+        features: ["Wax Restoration", "Body Shine", "Plastic Trim Care", "Degreasing"],
+        popular: true,
+        buttonText: "Get Bike Polish"
     }
 ];
 
@@ -139,7 +151,7 @@ const Pricing = () => {
     const [activeTab, setActiveTab] = useState('All');
 
     const filteredPlans = pricingPlans.filter(plan => 
-        activeTab === 'All' ? plan.type === 'Car' : plan.type === activeTab
+        activeTab === 'All' ? true : plan.type === activeTab
     );
 
     return (
@@ -203,7 +215,7 @@ const Pricing = () => {
                 {/* Pricing Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <AnimatePresence mode="wait">
-                        {filteredPlans.slice(0, 4).map((plan, idx) => (
+                        {filteredPlans.map((plan, idx) => (
                             <PricingCard key={plan.name} plan={plan} index={idx} />
                         ))}
                     </AnimatePresence>
