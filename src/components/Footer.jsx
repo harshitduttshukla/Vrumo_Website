@@ -171,7 +171,7 @@ const Footer = () => {
                                         boxShadow: "0 20px 40px -10px rgba(0, 210, 255, 0.2)"
                                     }}
                                     whileTap={{ scale: 0.9 }}
-                                    className="w-11 h-11 rounded-2xl border border-white/5 bg-white/[0.01] flex items-center justify-center text-slate-400 hover:text-white transition-all duration-500"
+                                    className="w-11 h-11 rounded-2xl border border-white/5 bg-white/1 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-500"
                                 >
                                     <SocialIcon size={18} />
                                 </motion.a>
@@ -243,7 +243,7 @@ const Footer = () => {
                                 boxShadow: "0 40px 100px -20px rgba(0,0,0,0.8)",
                                 borderColor: "rgba(0, 210, 255, 0.3)"
                             }}
-                            className="p-8 rounded-[2rem] bg-white/[0.01] border border-white/5 relative overflow-hidden group transition-all duration-700 backdrop-blur-md"
+                            className="p-8 rounded-[2rem] bg-white/1 border border-white/5 relative overflow-hidden group transition-all duration-700 backdrop-blur-md"
                         >
                             {/* Animated Ambient Shimmer */}
                             <motion.div 
