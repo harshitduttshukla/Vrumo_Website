@@ -31,13 +31,7 @@ const steps = [
 
 const HowItWorks = () => {
     return (
-        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
-            {/* Cinematic Background */}
-            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-royal/10 rounded-full blur-[100px]" />
-            </div>
+        <div className="min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
                 
@@ -103,13 +97,13 @@ const HowItWorks = () => {
                                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-20' : 'md:pr-20'}`}>
                                     <motion.div 
                                         whileHover={{ y: -15 }}
-                                        className={`glass p-12 rounded-[3.5rem] relative border border-white/5 transition-all duration-700 group-hover:border-primary/30 group-hover:shadow-premium bg-white/[0.03] ${
+                                        className={`card-premium p-10 relative ${
                                             index % 2 === 0 ? 'text-left' : 'md:text-right'
                                         }`}
                                     >
                                         <div className="mb-8 flex items-center gap-6 group-hover:gap-8 transition-all duration-500">
-                                            <div className="w-20 h-20 rounded-[1.5rem] bg-primary/10 border border-primary/20 flex items-center justify-center shadow-glow group-hover:bg-primary/20 transition-all duration-500 ml-0 mr-auto md:mx-0">
-                                                <step.icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                                            <div className="card-icon w-16 h-16 rounded-2xl ml-0 mr-auto md:mx-0">
+                                                <step.icon className="w-8 h-8 text-primary" />
                                             </div>
                                             <span className="hidden md:block font-heading font-black text-5xl text-white/5 group-hover:text-primary/10 transition-all duration-700">
                                                 {step.number}

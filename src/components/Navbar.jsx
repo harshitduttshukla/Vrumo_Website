@@ -119,7 +119,7 @@ const Navbar = () => {
                     className="flex-1 md:flex-none flex justify-center md:px-8"
                 >
                     <Link to="/" className="relative group">
-                        <div className="relative z-10 text-2xl sm:text-3xl font-heading font-bold tracking-tight text-primary flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
+                        <div className="relative z-10 text-2xl sm:text-3xl font-heading font-extrabold tracking-[-0.05em] text-primary flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
                             VRUMO
                         </div>
                         <div className="absolute -inset-x-3 -inset-y-1 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl" />
@@ -143,9 +143,9 @@ const Navbar = () => {
                     >
                         <Link
                             to="/booking"
-                            className="bg-primary text-secondary px-8 py-3 rounded-full font-body font-black text-xs uppercase tracking-widest relative overflow-hidden group shadow-2xl"
+                            className="bg-primary text-secondary px-8 py-3 rounded-full font-mono font-medium text-[11px] uppercase tracking-[0.18em] relative overflow-hidden group shadow-glow"
                         >
-                            <span className="relative z-10 font-black">Book Now</span>
+                            <span className="relative z-10">Book Now</span>
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
                         </Link>
                     </motion.div>
@@ -223,7 +223,7 @@ const NavLink = ({ link, isActive }) => {
             <motion.span
                 whileHover={{ y: -2 }}
                 className={`
-                    relative z-10 text-[14px] font-body font-bold tracking-wide transition-colors duration-500 flex items-center gap-1.5
+                    relative z-10 text-[13px] font-heading font-semibold tracking-[-0.01em] transition-colors duration-500 flex items-center gap-1.5
                     ${isActive ? 'text-primary' : 'text-slate-400 group-hover:text-white'}
                 `}
             >

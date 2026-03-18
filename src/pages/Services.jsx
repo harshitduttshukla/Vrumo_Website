@@ -51,14 +51,7 @@ const Services = () => {
     }
 
     return (
-        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
-            {/* Cinematic Background Elements */}
-            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
-            
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
-            </div>
+        <div className="min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-24">
 
@@ -127,7 +120,8 @@ const Services = () => {
                                             delay: sIdx * 0.1 
                                         }}
                                         whileHover={{ y: -15 }}
-                                        className="group relative rounded-[3rem] bg-white/[0.03] border border-white/5 overflow-hidden flex flex-col transition-all duration-700 hover:border-primary/30 hover:shadow-premium"
+                                        className="card-premium group relative flex flex-col overflow-hidden animate-float"
+                                        style={{ animationDelay: `${sIdx * 0.4}s` }}
                                     >
                                         <div className="relative aspect-[4/5] overflow-hidden">
                                             <img 
@@ -190,7 +184,7 @@ const Services = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="mt-20 p-20 rounded-[4rem] bg-white/[0.02] border border-white/5 text-center relative overflow-hidden group"
+                    className="mt-20 card-cta p-16 md:p-20 text-center group"
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,210,255,0.05),transparent_70%)] pointer-events-none" />
                     

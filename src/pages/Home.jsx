@@ -64,15 +64,7 @@ const VisualCard = ({ title, subtext, image }) => (
 
 const Home = () => {
     return (
-        <div className="bg-background min-h-screen overflow-x-hidden text-white selection:bg-primary selection:text-secondary">
-            {/* Cinematic Noise & Background */}
-            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
-            
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-royal/10 rounded-full blur-[100px]" />
-                <div className="absolute top-[40%] left-[20%] w-[30%] h-[30%] bg-accent/5 rounded-full blur-[110px]" />
-            </div>
+        <div className="min-h-screen overflow-x-hidden text-white selection:bg-primary selection:text-secondary">
 
             {/* --- HERO SECTION --- */}
             <section className="relative pt-40 pb-20 lg:pt-56 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -91,7 +83,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-7xl sm:text-9xl md:text-[11rem] font-heading font-bold text-white tracking-tighter leading-[0.85]"
+                            className="text-6xl sm:text-8xl md:text-[10rem] font-heading font-extrabold text-white tracking-[-0.05em] leading-[0.88]"
                         >
                             Elevating <br />
                             <span className="text-gradient">Vehicle Core</span>
@@ -101,7 +93,7 @@ const Home = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 1 }}
-                            className="text-slate-400 font-body font-light max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed tracking-wide"
+                            className="text-slate-400 font-body font-normal max-w-2xl mx-auto text-lg md:text-xl leading-[1.75] tracking-[0.005em]"
                         >
                             Experience the pinnacle of automotive grooming. Precise detailing, meticulously delivered to your sanctuary.
                         </motion.p>
@@ -124,8 +116,9 @@ const Home = () => {
                                 <motion.div 
                                     key={idx}
                                     variants={itemVariants}
-                                    whileHover={{ y: -15 }}
-                                    className="bg-white/[0.03] backdrop-blur-3xl rounded-[3rem] p-6 border border-white/5 flex flex-col items-center text-center space-y-6 group cursor-pointer transition-all duration-700 hover:border-primary/40 hover:bg-white/[0.05] shadow-premium"
+                                    whileHover={{ y: -12 }}
+                                    className="card-premium group flex flex-col items-center text-center space-y-6 p-6 cursor-pointer animate-float"
+                                    style={{ animationDelay: `${idx * 0.5}s` }}
                                 >
                                     <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-900 shadow-inner">
                                         <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out opacity-80 group-hover:opacity-100" />
@@ -136,8 +129,8 @@ const Home = () => {
                                         </div>
                                     </div>
                                     <div className="space-y-4 pb-4">
-                                        <h3 className="text-2xl font-heading font-bold text-white tracking-tighter leading-none">{service.title}</h3>
-                                        <div className="flex items-center justify-center gap-3 text-[11px] font-black uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary transition-colors duration-500">
+                                        <h3 className="text-xl font-heading font-semibold text-white tracking-[-0.025em] leading-tight">{service.title}</h3>
+                                        <div className="flex items-center justify-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500 group-hover:text-primary transition-colors duration-500">
                                             <span>Explore Ritual</span>
                                             <ArrowRight className="w-4 h-4 translate-x-0 group-hover:translate-x-2 transition-transform duration-500" />
                                         </div>
@@ -162,15 +155,16 @@ const Home = () => {
                                     <motion.div 
                                         key={i}
                                         variants={itemVariants}
-                                        whileHover={{ y: -10, backgroundColor: "rgba(255,255,255,0.05)" }}
-                                        className="bg-white/[0.02] backdrop-blur-3xl rounded-[2.5rem] p-10 border border-white/5 flex items-center gap-8 group transition-all duration-700 shadow-premium"
+                                        whileHover={{ y: -10 }}
+                                        className="card-dark p-8 flex items-center gap-7 group animate-float"
+                                        style={{ animationDelay: `${i * 0.8}s` }}
                                     >
                                         <div className="bg-primary/10 p-5 rounded-3xl group-hover:bg-primary/20 transition-all duration-500 border border-primary/10 group-hover:border-primary/30 shadow-glow">
                                             <stat.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
                                         </div>
                                         <div>
-                                            <div className="text-4xl font-heading font-bold text-white tracking-tighter leading-none">{stat.number}</div>
-                                            <div className="text-[12px] font-black uppercase tracking-[0.4em] text-slate-500 mt-3 group-hover:text-slate-300 transition-colors">{stat.label}</div>
+                                            <div className="text-4xl font-heading font-bold text-white tracking-[-0.04em] leading-none tabular-nums">{stat.number}</div>
+                                            <div className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500 mt-3 group-hover:text-slate-300 transition-colors">{stat.label}</div>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -181,14 +175,14 @@ const Home = () => {
                     {/* Quick CTA Actions */}
                     <div className="mt-24 flex flex-col sm:flex-row justify-center gap-8 px-4 relative z-20">
                         <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
-                            <Link to="/booking" className="w-full sm:w-auto bg-primary text-secondary px-16 py-8 rounded-[2rem] font-heading font-black uppercase tracking-[0.4em] shadow-glow hover:shadow-[0_0_60px_rgba(0,210,255,0.5)] transition-all flex items-center justify-center gap-5 relative overflow-hidden group">
-                                <span className="relative z-10 text-lg">Reserve a Session</span>
+                            <Link to="/booking" className="w-full sm:w-auto bg-primary text-secondary px-14 py-7 rounded-[2rem] font-mono font-medium uppercase tracking-[0.18em] text-[13px] shadow-glow hover:shadow-[0_0_60px_rgba(0,210,255,0.5)] transition-all flex items-center justify-center gap-4 relative overflow-hidden group">
+                                <span className="relative z-10">Reserve a Session</span>
                                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform relative z-10" />
                                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
                             </Link>
                         </motion.div>
                         <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
-                            <Link to="/services" className="w-full sm:w-auto bg-white/5 backdrop-blur-3xl text-white border border-white/10 px-16 py-8 rounded-[2rem] font-heading font-black uppercase tracking-[0.4em] hover:bg-white/10 transition-all flex items-center justify-center gap-5 shadow-premium text-lg">
+                            <Link to="/services" className="w-full sm:w-auto bg-white/5 backdrop-blur-3xl text-white border border-white/10 px-14 py-7 rounded-[2rem] font-mono font-medium uppercase tracking-[0.18em] text-[13px] hover:bg-white/10 transition-all flex items-center justify-center gap-5 shadow-premium">
                                 The Catalog
                             </Link>
                         </motion.div>
@@ -203,7 +197,7 @@ const Home = () => {
                         <motion.span 
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-primary font-black uppercase tracking-[0.6em] text-[11px] bg-primary/10 px-8 py-3 rounded-full border border-primary/20 backdrop-blur-2xl shadow-glow"
+                            className="font-mono text-primary font-medium uppercase tracking-[0.5em] text-[10px] bg-primary/10 px-8 py-3 rounded-full border border-primary/20 backdrop-blur-2xl shadow-glow"
                         >
                             The Excellence Manifesto
                         </motion.span>
@@ -211,7 +205,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.9] max-w-5xl"
+                            className="text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold text-white tracking-[-0.04em] leading-[0.9] max-w-5xl"
                         >
                             Orchestrating <span className="text-gradient">Automotive Perfection</span>
                         </motion.h2>
@@ -219,7 +213,7 @@ const Home = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-slate-400 font-body font-light max-w-4xl text-2xl tracking-wide leading-relaxed"
+                            className="text-slate-400 font-body font-normal max-w-3xl text-lg md:text-xl tracking-[0.005em] leading-[1.75]"
                         >
                             A symphony of elite tools and master hands, dedicated to the absolute longevity of your investment.
                         </motion.p>
@@ -250,23 +244,23 @@ const Home = () => {
                                 key={i}
                                 variants={itemVariants}
                                 whileHover={{ y: -20 }}
-                                className="group relative p-16 rounded-[4rem] bg-white/[0.02] border border-white/5 shadow-premium hover:shadow-primary/10 transition-all duration-1000 overflow-hidden backdrop-blur-3xl"
+                                className="card-premium group relative p-12 flex flex-col items-center text-center overflow-hidden"
                             >
                                 <div className="relative z-10 flex flex-col items-center text-center">
                                     <div className="w-24 h-24 bg-white/5 rounded-[2rem] flex items-center justify-center shadow-premium group-hover:scale-110 transition-transform duration-700 mb-12 relative overflow-hidden border border-white/10 group-hover:border-primary/20">
                                         <feature.icon className={`w-12 h-12 text-white group-hover:text-primary transition-colors duration-500 z-10`} />
                                     </div>
                                     
-                                    <h3 className="text-4xl font-heading font-bold text-white tracking-tighter mb-8 group-hover:text-primary transition-colors duration-500">
+                                    <h3 className="text-3xl font-heading font-bold text-white tracking-[-0.03em] mb-6 group-hover:text-primary transition-colors duration-500">
                                         {feature.title}
                                     </h3>
                                     
-                                    <p className="text-xl font-body text-slate-400 font-light tracking-wide leading-relaxed group-hover:text-slate-200 transition-colors duration-500 mb-12">
+                                    <p className="text-base font-body font-normal text-slate-400 tracking-[0.005em] leading-[1.75] group-hover:text-slate-200 transition-colors duration-500 mb-10">
                                         {feature.desc}
                                     </p>
 
                                     <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-700">
-                                        <span className="text-[12px] font-black uppercase tracking-[0.4em] text-primary">The Vrumo Standard</span>
+                                        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.3em] text-primary">The Vrumo Standard</span>
                                         <ArrowRight className="w-5 h-5 text-primary" />
                                     </div>
                                 </div>
@@ -285,8 +279,8 @@ const Home = () => {
                                 <Droplets className="w-5 h-5" />
                                 The Visual Proof
                             </div>
-                            <h2 className="text-7xl md:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.85]">The Luxury <br /><span className="text-gradient">Difference</span></h2>
-                            <p className="text-slate-400 font-body font-light text-2xl tracking-wide leading-relaxed max-w-2xl">Experience the visible transformation where precision engineering meets meticulous obsession.</p>
+                            <h2 className="text-6xl md:text-8xl font-heading font-extrabold text-white tracking-[-0.04em] leading-[0.88]">The Luxury <br /><span className="text-gradient">Difference</span></h2>
+                            <p className="text-slate-400 font-body font-normal text-lg md:text-xl tracking-[0.005em] leading-[1.75] max-w-lg">Experience the visible transformation where precision engineering meets meticulous obsession.</p>
                             
                             <div className="space-y-10 pt-8">
                                 {[
@@ -298,7 +292,7 @@ const Home = () => {
                                         <div className="bg-primary/10 p-3 rounded-full border border-primary/20 group-hover:bg-primary/30 transition-all duration-500 shadow-glow">
                                             <item.icon className="w-6 h-6 text-primary" />
                                         </div>
-                                        <span className="text-xl font-heading font-bold text-white tracking-wide group-hover:text-primary transition-colors duration-500">{item.text}</span>
+                                        <span className="text-lg font-heading font-semibold text-white tracking-[-0.02em] group-hover:text-primary transition-colors duration-500">{item.text}</span>
                                     </div>
                                 ))}
                             </div>
@@ -341,7 +335,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* --- FINAL CTA --- */}
             <section className="py-60 relative bg-[#030612] overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,210,255,0.1),transparent_70%)] pointer-events-none"></div>
                 
@@ -351,17 +344,17 @@ const Home = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="space-y-12"
                     >
-                        <h2 className="text-8xl sm:text-9xl md:text-[11rem] font-heading font-bold text-white tracking-tighter leading-[0.85]">Your Move, <br /> <span className="text-gradient">Perfected.</span></h2>
-                        <p className="text-2xl sm:text-3xl text-slate-400 font-body font-light max-w-4xl mx-auto tracking-wide leading-relaxed">Join an exclusive circle of owners who represent the very best in automotive care.</p>
+                        <h2 className="text-7xl sm:text-8xl md:text-[10rem] font-heading font-extrabold text-white tracking-[-0.05em] leading-[0.86]">Your Move, <br /> <span className="text-gradient">Perfected.</span></h2>
+                        <p className="text-lg sm:text-xl text-slate-400 font-body font-normal max-w-3xl mx-auto tracking-[0.005em] leading-[1.75]">Join an exclusive circle of owners who represent the very best in automotive care.</p>
                         
                         <div className="flex flex-col sm:flex-row justify-center gap-10 pt-12">
                             <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
-                                <Link to="/booking" className="w-full sm:w-auto block bg-primary text-secondary px-20 py-10 rounded-[3rem] font-heading font-black text-2xl uppercase tracking-[0.4em] shadow-glow hover:shadow-[0_0_80px_rgba(0,210,255,0.4)] transition-all">
+                                <Link to="/booking" className="w-full sm:w-auto block bg-primary text-secondary px-16 py-9 rounded-[3rem] font-mono font-medium text-[13px] uppercase tracking-[0.2em] shadow-glow hover:shadow-[0_0_80px_rgba(0,210,255,0.4)] transition-all">
                                     Secure Booking
                                 </Link>
                             </motion.div>
                             <motion.div whileHover={{ y: -5, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Link to="/services" className="w-full sm:w-auto block bg-white/5 backdrop-blur-3xl border border-white/10 text-white px-20 py-10 rounded-[3rem] font-heading font-black text-2xl uppercase tracking-[0.4em] hover:bg-white/10 transition-all shadow-premium">
+                                <Link to="/services" className="w-full sm:w-auto block bg-white/5 backdrop-blur-3xl border border-white/10 text-white px-16 py-9 rounded-[3rem] font-mono font-medium text-[13px] uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-premium">
                                     Concierge
                                 </Link>
                             </motion.div>

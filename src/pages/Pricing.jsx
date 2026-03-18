@@ -81,9 +81,10 @@ const PricingCard = ({ plan, index }) => (
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
         viewport={{ once: true, margin: "-100px" }}
         whileHover={{ y: -15 }}
-        className={`relative rounded-[3rem] overflow-hidden flex flex-col group transition-all duration-700 bg-white/[0.03] border border-white/5 hover:border-primary/40 hover:shadow-premium ${
-            plan.popular ? 'lg:scale-105 z-10' : ''
+        className={`relative overflow-hidden flex flex-col group animate-float ${
+            plan.popular ? 'card-featured lg:scale-105 z-10' : 'card-premium'
         }`}
+        style={{ animationDelay: `${index * 0.6}s` }}
     >
         {plan.popular && (
             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
@@ -102,7 +103,7 @@ const PricingCard = ({ plan, index }) => (
             <div className="absolute inset-0 bg-linear-to-t from-[#030612] via-transparent to-transparent"></div>
         </div>
 
-        <div className="p-10 grow flex flex-col pt-6 bg-white/[0.02] backdrop-blur-3xl">
+        <div className="p-8 grow flex flex-col pt-6">
             <div className="mb-8">
                 <h3 className="text-3xl font-heading font-bold text-white tracking-tighter group-hover:text-primary transition-colors duration-500">{plan.name}</h3>
                 <p className="text-[11px] font-black text-slate-500 uppercase tracking-[0.4em] mt-3 leading-tight">{plan.subtitle}</p>
@@ -113,13 +114,12 @@ const PricingCard = ({ plan, index }) => (
                 <span className="text-slate-500 font-body font-black uppercase text-[10px] tracking-[0.3em]">{plan.unit}</span>
             </div>
 
-            <ul className="space-y-5 mb-12 grow pt-8 border-t border-white/5">
+            <ul className="space-y-4 mb-10 grow pt-6">
+                <div className="card-divider mb-4" />
                 {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-4 group/item">
-                        <div className="bg-primary/10 p-1.5 rounded-full border border-primary/20 group-hover/item:bg-primary transition-all duration-500 shadow-glow">
-                            <Check className="w-4 h-4 text-primary group-hover/item:text-secondary" />
-                        </div>
-                        <span className="text-sm font-body font-light text-slate-400 tracking-wide group-hover/item:text-slate-200 transition-colors">{feature}</span>
+                    <li key={fIdx} className="card-feature-item">
+                        <div className="card-feature-dot" />
+                        <span>{feature}</span>
                     </li>
                 ))}
             </ul>
@@ -151,13 +151,7 @@ const Pricing = () => {
     );
 
     return (
-        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
-            {/* Cinematic Background */}
-            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
-            </div>
+        <div className="min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
                 
@@ -230,7 +224,7 @@ const Pricing = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="mt-32 p-20 rounded-[4rem] bg-white/[0.02] border border-white/5 text-center relative overflow-hidden group shadow-premium"
+                    className="mt-32 card-cta p-16 md:p-20 text-center group"
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,210,255,0.05),transparent_70%)] pointer-events-none" />
                     

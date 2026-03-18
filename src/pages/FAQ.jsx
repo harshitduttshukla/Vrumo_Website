@@ -89,13 +89,7 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
-            {/* Cinematic Background */}
-            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-royal/10 rounded-full blur-[100px]" />
-            </div>
+        <div className="min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
                 
