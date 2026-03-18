@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const pricingPlans = [
@@ -78,69 +78,65 @@ const PricingCard = ({ plan, index }) => (
     <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
         viewport={{ once: true, margin: "-100px" }}
-        whileHover={{ 
-            y: plan.popular ? -4 : -12,
-            boxShadow: plan.popular 
-                ? "0 40px 100px -20px rgba(0, 210, 255, 0.2), 0 20px 50px -12px rgba(0, 210, 255, 0.1)"
-                : "0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03)"
-        }}
-        className={`relative bg-white rounded-[2.5rem] overflow-hidden shadow-premium border border-gray-100 flex flex-col group transition-all duration-500 ${
-            plan.popular ? 'lg:scale-105 ring-2 ring-primary/20 z-10' : 'hover:border-primary/20'
+        whileHover={{ y: -15 }}
+        className={`relative rounded-[3rem] overflow-hidden flex flex-col group transition-all duration-700 bg-white/[0.03] border border-white/5 hover:border-primary/40 hover:shadow-premium ${
+            plan.popular ? 'lg:scale-105 z-10' : ''
         }`}
     >
         {plan.popular && (
             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
-                <div className="bg-primary text-white px-8 py-2 rounded-b-2xl text-[10px] font-heading font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-primary/20 whitespace-nowrap">
+                <div className="bg-primary text-secondary px-8 py-2 rounded-b-2xl text-[10px] font-heading font-black uppercase tracking-[0.3em] shadow-glow whitespace-nowrap">
                     {plan.badge}
                 </div>
             </div>
         )}
 
-        {/* Top Image Banner */}
-        <div className="relative aspect-16/10 overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden">
             <img 
                 src={plan.image} 
                 alt={plan.name} 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out opacity-80 group-hover:opacity-100" 
             />
-            <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-[#030612] via-transparent to-transparent"></div>
         </div>
 
-        <div className="p-8 grow flex flex-col pt-4">
+        <div className="p-10 grow flex flex-col pt-6 bg-white/[0.02] backdrop-blur-3xl">
             <div className="mb-8">
-                <h3 className="text-2xl font-heading font-bold text-secondary tracking-tight">{plan.name}</h3>
-                <p className="text-[10px] font-body font-bold text-gray-400 uppercase tracking-[0.2em] mt-2 leading-tight">{plan.subtitle}</p>
+                <h3 className="text-3xl font-heading font-bold text-white tracking-tighter group-hover:text-primary transition-colors duration-500">{plan.name}</h3>
+                <p className="text-[11px] font-black text-slate-500 uppercase tracking-[0.4em] mt-3 leading-tight">{plan.subtitle}</p>
             </div>
 
-            <div className="flex items-baseline gap-2 mb-10">
-                <span className="text-5xl font-heading font-bold text-secondary tracking-tight">₹{plan.price}</span>
-                <span className="text-gray-400 font-body font-bold uppercase text-[10px] tracking-[0.15em]">{plan.unit}</span>
+            <div className="flex items-baseline gap-3 mb-10">
+                <span className="text-6xl font-heading font-bold text-white tracking-tighter">₹{plan.price}</span>
+                <span className="text-slate-500 font-body font-black uppercase text-[10px] tracking-[0.3em]">{plan.unit}</span>
             </div>
 
-            <ul className="space-y-4 mb-10 grow">
+            <ul className="space-y-5 mb-12 grow pt-8 border-t border-white/5">
                 {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-3">
-                        <div className="bg-primary/10 p-1 rounded-full">
-                            <Check className="w-3.5 h-3.5 text-primary" />
+                    <li key={fIdx} className="flex items-center gap-4 group/item">
+                        <div className="bg-primary/10 p-1.5 rounded-full border border-primary/20 group-hover/item:bg-primary transition-all duration-500 shadow-glow">
+                            <Check className="w-4 h-4 text-primary group-hover/item:text-secondary" />
                         </div>
-                        <span className="text-[13px] font-body font-medium text-[#64748B] tracking-wide">{feature}</span>
+                        <span className="text-sm font-body font-light text-slate-400 tracking-wide group-hover/item:text-slate-200 transition-colors">{feature}</span>
                     </li>
                 ))}
             </ul>
 
-            <motion.div whileHover={{ y: -2, scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
+            <motion.div whileHover={{ y: -4, scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full relative z-10">
                 <Link
                     to={`/booking?plan=${encodeURIComponent(plan.name)}`}
-                    className={`w-full py-5 rounded-2xl font-body font-bold uppercase tracking-widest text-[10px] transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
+                    className={`w-full py-6 rounded-[2rem] font-heading font-black uppercase tracking-[0.4em] text-[11px] transition-all duration-500 flex items-center justify-center gap-4 group/btn overflow-hidden ${
                         plan.popular
-                            ? 'bg-secondary text-white hover:bg-gray-800 shadow-xl shadow-secondary/10'
-                            : 'bg-gray-50 text-secondary hover:bg-white hover:shadow-lg border border-transparent hover:border-gray-100'
+                            ? 'bg-primary text-secondary shadow-glow'
+                            : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
                     }`}
                 >
-                    {plan.buttonText} 
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <span className="relative z-10 flex items-center gap-3">
+                        {plan.buttonText} <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-500" />
+                    </span>
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:animate-shimmer" />
                 </Link>
             </motion.div>
         </div>
@@ -155,55 +151,63 @@ const Pricing = () => {
     );
 
     return (
-        <div className="bg-[#F8F9FA] min-h-screen pt-32 pb-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
+            {/* Cinematic Background */}
+            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
                 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
+                <div className="text-center max-w-4xl mx-auto mb-24 space-y-8">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary text-white text-[10px] font-body font-bold uppercase tracking-[0.25em]"
+                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.6em] backdrop-blur-3xl shadow-glow"
                     >
-                        <Sparkles className="w-3 h-3 text-primary" />
+                        <Sparkles className="w-4 h-4 text-primary" />
                         Professional Care Plans
                     </motion.div>
                     <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-secondary tracking-tight leading-[1.05]"
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.85]"
                     >
                         Transparent <br />
-                        <span className="text-primary">Smart Pricing</span>
+                        <span className="text-gradient">Bespoke Pricing</span>
                     </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-[#64748B] font-body font-normal text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+                        transition={{ delay: 0.4, duration: 1 }}
+                        className="text-slate-400 font-body font-light text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto tracking-wide"
                     >
-                        No hidden fees. Premium doorstep convenience in Lucknow, delivered with scientific precision.
+                        Uncompromising quality, delivered with scientific precision. Explore our curated rituals for automotive excellence.
                     </motion.p>
                 </div>
 
                 {/* Pill Filter Tabs */}
-                <div className="flex justify-center mb-16">
-                    <div className="inline-flex p-1.5 bg-white rounded-full shadow-premium border border-gray-100">
+                <div className="flex justify-center mb-24">
+                    <div className="inline-flex p-2 bg-white/[0.03] backdrop-blur-3xl rounded-[2.5rem] border border-white/5 shadow-premium">
                         {['All', 'Car', 'Bike'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`relative px-10 py-3.5 rounded-full text-xs font-body font-bold uppercase tracking-widest transition-all duration-500 ${
+                                className={`relative px-12 py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-700 ${
                                     activeTab === tab
-                                        ? 'text-white'
-                                        : 'text-secondary hover:bg-gray-50'
+                                        ? 'text-secondary'
+                                        : 'text-slate-500 hover:text-white'
                                 }`}
                             >
                                 {activeTab === tab && (
                                     <motion.div
                                         layoutId="activeTab"
-                                        className="absolute inset-0 bg-secondary rounded-full"
-                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        className="absolute inset-0 bg-primary rounded-[2rem] shadow-glow"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
                                     />
                                 )}
                                 <span className="relative z-10">{tab}</span>
@@ -213,7 +217,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Pricing Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                     <AnimatePresence mode="wait">
                         {filteredPlans.map((plan, idx) => (
                             <PricingCard key={plan.name} plan={plan} index={idx} />
@@ -221,21 +225,29 @@ const Pricing = () => {
                     </AnimatePresence>
                 </div>
 
-                {/* Info Footer */}
-                <div className="mt-20 p-10 rounded-[3rem] bg-secondary text-white relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] -mr-32 -mt-32"></div>
-                    <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div className="text-center md:text-left">
-                            <h4 className="text-2xl md:text-3xl font-heading font-bold tracking-tight mb-2">Need a custom fleet package?</h4>
-                            <p className="text-white/60 font-body font-medium text-xs sm:text-sm tracking-wide">Available for corporate offices and premium luxury complexes.</p>
+                {/* Final CTA */}
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-32 p-20 rounded-[4rem] bg-white/[0.02] border border-white/5 text-center relative overflow-hidden group shadow-premium"
+                >
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,210,255,0.05),transparent_70%)] pointer-events-none" />
+                    
+                    <div className="relative z-10 flex flex-col items-center gap-10">
+                        <div className="space-y-6">
+                            <h2 className="text-5xl md:text-7xl font-heading font-bold text-white tracking-tighter">Need a Corporate <span className="text-gradient">Fleet Package?</span></h2>
+                            <p className="text-slate-400 max-w-3xl mx-auto font-body text-xl font-light leading-relaxed tracking-wide">
+                                We offer bespoke arrangements for luxury apartment complexes, premium office spaces, and private collectors.
+                            </p>
                         </div>
-                        <motion.div whileHover={{ y: -4, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                            <Link to="/contact" className="block bg-primary text-white px-10 py-5 rounded-2xl font-body font-bold uppercase tracking-widest shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all text-[10px]">
-                                Request Quote
+                        <motion.div whileHover={{ y: -8, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link to="/contact" className="inline-flex items-center gap-6 px-16 py-8 bg-white text-secondary rounded-[3rem] font-heading font-black tracking-[0.4em] uppercase text-sm hover:shadow-premium transition-all duration-700 group/concierge shadow-glow">
+                                Request VIP Consultation <Zap className="w-5 h-5 fill-secondary group-hover:scale-125 transition-transform" />
                             </Link>
                         </motion.div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );

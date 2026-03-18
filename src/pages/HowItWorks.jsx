@@ -1,132 +1,145 @@
 import { motion } from 'framer-motion';
-import { Calendar, Droplets, MapPin, CheckCircle, Sparkles } from 'lucide-react';
+import { Calendar, Droplets, MapPin, CheckCircle, Sparkles, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const steps = [
     {
         icon: Calendar,
-        title: 'Book Online',
-        description: 'Choose your desired service package and pick a convenient date and time slot from our real-time calendar.',
-        color: 'bg-blue-500',
-        number: '1'
+        title: 'Bespoke Reservation',
+        description: 'Select your desired ritual and secure a window in our master artisans\' calendar with our seamless digital interface.',
+        number: '01'
     },
     {
         icon: MapPin,
-        title: 'We Come to You',
-        description: 'Our professional, fully-equipped detailing team arrives at your specified location exactly on time.',
-        color: 'bg-orange-500',
-        number: '2'
+        title: 'Concierge Arrival',
+        description: 'Our fully-equipped mobile laboratory arrives at your sanctuary precisely at the appointed hour, ready for transformation.',
+        number: '02'
     },
     {
         icon: Droplets,
-        title: 'Expert Cleaning',
-        description: 'We use premium products to meticulously clean, restore, and protect every surface of your vehicle.',
-        color: 'bg-teal-500',
-        number: '3'
+        title: 'The Ritual of Care',
+        description: 'Utilizing world-class bio-molecular solutions and surgical precision, we restore every micron of your vehicle\'s glory.',
+        number: '03'
     },
     {
         icon: CheckCircle,
-        title: 'Enjoy Your Ride',
-        description: 'Inspect the final result with our team lead. Drive away in a vehicle that looks and feels brand new.',
-        color: 'bg-purple-500',
-        number: '4'
+        title: 'Final Handover',
+        description: 'A comprehensive briefing and inspection. We return your transformed asset, ready for the most demanding roads.',
+        number: '04'
     }
 ];
 
 const HowItWorks = () => {
     return (
-        <div className="bg-background min-h-screen py-24 relative overflow-hidden selection:bg-primary selection:text-white">
-            {/* Background elements */}
-            <div className="absolute top-[20%] right-[-5%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] -z-10"></div>
-            <div className="absolute bottom-[10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px] -z-10"></div>
+        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
+            {/* Cinematic Background */}
+            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-royal/10 rounded-full blur-[100px]" />
+            </div>
 
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-24 space-y-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
+                
+                {/* Header */}
+                <div className="text-center max-w-4xl mx-auto mb-32 space-y-8">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-body font-bold text-[10px] sm:text-xs mb-2 uppercase tracking-widest"
+                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-primary font-black text-[11px] uppercase tracking-[0.5em] backdrop-blur-3xl shadow-glow"
                     >
                         <Sparkles className="w-4 h-4" />
-                        Simple Process
+                        The Excellence Protocol
                     </motion.div>
                     
                     <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-heading font-bold text-secondary tracking-tight"
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.85]"
                     >
-                        How It <span className="text-primary">Works</span>
+                        Seamless <br />
+                        <span className="text-gradient">Transformation</span>
                     </motion.h1>
                     
                     <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-lg sm:text-xl text-[#64748B] max-w-2xl mx-auto font-body font-normal leading-relaxed tracking-wide"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 1 }}
+                        className="text-slate-400 font-body font-light text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto tracking-wide"
                     >
-                        Our seamless process is designed for your ultimate convenience. We bring the professional detailing shop directly to your driveway.
+                        Our meticulously engineered workflow ensures an effortless experience. We bring the elite detailing laboratory directly to your sanctuary.
                     </motion.p>
                 </div>
 
-                <div className="relative">
-                    {/* Central Connecting Line (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-1 -ml-0.5 bg-linear-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
+                <div className="relative max-w-5xl mx-auto">
+                    {/* Vertical Connecting Line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/30 via-white/10 to-transparent hidden md:block" />
 
-                    {/* Left Line (Mobile) */}
-                    <div className="md:hidden absolute left-8 top-4 bottom-4 w-1 bg-linear-to-b from-primary/50 via-gray-200 to-transparent rounded-full" />
-
-                    {/* Steps */}
-                    <div className="space-y-16 lg:space-y-24">
+                    {/* Steps Implementation */}
+                    <div className="space-y-24 md:space-y-40">
                         {steps.map((step, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className={`relative flex items-center md:items-start flex-col md:flex-row gap-8 lg:gap-16 group ${
+                                transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                className={`relative flex items-center md:items-start flex-col md:flex-row gap-12 group ${
                                     index % 2 === 0 ? 'md:flex-row-reverse' : ''
                                 }`}
                             >
-                                {/* Center Icon */}
-                                <div className={`
-                                    hidden md:flex flex-col items-center justify-center w-32 shrink-0 z-10
-                                    ${index % 2 === 0 ? 'md:ml-auto md:-translate-x-16 lg:-translate-x-24' : 'md:mr-auto md:translate-x-16 lg:translate-x-24'}
-                                `}>
-                                    <div className="w-20 h-20 rounded-4xl flex items-center justify-center shadow-xl bg-white border border-gray-100 group-hover:scale-110 group-hover:shadow-2xl transition-all duration-500 relative">
-                                        <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                        <step.icon className="w-10 h-10 text-secondary group-hover:text-primary transition-colors duration-300 relative z-10" />
-                                    </div>
+                                {/* Central Indicator */}
+                                <div className="absolute left-1/2 -translate-x-1/2 top-4 hidden md:flex flex-col items-center">
+                                    <div className="w-4 h-4 rounded-full bg-primary shadow-glow group-hover:scale-150 transition-transform duration-500" />
                                 </div>
 
-                                {/* Mobile Icon */}
-                                <div className="md:hidden absolute left-0 top-0 w-16 h-16 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center z-10">
-                                    <step.icon className="w-8 h-8 text-primary" />
+                                {/* Step Number Overlay for Mobile */}
+                                <div className="md:hidden w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-heading font-black text-primary text-xl shadow-glow">
+                                    {step.number}
                                 </div>
 
                                 {/* Content Box */}
-                                <div className={`
-                                    w-full md:w-1/2 pl-24 md:pl-0 pt-2 md:pt-4
-                                    ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}
-                                `}>
+                                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-20' : 'md:pr-20'}`}>
                                     <motion.div 
-                                        whileHover={{ 
-                                            y: -10,
-                                            boxShadow: "0 40px 100px -20px rgba(15, 23, 42, 0.08), 0 20px 50px -12px rgba(15, 23, 42, 0.03)"
-                                        }}
-                                        className="glass p-8 lg:p-10 rounded-4xl relative border border-white/50 transition-all duration-500 group-hover:border-primary/20 backdrop-blur-md"
+                                        whileHover={{ y: -15 }}
+                                        className={`glass p-12 rounded-[3.5rem] relative border border-white/5 transition-all duration-700 group-hover:border-primary/30 group-hover:shadow-premium bg-white/[0.03] ${
+                                            index % 2 === 0 ? 'text-left' : 'md:text-right'
+                                        }`}
                                     >
-                                        <div className="absolute -top-5 -left-5 md:-top-6 md:-left-6 w-12 h-12 md:w-14 md:h-14 bg-linear-to-br from-secondary to-gray-800 text-white font-heading font-bold text-xl md:text-2xl rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500">
-                                            {step.number}
+                                        <div className="mb-8 flex items-center gap-6 group-hover:gap-8 transition-all duration-500">
+                                            <div className="w-20 h-20 rounded-[1.5rem] bg-primary/10 border border-primary/20 flex items-center justify-center shadow-glow group-hover:bg-primary/20 transition-all duration-500 ml-0 mr-auto md:mx-0">
+                                                <step.icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                                            </div>
+                                            <span className="hidden md:block font-heading font-black text-5xl text-white/5 group-hover:text-primary/10 transition-all duration-700">
+                                                {step.number}
+                                            </span>
                                         </div>
-                                        <h3 className="text-2xl lg:text-3xl font-heading font-bold text-secondary mb-4 group-hover:text-primary transition-colors tracking-tight">{step.title}</h3>
-                                        <p className="text-[#64748B] font-body font-normal leading-relaxed text-base tracking-wide">{step.description}</p>
+                                        <h3 className="text-3xl lg:text-4xl font-heading font-bold text-white mb-6 group-hover:text-primary transition-colors duration-500 tracking-tighter leading-none">{step.title}</h3>
+                                        <p className="text-slate-400 font-body font-light leading-relaxed text-lg tracking-wide group-hover:text-slate-200 transition-colors duration-500">{step.description}</p>
                                     </motion.div>
                                 </div>
+                                
+                                <div className="hidden md:block w-1/2" />
                             </motion.div>
                         ))}
                     </div>
                 </div>
+
+                {/* Final CTA */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-40 text-center space-y-12"
+                >
+                    <h2 className="text-5xl md:text-7xl font-heading font-bold text-white tracking-tighter leading-none">Ready for the <span className="text-gradient">Transformation?</span></h2>
+                    <motion.div whileHover={{ y: -5, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Link to="/booking" className="inline-flex items-center gap-6 px-20 py-10 bg-primary text-secondary rounded-[3rem] font-heading font-black tracking-[0.4em] uppercase text-xl shadow-glow hover:shadow-[0_0_80px_rgba(0,210,255,0.4)] transition-all">
+                            Initiate Protocol <ArrowRight className="w-8 h-8" />
+                        </Link>
+                    </motion.div>
+                </motion.div>
             </div>
         </div>
     );

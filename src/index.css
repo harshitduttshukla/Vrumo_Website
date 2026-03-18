@@ -8,7 +8,7 @@
   --color-royal: #1E40AF; /* Royal Blue */
   --color-charcoal: #1F2937;
   --color-silver: #94A3B8;
-  --color-background: #020617; /* Slate 950 - True Luxury Dark */
+  --color-background: #030612; /* Cinematic Midnight Blue/Black */
   --color-foreground: #F8FAFC; /* Slate 50 - High Contrast Light */
 
   /* Typography Variables */
@@ -17,8 +17,8 @@
   --font-inter: 'Inter', sans-serif;
   
   --shadow-premium: 0 40px 100px -20px rgba(0, 0, 0, 0.5), 0 20px 50px -12px rgba(0, 0, 0, 0.3);
-  --shadow-luxury: 0 20px 50px -10px rgba(0, 0, 0, 0.4), 0 10px 30px -15px rgba(0, 0, 0, 0.2);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --shadow-luxury: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 0 18px 36px -18px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(0, 210, 255, 0.2);
   --shadow-navbar: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
@@ -26,7 +26,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-body);
-  font-weight: 450; /* Slightly refined weight for better Inter rendering */
+  font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -35,21 +35,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1.1;
 }
 
 @layer utilities {
   .glass {
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow-glass);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
   .glass-dark {
-    background: rgba(2, 6, 23, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -62,24 +61,22 @@ h1, h2, h3, h4, h5, h6 {
     color: transparent;
   }
 
-  .bg-mesh {
-    background-color: #ffffff;
-    background-image: radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 100% 0%, rgba(0, 163, 255, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.05) 0px, transparent 50%),
-                      radial-gradient(at 0% 100%, rgba(0, 163, 255, 0.05) 0px, transparent 50%);
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -88,5 +85,6 @@ h1, h2, h3, h4, h5, h6 {
 
 ::selection {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-secondary);
 }
+

@@ -1,36 +1,37 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { ChevronDown, Sparkles, Droplets, Shield, Clock, HelpCircle } from 'lucide-react';
+import { ChevronDown, Sparkles, Droplets, Shield, Clock, HelpCircle, ArrowRight, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const faqs = [
     {
         question: "What exactly is VRUMO Doorstep Detailing?",
-        answer: "VRUMO is a premium on-demand vehicle care service that brings professional-grade detailing directly to your driveway. We combine high-end technology, eco-friendly solutions, and expert craftsmanship to deliver shop-quality results without you ever needing to leave your home or office.",
-        category: "General",
+        answer: "VRUMO is an elite, on-demand vehicle care collective that brings professional-grade detailing directly to your sanctuary. We combine high-end technology, bio-molecular solutions, and surgical precision to deliver shop-quality results without you ever needing to leave your residence or office.",
+        category: "The Concept",
         icon: Sparkles
     },
     {
-        question: "Is doorstep detailing safe for my vehicle's paint?",
-        answer: "Absolutely. We use professional-grade microfiber towels, pH-neutral foaming agents, and a specialized multi-bucket method to ensure no scratch or swirl is ever introduced. Our scientific approach is actually safer than most traditional automated car washes.",
-        category: "Safety",
+        question: "Is doorstep detailing safe for my vehicle's finish?",
+        answer: "Absolutely. We utilize professional-grade microfiber instruments, pH-neutral foaming agents, and a specialized multi-bucket decontamination method to ensure no micro-marring is ever introduced. Our scientific protocol is significantly safer than traditional automated car washes.",
+        category: "Safety Protocols",
         icon: Shield
     },
     {
-        question: "How much water does a VRUMO wash consume?",
-        answer: "Sustainability is at our core. A typical VRUMO wash uses 90% less water than traditional hose washes. We use high-pressure steam and eco-friendly foaming agents to encapsulate dirt, which is then safely lifted away with minimal waste.",
-        category: "Eco-Friendly",
+        question: "How do you achieve conservation in hydration?",
+        answer: "Sustainability is at our core. A typical VRUMO ritual consumes 90% less water than traditional methods. We utilize high-pressure thermal vapor and bio-organic agents to encapsulate particulate matter, which is then safely lifted away with zero environmental impact.",
+        category: "Sustainability",
         icon: Droplets
     },
     {
-        question: "Do I need to be present during the service?",
-        answer: "Not necessarily. As long as we have access to the vehicle and a small perimeter of space, we can perform the service while you go about your day. We'll send you a confirmation message once your vehicle has been transformed.",
-        category: "Convenience",
+        question: "Is my presence required during the transformation?",
+        answer: "Not necessarily. As long as our artisans have secure access to the vehicle and a minimal perimeter of space, we can execute the transformation while you attend to more important matters. We will provide a digital confirmation once your asset is ready.",
+        category: "Concierge Convenience",
         icon: Clock
     },
     {
-        question: "What areas in Lucknow do you cover?",
-        answer: "We currently cover major residential and commercial hubs in Lucknow, including Gomti Nagar, Indira Nagar, Hazratganj, and DLF MyPad. Check our booking section for real-time availability in your specific pin code.",
-        category: "General",
+        question: "Which territories in Lucknow do you service?",
+        answer: "We currently provide exclusive coverage to major residential and commercial hubs in Lucknow, including Gomti Nagar, Indira Nagar, Hazratganj, and the DLF MyPad enclave. Consult our real-time interface for specific availability in your territory.",
+        category: "Territorial Coverage",
         icon: HelpCircle
     }
 ];
@@ -40,27 +41,27 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`glass overflow-hidden rounded-4xl border transition-all duration-500 ${isOpen ? 'border-primary/40 shadow-2xl shadow-primary/10 bg-white' : 'border-gray-100 hover:border-gray-200'}`}
+            className={`overflow-hidden rounded-[2.5rem] border transition-all duration-700 ${isOpen ? 'border-primary/40 shadow-glow bg-white/[0.05]' : 'border-white/5 bg-white/[0.02] hover:border-white/20'}`}
         >
             <button 
                 onClick={toggle}
                 className="w-full p-8 flex items-center justify-between text-left group"
             >
                 <div className="flex items-center gap-6">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary text-white scale-110 shadow-lg' : 'bg-gray-50 text-secondary'}`}>
-                        <faq.icon size={20} />
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-700 ${isOpen ? 'bg-primary text-secondary scale-110 shadow-glow' : 'bg-white/5 text-primary border border-white/5'}`}>
+                        <faq.icon size={24} />
                     </div>
                     <div>
-                        <span className="text-[10px] font-body font-bold text-gray-400 uppercase tracking-[0.2em] mb-1 block">{faq.category}</span>
-                        <h3 className={`text-lg sm:text-xl font-heading font-bold tracking-tight transition-colors duration-300 ${isOpen ? 'text-secondary' : 'text-secondary/80 group-hover:text-secondary'}`}>{faq.question}</h3>
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-2 block">{faq.category}</span>
+                        <h3 className={`text-xl font-heading font-bold tracking-tighter transition-colors duration-500 ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>{faq.question}</h3>
                     </div>
                 </div>
                 <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className={`text-primary ${isOpen ? 'opacity-100' : 'opacity-40'}`}
                 >
-                    <ChevronDown size={24} />
+                    <ChevronDown size={28} />
                 </motion.div>
             </button>
             <AnimatePresence>
@@ -69,11 +70,11 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <div className="px-8 pb-8 pt-2">
-                            <div className="h-px w-full bg-gray-100 mb-6" />
-                            <p className="text-[#64748B] font-body font-normal text-base sm:text-lg leading-relaxed max-w-3xl">
+                        <div className="px-10 pb-10 pt-2">
+                            <div className="h-px w-full bg-white/5 mb-8" />
+                            <p className="text-slate-400 font-body font-light text-lg leading-relaxed max-w-4xl tracking-wide group-hover:text-slate-300 transition-colors">
                                 {faq.answer}
                             </p>
                         </div>
@@ -88,39 +89,47 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <div className="bg-[#F8F9FA] min-h-screen pt-32 pb-24">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#030612] min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
+            {/* Cinematic Background */}
+            <div className="fixed inset-0 bg-noise pointer-events-none z-50" />
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-royal/10 rounded-full blur-[100px]" />
+            </div>
+
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
                 
                 {/* Header */}
-                <div className="text-center mb-20 space-y-6">
+                <div className="text-center mb-24 space-y-8">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary text-white text-[10px] font-body font-bold uppercase tracking-[0.25em]"
+                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-primary font-black text-[10px] uppercase tracking-[0.6em] backdrop-blur-3xl shadow-glow"
                     >
-                        <Sparkles className="w-3 h-3 text-primary" />
+                        <Sparkles className="w-4 h-4 text-primary" />
                         Common Queries
                     </motion.div>
                     <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-heading font-bold text-secondary tracking-tight leading-[1.05]"
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.85]"
                     >
-                        FAQ <br />
-                        <span className="text-primary">Centre</span>
+                        The <br />
+                        <span className="text-gradient">Knowledge Lexicon</span>
                     </motion.h1>
                     <motion.p 
-                        initial={{ opacity: 1, opacity: 0 }}
+                        initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-[#64748B] font-body font-normal text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+                        transition={{ delay: 0.4, duration: 1 }}
+                        className="text-slate-400 font-body font-light text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto tracking-wide"
                     >
-                        Expert answers for your discerning questions about India's most precise doorstep detailing service.
+                        Expert answers to your discerning inquiries regarding India's most precise automotive detailing collective.
                     </motion.p>
                 </div>
 
                 {/* FAQ List */}
-                <div className="space-y-6">
+                <div className="space-y-8">
                     {faqs.map((faq, index) => (
                         <FAQItem 
                             key={index}
@@ -133,34 +142,31 @@ const FAQ = () => {
 
                 {/* Bottom CTA */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-20 p-12 rounded-[3rem] bg-secondary text-white relative overflow-hidden text-center"
+                    className="mt-32 p-16 md:p-24 rounded-[4rem] bg-white/[0.02] border border-white/5 text-center relative overflow-hidden group shadow-premium"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] -mr-32 -mt-32"></div>
-                    <div className="relative z-10 space-y-8">
-                        <div>
-                            <h4 className="text-2xl md:text-4xl font-heading font-bold tracking-tight mb-4 text-white">Still have questions?</h4>
-                            <p className="text-white/60 font-body font-normal text-lg tracking-wide max-w-lg mx-auto">
-                                Our concierge team is available to assist you with any specific detailing requirements.
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,210,255,0.05),transparent_70%)] pointer-events-none" />
+                    
+                    <div className="relative z-10 space-y-12">
+                        <div className="space-y-6">
+                            <h4 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter text-white leading-none">Further Inquiries?</h4>
+                            <p className="text-slate-400 font-body font-light text-xl tracking-wide max-w-2xl mx-auto leading-relaxed">
+                                Our bespoke concierge team is standing by to assist you with any specific requirements or fleet arrangements.
                             </p>
                         </div>
-                        <div className="flex flex-col sm:flex-row justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row justify-center gap-8 pt-6">
                             <motion.button 
-                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileHover={{ scale: 1.05, y: -4 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="bg-primary text-secondary px-10 py-5 rounded-2xl font-body font-bold uppercase tracking-widest text-xs shadow-xl shadow-primary/20"
+                                className="bg-primary text-secondary px-12 py-6 rounded-[2rem] font-heading font-black uppercase tracking-[0.4em] text-[11px] shadow-glow flex items-center justify-center gap-3"
                             >
-                                Contact Concierge
+                                Contact Concierge <Zap className="w-4 h-4 fill-secondary" />
                             </motion.button>
-                            <motion.button 
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-white/10 backdrop-blur-md text-white border border-white/10 px-10 py-5 rounded-2xl font-body font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-all"
-                            >
-                                Email Support
-                            </motion.button>
+                            <Link to="/booking" className="inline-flex items-center justify-center gap-3 bg-white/5 backdrop-blur-3xl text-white border border-white/10 px-12 py-6 rounded-[2rem] font-heading font-black uppercase tracking-[0.4em] text-[11px] hover:bg-white/10 transition-all shadow-premium group">
+                                Initiate Protocol <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500" />
+                            </Link>
                         </div>
                     </div>
                 </motion.div>
