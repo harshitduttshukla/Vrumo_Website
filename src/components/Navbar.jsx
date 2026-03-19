@@ -28,7 +28,6 @@ const Navbar = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
-    // Premium Motion Variants
     const navContainerVariants = {
         hidden: { y: -100, opacity: 0 },
         visible: { 
@@ -87,7 +86,7 @@ const Navbar = () => {
 
     return (
         <header 
-            className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-4 sm:pt-6"
+            className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
         >
             <motion.nav
                 variants={navContainerVariants}
@@ -96,12 +95,12 @@ const Navbar = () => {
                 className={`
                     pointer-events-auto
                     relative flex items-center justify-between
-                    w-[95%] max-w-4xl px-4 sm:px-8
+                    w-full max-w-full px-6 sm:px-12 lg:px-20
                     transition-all duration-700 ease-[0.16,1,0.3,1]
-                    rounded-full border
+                    border-b
                     ${scrolled 
-                        ? 'bg-background/80 backdrop-blur-2xl border-white/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] py-2 sm:py-3' 
-                        : 'bg-white/5 backdrop-blur-md border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)] py-4 sm:py-5'
+                        ? 'bg-white/95 backdrop-blur-xl border-[#E5E5E5] shadow-[0_2px_20px_rgba(0,0,0,0.06)] py-3 sm:py-4' 
+                        : 'bg-white/80 backdrop-blur-md border-transparent py-5 sm:py-6'
                     }
                 `}
             >
@@ -120,10 +119,9 @@ const Navbar = () => {
                     className="flex-1 md:flex-none flex justify-center md:px-8"
                 >
                     <Link to="/" className="relative group">
-                        <div className="relative z-10 text-2xl sm:text-3xl font-heading font-extrabold tracking-[-0.05em] text-primary flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
+                        <div className="relative z-10 text-2xl sm:text-3xl font-extrabold tracking-[-0.02em] text-[#0A0A0A] flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
                             VRUMO
                         </div>
-                        <div className="absolute -inset-x-3 -inset-y-1 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl" />
                     </Link>
                 </motion.div>
 
@@ -138,16 +136,15 @@ const Navbar = () => {
                         variants={itemVariants}
                         whileHover={{ 
                              y: -2,
-                             boxShadow: "0 20px 40px -10px rgba(0, 210, 255, 0.4)"
                         }}
                         whileTap={{ scale: 0.95 }}
                     >
                         <Link
                             to="/booking"
-                            className="bg-primary text-secondary px-8 py-3 rounded-full font-mono font-medium text-[11px] uppercase tracking-[0.18em] relative overflow-hidden group shadow-glow"
+                            className="bg-[#0A0A0A] text-[#C9A84C] px-6 py-2.5 rounded-lg font-semibold text-[15px] tracking-[-0.01em] relative overflow-hidden group border-2 border-[#0A0A0A] hover:bg-[#C9A84C] hover:border-[#C9A84C] hover:text-[#0A0A0A] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
                         >
                             <span className="relative z-10">Book Now</span>
-                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                            <span className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:left-[150%] transition-[left] duration-500" />
                         </Link>
                     </motion.div>
                 </div>
@@ -156,7 +153,7 @@ const Navbar = () => {
                 <motion.div variants={itemVariants} className="md:hidden flex items-center">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="p-2.5 text-slate-300 hover:text-primary transition-colors focus:outline-none relative"
+                        className="p-2.5 text-[#2C2C2C] hover:text-[#C9A84C] transition-colors focus:outline-none relative"
                         aria-label="Toggle menu"
                     >
                         <AnimatePresence mode="wait">
@@ -181,7 +178,7 @@ const Navbar = () => {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="absolute top-full left-0 right-0 mt-4 p-5 bg-slate-900/95 backdrop-blur-3xl rounded-4xl border border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] md:hidden pointer-events-auto"
+                            className="absolute top-full left-0 right-0 mt-0 p-5 bg-white/98 backdrop-blur-3xl border-b border-[#E5E5E5] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] md:hidden pointer-events-auto"
                         >
                             <div className="flex flex-col space-y-5 items-center py-6">
                                 {[...leftLinks, ...rightLinks].map((link) => (
@@ -189,8 +186,8 @@ const Navbar = () => {
                                         <Link
                                             to={link.path}
                                             onClick={() => setIsOpen(false)}
-                                            className={`font-body text-2xl font-semibold tracking-tight transition-all duration-300 ${
-                                                location.pathname === link.path ? 'text-primary' : 'text-slate-300 hover:text-primary'
+                                            className={`text-[17px] font-medium tracking-[-0.01em] transition-all duration-300 ${
+                                                location.pathname === link.path ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] hover:text-[#C9A84C]'
                                             }`}
                                         >
                                             {link.name}
@@ -201,7 +198,7 @@ const Navbar = () => {
                                     <Link
                                         to="/booking"
                                         onClick={() => setIsOpen(false)}
-                                        className="block w-full text-center bg-primary text-secondary py-5 rounded-3xl font-body font-black text-lg tracking-wider shadow-2xl active:scale-[0.98]"
+                                        className="block w-full text-center bg-[#0A0A0A] text-[#C9A84C] py-4 rounded-lg font-semibold text-[15px] tracking-[-0.01em] border-2 border-[#0A0A0A] active:scale-[0.98]"
                                     >
                                         Book Now
                                     </Link>
@@ -224,20 +221,20 @@ const NavLink = ({ link, isActive }) => {
             <motion.span
                 whileHover={{ y: -2 }}
                 className={`
-                    relative z-10 text-[13px] font-heading font-semibold tracking-[-0.01em] transition-colors duration-500 flex items-center gap-1.5
-                    ${isActive ? 'text-primary' : 'text-slate-400 group-hover:text-white'}
+                    relative z-10 text-[15px] font-medium tracking-[-0.01em] transition-colors duration-500 flex items-center gap-1.5
+                    ${isActive ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] group-hover:text-[#C9A84C]'}
                 `}
             >
                 {link.name}
                 {isActive && (
                     <motion.div 
                         layoutId="navActiveDot"
-                        className="w-1 h-1 bg-primary rounded-full transition-all"
+                        className="w-1 h-1 bg-[#C9A84C] rounded-full transition-all"
                     />
                 )}
             </motion.span>
             <span className={`
-                absolute bottom-0 left-0 w-full h-[2px] bg-primary transform scale-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left
+                absolute bottom-0 left-0 w-full h-[2px] bg-[#C9A84C] transform scale-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left
                 ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'}
             `} />
         </Link>

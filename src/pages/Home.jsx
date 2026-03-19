@@ -37,9 +37,11 @@ const ServiceCardHero = ({ service, idx }) => (
     <motion.div 
         key={idx}
         variants={itemVariants}
-        whileHover={{ y: -5 }}
-        className="group relative flex flex-col rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden h-full"
+        whileHover={{ y: -6 }}
+        className="group relative flex flex-col rounded-2xl bg-white border border-[#EFEFEF] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden h-full"
     >
+        {/* Gold gradient top line */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
         <Link to={service.link} className="block h-full">
             <div className="relative h-32 overflow-hidden">
                 <img 
@@ -47,14 +49,14 @@ const ServiceCardHero = ({ service, idx }) => (
                     alt={service.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                    <service.icon className="w-4 h-4 text-primary" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] flex items-center justify-center">
+                    <service.icon className="w-4 h-4 text-[#C9A84C]" strokeWidth={1.8} />
                 </div>
             </div>
             <div className="p-4 space-y-2">
-                <h3 className="text-sm font-bold text-white group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="text-[10px] text-gray-400 line-clamp-1">{service.description}</p>
+                <h3 className="text-sm font-semibold text-[#0A0A0A] group-hover:text-[#C9A84C] transition-colors">{service.title}</h3>
+                <p className="text-[10px] text-[#888888] line-clamp-1">{service.description}</p>
             </div>
         </Link>
     </motion.div>
@@ -93,15 +95,10 @@ const Home = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-secondary font-sans leading-relaxed">
+        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#C9A84C] selection:text-white leading-relaxed">
 
             {/* --- 1. HERO SECTION --- */}
-            <section className="relative pt-48 pb-32 px-6 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                    <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px]" />
-                </div>
-
+            <section className="relative pt-48 pb-32 px-6 overflow-hidden luxury-pattern">
                 <div className="max-w-7xl mx-auto">
                     <motion.div 
                         variants={containerVariants}
@@ -118,12 +115,17 @@ const Home = () => {
 
                         {/* RIGHT: Hero Text Content */}
                         <div className="order-1 lg:order-2 space-y-8">
+                            <motion.div variants={itemVariants}>
+                                <div className="premium-badge mb-6">
+                                    EST. 2024 · ELITE DETAILING
+                                </div>
+                            </motion.div>
                             <motion.div variants={itemVariants} className="space-y-4">
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                                <h1 className="text-[#0A0A0A]">
                                     All-in-One <br />
-                                    <span className="text-primary italic">Vehicle Care</span> Ecosystem
+                                    <span className="gold-underline text-[#0A0A0A]">Vehicle Care</span> Ecosystem
                                 </h1>
-                                <p className="text-lg md:text-xl text-gray-400 max-w-lg font-medium">
+                                <p className="text-lg md:text-xl text-[#555555] max-w-lg font-normal">
                                     Quality doorstep services for your car and bike. Trusted professionals, affordable pricing, and fast results guaranteed.
                                 </p>
                             </motion.div>
@@ -131,25 +133,25 @@ const Home = () => {
                             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
                                 <Link 
                                     to="/booking" 
-                                    className="bg-primary text-secondary px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform"
+                                    className="btn-premium"
                                 >
                                     Book Service
                                 </Link>
                                 <Link 
                                     to="/services" 
-                                    className="bg-white/5 border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors"
+                                    className="btn-outline"
                                 >
                                     Explore Ecosystem
                                 </Link>
                             </motion.div>
 
-                            <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-white/5">
+                            <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-[#EFEFEF]">
                                 <div className="flex -space-x-2">
                                     {[1,2,3,4].map(i => (
-                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-[#050505] bg-gray-800" />
+                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8]" />
                                     ))}
                                 </div>
-                                <p className="text-sm text-gray-400">Join <span className="text-white font-bold">50,000+</span> owners</p>
+                                <p className="text-sm text-[#888888]">Join <span className="text-[#0A0A0A] font-semibold">50,000+</span> owners</p>
                             </motion.div>
                         </div>
                     </motion.div>
@@ -157,26 +159,28 @@ const Home = () => {
             </section>
 
             {/* --- 2. SERVICES OVERVIEW --- */}
-            <section id="services" className="py-24 bg-white/2 border-y border-white/5">
+            <section id="services" className="py-24 bg-[#F8F8F8] border-y border-[#EFEFEF]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight italic">Our Portfolio</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Everything your vehicle needs, all on one simple platform.</p>
+                        <h2 className="section-title">Our Portfolio</h2>
+                        <p className="text-[#555555] max-w-2xl mx-auto">Everything your vehicle needs, all on one simple platform.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {services.map((service, i) => (
                             <motion.div 
                                 key={i}
-                                whileHover={{ y: -5 }}
-                                className="p-8 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-primary/30 transition-all text-center group"
+                                whileHover={{ y: -6 }}
+                                className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all text-center group overflow-hidden"
                             >
-                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary transition-colors">
-                                    <service.icon className="w-8 h-8 text-primary group-hover:text-secondary transition-colors" />
+                                {/* Gold gradient top line */}
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
+                                <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center mx-auto mb-6 group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(201,168,76,0.15)] transition-all">
+                                    <service.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6 italic">{service.description}</p>
-                                <Link to={service.link} className="text-xs font-black uppercase tracking-widest text-primary hover:underline">
+                                <h3 className="font-semibold mb-3 text-[#0A0A0A]">{service.title}</h3>
+                                <p className="text-[#555555] text-[15px] leading-[1.7] mb-6">{service.description}</p>
+                                <Link to={service.link} className="text-[14px] font-semibold uppercase tracking-[0.08em] text-[#C9A84C] hover:underline">
                                     Explore Service
                                 </Link>
                             </motion.div>
@@ -186,12 +190,12 @@ const Home = () => {
             </section>
 
             {/* --- 3. WHY CHOOSE US --- */}
-            <section className="py-24">
+            <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-8">
-                            <h2 className="text-4xl md:text-5xl font-bold tracking-tight italic">Why the Ecosystem?</h2>
-                            <p className="text-lg text-gray-400">We prioritize your convenience and vehicle health through tech and trust.</p>
+                            <h2 className="section-title">Why the Ecosystem?</h2>
+                            <p className="text-lg text-[#555555]">We prioritize your convenience and vehicle health through tech and trust.</p>
                             
                             <div className="space-y-6">
                                 {[
@@ -200,33 +204,33 @@ const Home = () => {
                                     { title: "Fast Doorstep Service", desc: "No more workshop waits. We bring the care to your location.", icon: MapPin }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 items-start">
-                                        <div className="mt-1 w-12 h-12 shrink-0 bg-white/5 rounded-xl flex items-center justify-center border border-white/10">
-                                            <item.icon className="w-6 h-6 text-primary" />
+                                        <div className="mt-1 w-14 h-14 shrink-0 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
+                                            <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-bold mb-1 italic">{item.title}</h4>
-                                            <p className="text-gray-400 text-sm">{item.desc}</p>
+                                            <h4 className="font-semibold mb-1 text-[#0A0A0A]">{item.title}</h4>
+                                            <p className="text-[#555555] text-[15px] leading-[1.7]">{item.desc}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="relative aspect-square bg-white/5 rounded-3xl overflow-hidden border border-white/10 group">
-                            <img src="/images/hero_main.png" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-[2s]" alt="Vrumo Service" />
-                            <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
+                        <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group">
+                            <img src="/images/hero_main.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2s]" alt="Vrumo Service" />
+                            <div className="absolute inset-0 bg-linear-to-t from-white/40 via-transparent to-transparent" />
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* --- 4. HOW IT WORKS --- */}
-            <section className="py-24 bg-primary text-secondary overflow-hidden">
+            <section className="py-24 bg-[#0A0A0A] text-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-20 text-secondary">3 Steps to Core Care</h2>
+                    <h2 className="mb-20 text-white">3 Steps to Core Care</h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                         {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-secondary/20" />
+                        <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-[#C9A84C]/20" />
 
                         {[
                             { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", icon: MousePointer2 },
@@ -234,11 +238,11 @@ const Home = () => {
                             { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", icon: MapPin }
                         ].map((item, i) => (
                             <div key={i} className="space-y-6 relative z-10 text-center">
-                                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto text-primary font-black text-2xl shadow-xl">
-                                    <item.icon className="w-10 h-10" />
+                                <div className="w-20 h-20 bg-[#C9A84C] rounded-full flex items-center justify-center mx-auto text-[#0A0A0A] shadow-[0_8px_24px_rgba(201,168,76,0.35)]">
+                                    <item.icon className="w-10 h-10" strokeWidth={1.8} />
                                 </div>
-                                <h4 className="text-xl font-bold">{item.title}</h4>
-                                <p className="text-secondary/80 text-sm max-w-[200px] mx-auto">{item.desc}</p>
+                                <h4 className="font-semibold text-white">{item.title}</h4>
+                                <p className="text-gray-400 text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -246,66 +250,54 @@ const Home = () => {
             </section>
 
             {/* --- 5. DIFFERENTIATION SECTION --- */}
-            <section className="py-24 overflow-hidden border-b border-white/5">
+            <section className="py-24 overflow-hidden bg-[#F8F8F8] border-b border-[#EFEFEF]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20 space-y-4">
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight italic">Ecosystem Benchmarks</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">We use tech and sustainable rituals to better your experience.</p>
+                        <h2 className="section-title">Ecosystem Benchmarks</h2>
+                        <p className="text-[#555555] max-w-2xl mx-auto">We use tech and sustainable rituals to better your experience.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-10">
-                        <div className="p-10 rounded-3xl bg-white/2 border border-white/10 hover:border-primary/40 transition-all space-y-8">
-                            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-                                <BarChart3 className="w-8 h-8 text-primary" />
+                        {[
+                            { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", icon: BarChart3 },
+                            { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", icon: Smartphone },
+                            { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", icon: CloudRain }
+                        ].map((item, i) => (
+                            <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all space-y-8 overflow-hidden group">
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
+                                <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                    <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                </div>
+                                <div className="space-y-4">
+                                    <h3 className="font-semibold text-[#0A0A0A]">{item.title}</h3>
+                                    <p className="text-[#555555] text-[15px] leading-[1.7]">{item.desc}</p>
+                                </div>
                             </div>
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-bold italic">Low Pricing</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">Direct-to-owner service means you save up to 30% on every ritual.</p>
-                            </div>
-                        </div>
-
-                        <div className="p-10 rounded-3xl bg-white/2 border border-white/10 hover:border-primary/40 transition-all space-y-8">
-                            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-                                <Smartphone className="w-8 h-8 text-primary" />
-                            </div>
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-bold italic">Tech Workflow</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">Detailed digital health reports and real-time status updates on your phone.</p>
-                            </div>
-                        </div>
-
-                        <div className="p-10 rounded-3xl bg-white/2 border border-white/10 hover:border-primary/40 transition-all space-y-8">
-                            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-                                <CloudRain className="w-8 h-8 text-primary" />
-                            </div>
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-bold italic">Hybrid Wash</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">Our advanced foam tech saves up to 80% water on every doorstep wash.</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* --- 6. TESTIMONIALS --- */}
-            <section className="py-24 bg-white/2">
+            <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight italic">Ecosystem Reviews</h2>
+                        <h2 className="section-title">Ecosystem Reviews</h2>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[1, 2, 3].map(i => (
-                            <div key={i} className="p-8 rounded-2xl bg-[#0a0a0a] border border-white/5 space-y-6">
+                            <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all overflow-hidden">
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
                                 <div className="flex gap-1">
-                                    {[1, 2, 3, 4, 5].map(j => <Zap key={j} className="w-4 h-4 text-primary fill-primary" />)}
+                                    {[1, 2, 3, 4, 5].map(j => <Zap key={j} className="w-4 h-4 text-[#C9A84C] fill-[#C9A84C]" />)}
                                 </div>
-                                <p className="text-gray-300 italic">"The doorstep service is incredible. Extremely pro and my vehicle looks and runs perfectly every time."</p>
-                                <div className="flex items-center gap-4 pt-4 border-t border-white/5">
-                                    <div className="w-10 h-10 rounded-full bg-gray-800" />
+                                <p className="text-[#555555] italic text-[15px] leading-[1.7]">"The doorstep service is incredible. Extremely pro and my vehicle looks and runs perfectly every time."</p>
+                                <div className="flex items-center gap-4 pt-4 border-t border-[#EFEFEF]">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8]" />
                                     <div>
-                                        <h4 className="text-sm font-bold text-white italic">Customer Name</h4>
-                                        <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Premium Owner</p>
+                                        <h4 className="text-sm font-semibold text-[#0A0A0A]">Customer Name</h4>
+                                        <p className="text-[10px] text-[#888888] font-medium uppercase tracking-[0.08em]">Premium Owner</p>
                                     </div>
                                 </div>
                             </div>
@@ -315,20 +307,20 @@ const Home = () => {
             </section>
 
             {/* --- 7. FINAL CTA --- */}
-            <section className="py-32 relative overflow-hidden bg-primary">
-                <div className="max-w-4xl mx-auto px-6 text-center space-y-10 relative z-10 text-secondary">
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tight italic leading-tight">Join the Ecosystem <br /> Today.</h2>
-                    <p className="text-xl max-w-2xl mx-auto opacity-90 font-medium leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
+            <section className="py-32 relative overflow-hidden bg-[#0A0A0A]">
+                <div className="max-w-4xl mx-auto px-6 text-center space-y-10 relative z-10">
+                    <h2 className="text-white">Join the Ecosystem <br /> Today.</h2>
+                    <p className="text-xl max-w-2xl mx-auto text-gray-400 font-normal leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
                         <Link 
                             to="/booking" 
-                            className="bg-secondary text-primary px-12 py-6 rounded-2xl font-black text-lg hover:scale-105 transition-transform"
+                            className="bg-[#C9A84C] text-[#0A0A0A] px-12 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
                         >
                             Book Your Service
                         </Link>
                         <Link 
                             to="/services" 
-                            className="bg-transparent border-2 border-secondary/20 text-secondary px-12 py-6 rounded-2xl font-black text-lg hover:bg-secondary/10 transition-colors"
+                            className="btn-outline"
                         >
                             Explore Ecosystem
                         </Link>

@@ -21,13 +21,13 @@ const stats = [
 
 const About = () => {
     return (
-        <div className="min-h-screen bg-[#050505] text-white pt-48 pb-24 px-6 overflow-hidden">
+        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto space-y-32">
                 {/* Hero */}
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1 className="text-6xl md:text-8xl font-bold tracking-tight italic">Who is Vrumo?</h1>
-                        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Who is Vrumo?</h1>
+                        <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
                             An all-in-one vehicle care ecosystem designed for the modern owner. We bring trust, tech, and quality doorstep convenience to your life.
                         </p>
                     </motion.div>
@@ -36,9 +36,9 @@ const About = () => {
                 {/* Mission Section */}
                 <section className="grid lg:grid-cols-2 gap-20 items-center">
                     <div className="space-y-12">
-                        <h2 className="text-4xl md:text-6xl font-bold italic tracking-tight">Our Mission</h2>
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-[0.03em] section-title">Our Mission</h2>
                         <div className="space-y-8">
-                            <p className="text-xl text-gray-400 leading-relaxed font-light italic">
+                            <p className="text-xl text-[#888888] leading-relaxed font-light italic">
                                 "To build the world's most trusted and simple vehicle care ecosystem where quality is standard, and convenience is guaranteed."
                             </p>
                             <div className="space-y-6">
@@ -47,13 +47,13 @@ const About = () => {
                                     { title: "Tech Integration", desc: "Real-time health reports, digital claims, and doorstep tracking on your phone.", icon: Smartphone },
                                     { title: "Eco-Hybrid Tech", desc: "Advanced low-water foam tech that saves up to 80% water on every wash.", icon: Droplets }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-6 items-start p-6 rounded-2xl bg-white/2 border border-white/5 hover:border-primary/20 transition-all">
-                                        <div className="w-12 h-12 shrink-0 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-                                            <item.icon className="w-6 h-6 text-primary" />
+                                    <div key={i} className="flex gap-6 items-start p-6 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#C9A84C]/30 transition-all">
+                                        <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
+                                            <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-                                            <p className="text-gray-400 text-[13px] leading-relaxed">{item.desc}</p>
+                                            <h4 className="text-lg font-bold mb-1 text-[#0A0A0A]">{item.title}</h4>
+                                            <p className="text-[#888888] text-[13px] leading-relaxed">{item.desc}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -61,31 +61,31 @@ const About = () => {
                         </div>
                     </div>
                     <div className="relative aspect-square">
-                        <div className="absolute inset-0 bg-primary/10 rounded-[4rem] blur-[120px]" />
-                        <div className="relative h-full rounded-[4rem] overflow-hidden border border-white/10 group">
-                            <img src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] grayscale-[0.5] opacity-60" alt="Vrumo Concept" />
+                        <div className="absolute inset-0 bg-[#C9A84C]/5 rounded-2xl blur-[80px]" />
+                        <div className="relative h-full rounded-2xl overflow-hidden border border-[#EFEFEF] group">
+                            <img src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
                         </div>
                     </div>
                 </section>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-20 border-y border-white/5 bg-white/2 rounded-[4rem] px-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-20 border-y border-[#EFEFEF] bg-[#F8F8F8] rounded-2xl px-12">
                     {stats.map((stat, i) => (
                         <div key={i} className="text-center space-y-4">
-                            <div className="w-12 h-12 bg-[#050505] rounded-full mx-auto flex items-center justify-center border border-white/10">
-                                <stat.icon className="w-6 h-6 text-primary" />
+                            <div className="w-12 h-12 bg-white rounded-full mx-auto flex items-center justify-center border border-[#EFEFEF]">
+                                <stat.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
                             </div>
-                            <h3 className="text-5xl font-black italic">{stat.value}</h3>
-                            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
+                            <h3 className="text-5xl font-black text-[#0A0A0A]">{stat.value}</h3>
+                            <p className="text-[#888888] font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
                         </div>
                     ))}
                 </div>
 
                 {/* Final CTA */}
-                <div className="py-32 rounded-[5rem] bg-primary text-secondary text-center space-y-12">
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tight px-6">Ready to Experience <br /> the Ecosystem?</h2>
+                <div className="py-32 rounded-2xl bg-[#0A0A0A] text-white text-center space-y-12">
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-secondary text-primary px-12 py-6 rounded-2xl font-black text-lg hover:scale-105 transition-transform flex items-center gap-4">
+                        <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

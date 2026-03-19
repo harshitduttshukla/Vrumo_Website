@@ -50,9 +50,9 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-[#050505] text-gray-400 pt-32 pb-12 overflow-hidden border-t border-white/5 relative">
-            {/* Background Glow */}
-            <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <footer className="bg-[#0A0A0A] text-gray-400 pt-32 pb-12 overflow-hidden border-t border-[#1a1a1a] relative">
+            {/* Background subtle gold glow */}
+            <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-[#C9A84C]/3 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-20 lg:gap-x-20 mb-28">
@@ -60,18 +60,18 @@ const Footer = () => {
                     <div className="lg:col-span-4 space-y-12">
                         <div className="space-y-8">
                             <Link to="/" className="inline-block">
-                                <span className="text-4xl font-bold tracking-tight text-white italic">
-                                    VRUMO<span className="text-primary italic">.</span>
+                                <span className="text-4xl font-bold tracking-[-0.02em] text-white">
+                                    VRUMO<span className="text-[#C9A84C]">.</span>
                                 </span>
                             </Link>
-                            <p className="text-lg font-medium leading-relaxed max-w-sm italic">
+                            <p className="text-lg font-medium leading-relaxed max-w-sm italic text-gray-400">
                                 "Building the world's most trusted and simple vehicle care ecosystem where quality is standard, and convenience is guaranteed."
                             </p>
                         </div>
 
                         <div className="flex gap-4">
                             {[Instagram, Twitter, Facebook, Youtube].map((Social, i) => (
-                                <a key={i} href="#" className="w-12 h-12 rounded-2xl bg-white/2 border border-white/5 flex items-center justify-center hover:bg-primary hover:text-secondary hover:border-primary transition-all duration-300">
+                                <a key={i} href="#" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#C9A84C] hover:text-[#0A0A0A] hover:border-[#C9A84C] transition-all duration-300 text-gray-500">
                                     <Social size={20} />
                                 </a>
                             ))}
@@ -84,7 +84,7 @@ const Footer = () => {
                                 { icon: Mail, text: 'support@vrumo.com', sub: 'Typical Response: 2H' }
                             ].map((contact, i) => (
                                 <div key={i} className="flex items-center gap-5 group">
-                                    <div className="w-10 h-10 rounded-xl bg-white/2 border border-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#C9A84C] group-hover:bg-[#C9A84C] group-hover:text-[#0A0A0A] transition-all">
                                         <contact.icon size={16} />
                                     </div>
                                     <div className="flex flex-col">
@@ -101,14 +101,14 @@ const Footer = () => {
                         {sections.map((section, idx) => (
                             <div key={idx} className="space-y-10">
                                 <h4 className="text-[10px] font-black text-white uppercase tracking-[0.4em] flex items-center gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
                                     {section.title}
                                 </h4>
                                 <ul className="space-y-5">
                                     {section.links.map((link, lIdx) => (
                                         <li key={lIdx}>
-                                            <Link to={link.path} className="text-sm font-bold hover:text-white flex items-center gap-2 transition-all group">
-                                                <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                                            <Link to={link.path} className="text-sm font-bold hover:text-[#C9A84C] flex items-center gap-2 transition-all group">
+                                                <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#C9A84C]" />
                                                 {link.name}
                                             </Link>
                                         </li>
@@ -120,20 +120,20 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-14">
                         <div className="flex items-center gap-3">
-                            <ShieldCheck size={20} className="text-primary" />
-                            <span className="text-[10px] font-black text-gray-700 uppercase tracking-[0.4em]">Secure Protocol</span>
+                            <ShieldCheck size={20} className="text-[#C9A84C]" />
+                            <span className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]">Secure Protocol</span>
                         </div>
-                        <p className="text-[11px] font-black text-gray-800 uppercase tracking-[0.3em]">
+                        <p className="text-[11px] font-black text-gray-600 uppercase tracking-[0.3em]">
                             © {currentYear} VRUMO ECOSYSTEM. ALL RIGHTS RESERVED.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-10 text-[10px] font-black text-gray-700 uppercase tracking-[0.3em]">
+                    <div className="flex items-center gap-10 text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">
                         {['Privacy', 'T&C', 'Status'].map((item) => (
-                            <Link key={item} to="#" className="hover:text-white transition-all">
+                            <Link key={item} to="#" className="hover:text-[#C9A84C] transition-all">
                                 {item}
                             </Link>
                         ))}

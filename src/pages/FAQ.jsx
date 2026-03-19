@@ -41,25 +41,25 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`overflow-hidden rounded-[2rem] border transition-all duration-500 ${isOpen ? 'border-primary/40 bg-white/5 shadow-2xl' : 'border-white/5 bg-white/2 hover:border-white/20'}`}
+            className={`overflow-hidden rounded-xl border transition-all duration-500 ${isOpen ? 'border-[#C9A84C] bg-[#F8F8F8] shadow-[0_8px_32px_rgba(0,0,0,0.06)]' : 'border-[#EFEFEF] bg-white hover:border-[#C9A84C]/30'}`}
         >
             <button 
                 onClick={toggle}
                 className="w-full p-8 flex items-center justify-between text-left group"
             >
                 <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary text-secondary' : 'bg-white/5 text-primary'}`}>
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#C9A84C] text-white' : 'bg-[#C9A84C]/10 text-[#C9A84C]'}`}>
                         <faq.icon size={24} />
                     </div>
                     <div>
-                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-2 block">{faq.category}</span>
-                        <h3 className={`text-xl font-bold italic tracking-tight transition-colors duration-500 ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>{faq.question}</h3>
+                        <span className="text-[10px] font-black text-[#888888] uppercase tracking-[0.4em] mb-2 block">{faq.category}</span>
+                        <h3 className={`text-xl font-bold tracking-tight transition-colors duration-500 ${isOpen ? 'text-[#0A0A0A]' : 'text-[#2C2C2C] group-hover:text-[#0A0A0A]'}`}>{faq.question}</h3>
                     </div>
                 </div>
                 <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.4 }}
-                    className={`text-primary ${isOpen ? 'opacity-100' : 'opacity-40'}`}
+                    className={`text-[#C9A84C] ${isOpen ? 'opacity-100' : 'opacity-40'}`}
                 >
                     <ChevronDown size={28} />
                 </motion.div>
@@ -73,8 +73,8 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
                         transition={{ duration: 0.4 }}
                     >
                         <div className="px-10 pb-10 pt-2 space-y-4">
-                            <div className="h-px w-full bg-white/5" />
-                            <p className="text-gray-400 font-medium text-lg leading-relaxed max-w-4xl">
+                            <div className="h-px w-full bg-[#E5E5E5]" />
+                            <p className="text-[#888888] font-medium text-lg leading-relaxed max-w-4xl">
                                 {faq.answer}
                             </p>
                         </div>
@@ -89,17 +89,17 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white pt-48 pb-24 px-6 overflow-hidden selection:bg-primary selection:text-secondary">
+        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden selection:bg-[#C9A84C] selection:text-white">
             <div className="max-w-5xl mx-auto space-y-24 relative z-10">
                 
                 {/* Header */}
                 <div className="text-center space-y-8">
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-primary font-black text-[10px] uppercase tracking-[0.6em]">
-                        <Zap className="w-4 h-4 text-primary" />
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="premium-badge mx-auto">
+                        <Zap className="w-4 h-4 text-[#C9A84C]" />
                         Common Queries
                     </motion.div>
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tight italic">Knowledge <br /> <span className="text-primary italic">Base</span></h1>
-                    <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Knowledge <br /> <span className="text-[#C9A84C]">Base</span></h1>
+                    <p className="text-[#888888] text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
                         Plain answers to your questions about our vehicle care ecosystem.
                     </p>
                 </div>
@@ -117,19 +117,19 @@ const FAQ = () => {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-32 p-16 md:p-24 rounded-[4rem] bg-white/2 border border-white/5 text-center relative overflow-hidden group shadow-2xl">
+                <div className="mt-32 p-16 md:p-24 rounded-2xl bg-[#F8F8F8] border border-[#EFEFEF] text-center relative overflow-hidden group">
                     <div className="relative z-10 space-y-12">
                         <div className="space-y-6">
-                            <h2 className="text-4xl md:text-6xl font-bold italic tracking-tight text-white leading-none">Still Have Questions?</h2>
-                            <p className="text-gray-400 font-medium text-xl max-w-2xl mx-auto leading-relaxed">
+                            <h2 className="text-4xl md:text-6xl font-bold tracking-[0.03em] text-[#0A0A0A] leading-none">Still Have Questions?</h2>
+                            <p className="text-[#888888] font-medium text-xl max-w-2xl mx-auto leading-relaxed">
                                 Our support team is standing by to assist you with any specific requirements or fleet deals.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6 uppercase tracking-widest font-black text-xs">
-                            <Link to="/contact" className="bg-primary text-secondary px-12 py-6 rounded-2xl flex items-center justify-center gap-3 hover:scale-105 transition-transform">
+                            <Link to="/contact" className="bg-[#0A0A0A] text-[#C9A84C] px-12 py-6 rounded-md flex items-center justify-center gap-3 border border-[#C9A84C]/30 hover:bg-[#C9A84C] hover:text-[#0A0A0A] transition-all duration-300">
                                 Contact Support <ArrowRight className="w-4 h-4" />
                             </Link>
-                            <Link to="/booking" className="bg-white/5 text-white border border-white/10 px-12 py-6 rounded-2xl hover:bg-white/10 transition-all">
+                            <Link to="/booking" className="bg-white text-[#0A0A0A] border border-[#EFEFEF] px-12 py-6 rounded-md hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all">
                                 Book Now
                             </Link>
                         </div>
