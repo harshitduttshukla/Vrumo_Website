@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Calendar, 
@@ -17,6 +18,7 @@ import {
 import { fetchServices, createBooking, createUser } from '../api';
 
 const Booking = () => {
+    const location = useLocation();
     const [step, setStep] = useState(1);
     const [services, setServices] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +42,21 @@ const Booking = () => {
         const loadServices = async () => {
             try {
                 const data = await fetchServices();
-                setServices(data.filter(s => s.is_active));
+                const activeServices = data.filter(s => s.is_active);
+                setServices(activeServices);
+
+                // Handle pre-selection from URL
+                const query = new URLSearchParams(location.search);
+                const serviceParam = query.get('service');
+                if (serviceParam) {
+                    const selected = activeServices.find(s => 
+                        s.name.toLowerCase().includes(serviceParam.toLowerCase())
+                    );
+                    if (selected) {
+                        setFormData(prev => ({ ...prev, service: selected }));
+                        setStep(2); // Jump to schedule step
+                    }
+                }
             } catch (err) {
                 console.error("Failed to load services", err);
             } finally {
@@ -48,7 +64,7 @@ const Booking = () => {
             }
         };
         loadServices();
-    }, []);
+    }, [location]);
 
     const nextStep = () => setStep(s => s + 1);
     const prevStep = () => setStep(s => s - 1);
