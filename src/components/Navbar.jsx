@@ -23,7 +23,8 @@ const Navbar = () => {
     ];
 
     const rightLinks = [
-        { name: 'How it Works', path: '/how-it-works' },
+        { name: 'How It Works', path: '/how-it-works' },
+        { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
     ];
 

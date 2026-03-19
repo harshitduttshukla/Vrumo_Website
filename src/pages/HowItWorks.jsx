@@ -1,139 +1,91 @@
 import { motion } from 'framer-motion';
-import { Calendar, Droplets, MapPin, CheckCircle, Sparkles, ArrowRight } from 'lucide-react';
+import { 
+    Zap, 
+    CheckCircle2, 
+    Droplets, 
+    ArrowRight,
+    MapPin,
+    Smartphone,
+    MousePointer2,
+    Calendar,
+    Activity,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const steps = [
-    {
-        icon: Calendar,
-        title: 'Bespoke Reservation',
-        description: 'Select your desired ritual and secure a window in our master artisans\' calendar with our seamless digital interface.',
-        number: '01'
-    },
-    {
-        icon: MapPin,
-        title: 'Concierge Arrival',
-        description: 'Our fully-equipped mobile laboratory arrives at your sanctuary precisely at the appointed hour, ready for transformation.',
-        number: '02'
-    },
-    {
-        icon: Droplets,
-        title: 'The Ritual of Care',
-        description: 'Utilizing world-class bio-molecular solutions and surgical precision, we restore every micron of your vehicle\'s glory.',
-        number: '03'
-    },
-    {
-        icon: CheckCircle,
-        title: 'Final Handover',
-        description: 'A comprehensive briefing and inspection. We return your transformed asset, ready for the most demanding roads.',
-        number: '04'
-    }
-];
 
 const HowItWorks = () => {
     return (
-        <div className="min-h-screen relative overflow-hidden selection:bg-primary selection:text-secondary">
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-40 pb-32">
-                
-                {/* Header */}
-                <div className="text-center max-w-4xl mx-auto mb-32 space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-primary font-black text-[11px] uppercase tracking-[0.5em] backdrop-blur-3xl shadow-glow"
-                    >
-                        <Sparkles className="w-4 h-4" />
-                        The Excellence Protocol
+        <div className="min-h-screen bg-[#050505] text-white pt-48 pb-24 px-6 overflow-hidden">
+            <div className="max-w-7xl mx-auto space-y-32">
+                {/* Hero */}
+                <div className="text-center space-y-8">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-tight italic">How It <span className="text-primary italic">Works</span></h1>
+                        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-medium">
+                            Experience the future of vehicle care in 3 simple digital steps. From selection to doorstep completion.
+                        </p>
                     </motion.div>
-                    
-                    <motion.h1 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-white tracking-tighter leading-[0.85]"
-                    >
-                        Seamless <br />
-                        <span className="text-gradient">Transformation</span>
-                    </motion.h1>
-                    
-                    <motion.p 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 1 }}
-                        className="text-slate-400 font-body font-light text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto tracking-wide"
-                    >
-                        Our meticulously engineered workflow ensures an effortless experience. We bring the elite detailing laboratory directly to your sanctuary.
-                    </motion.p>
                 </div>
 
-                <div className="relative max-w-5xl mx-auto">
-                    {/* Vertical Connecting Line */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/30 via-white/10 to-transparent hidden md:block" />
+                {/* Steps Section */}
+                <div className="grid md:grid-cols-3 gap-16 relative">
+                    {/* Connecting Line (Desktop) */}
+                    <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-px bg-white/5" />
+                    
+                    {[
+                        { step: "01", title: "Select Service", desc: "Choose from wash, maintenance, or insurance.", icon: MousePointer2 },
+                        { step: "02", title: "Book Instantly", desc: "Pick a date and shared your location.", icon: Calendar },
+                        { step: "03", title: "Get Doorstep Service", desc: "Relax while we handle the work at your place.", icon: MapPin }
+                    ].map((item, i) => (
+                        <div key={i} className="text-center space-y-10 relative z-10 group">
+                            <div className="w-24 h-24 bg-[#0a0a0a] rounded-full mx-auto flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-all duration-500 shadow-2xl">
+                                <item.icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-3xl font-black italic">{item.title}</h3>
+                                <p className="text-gray-400 text-sm max-w-[200px] mx-auto leading-relaxed">{item.desc}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
-                    {/* Steps Implementation */}
-                    <div className="space-y-24 md:space-y-40">
-                        {steps.map((step, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                className={`relative flex items-center md:items-start flex-col md:flex-row gap-12 group ${
-                                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                                }`}
-                            >
-                                {/* Central Indicator */}
-                                <div className="absolute left-1/2 -translate-x-1/2 top-4 hidden md:flex flex-col items-center">
-                                    <div className="w-4 h-4 rounded-full bg-primary shadow-glow group-hover:scale-150 transition-transform duration-500" />
+                {/* Detailed Walkthrough */}
+                <section className="grid lg:grid-cols-2 gap-20 items-center bg-white/2 rounded-[4rem] p-12 md:p-20 border border-white/5 shadow-2xl">
+                    <div className="space-y-12">
+                        <h2 className="text-4xl md:text-6xl font-bold italic tracking-tight italic">The Process</h2>
+                        <div className="space-y-8">
+                            {[
+                                { title: "Digital Selection", desc: "Browse our ecosystem and pick the exact care your vehicle needs.", icon: Smartphone },
+                                { title: "Professional Arrival", desc: "Our certified pro arrives with all necessary equipment at your location.", icon: MapPin },
+                                { title: "Showroom Result", desc: "Get high-end results and a digital health report instantly.", icon: Activity }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-8 items-start group">
+                                    <div className="w-14 h-14 shrink-0 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
+                                        <item.icon className="w-6 h-6 text-primary group-hover:text-secondary" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="text-lg font-bold italic">{item.title}</h4>
+                                        <p className="text-gray-400 text-sm">{item.desc}</p>
+                                    </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-white/2 flex items-center justify-center group">
+                        <img src="/images/hero_main.png" className="w-full h-full object-cover opacity-60 grayscale-[0.5] group-hover:scale-105 transition-transform duration-[2s]" alt="Vrumo Process" />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-transparent to-transparent" />
+                    </div>
+                </section>
 
-                                {/* Step Number Overlay for Mobile */}
-                                <div className="md:hidden w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-heading font-black text-primary text-xl shadow-glow">
-                                    {step.number}
-                                </div>
-
-                                {/* Content Box */}
-                                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-20' : 'md:pr-20'}`}>
-                                    <motion.div 
-                                        whileHover={{ y: -15 }}
-                                        className={`card-premium p-10 relative ${
-                                            index % 2 === 0 ? 'text-left' : 'md:text-right'
-                                        }`}
-                                    >
-                                        <div className="mb-8 flex items-center gap-6 group-hover:gap-8 transition-all duration-500">
-                                            <div className="card-icon w-16 h-16 rounded-2xl ml-0 mr-auto md:mx-0">
-                                                <step.icon className="w-8 h-8 text-primary" />
-                                            </div>
-                                            <span className="hidden md:block font-heading font-black text-5xl text-white/5 group-hover:text-primary/10 transition-all duration-700">
-                                                {step.number}
-                                            </span>
-                                        </div>
-                                        <h3 className="text-3xl lg:text-4xl font-heading font-bold text-white mb-6 group-hover:text-primary transition-colors duration-500 tracking-tighter leading-none">{step.title}</h3>
-                                        <p className="text-slate-400 font-body font-light leading-relaxed text-lg tracking-wide group-hover:text-slate-200 transition-colors duration-500">{step.description}</p>
-                                    </motion.div>
-                                </div>
-                                
-                                <div className="hidden md:block w-1/2" />
-                            </motion.div>
-                        ))}
+                {/* Final CTA */}
+                <div className="py-32 rounded-[5rem] bg-primary text-secondary text-center space-y-12">
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tight px-6 italic">Ready to Experience <br /> the Ecosystem?</h2>
+                    <div className="flex flex-wrap justify-center gap-6 pt-6">
+                        <Link to="/booking" className="bg-secondary text-primary px-12 py-6 rounded-2xl font-black text-lg hover:scale-105 transition-transform flex items-center gap-4">
+                            Book Now <ArrowRight className="w-5 h-5" />
+                        </Link>
                     </div>
                 </div>
 
-                {/* Final CTA */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mt-40 text-center space-y-12"
-                >
-                    <h2 className="text-5xl md:text-7xl font-heading font-bold text-white tracking-tighter leading-none">Ready for the <span className="text-gradient">Transformation?</span></h2>
-                    <motion.div whileHover={{ y: -5, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Link to="/booking" className="inline-flex items-center gap-6 px-20 py-10 bg-primary text-secondary rounded-[3rem] font-heading font-black tracking-[0.4em] uppercase text-xl shadow-glow hover:shadow-[0_0_80px_rgba(0,210,255,0.4)] transition-all">
-                            Initiate Protocol <ArrowRight className="w-8 h-8" />
-                        </Link>
-                    </motion.div>
-                </motion.div>
             </div>
         </div>
     );
