@@ -54,21 +54,21 @@ const PricingCard = ({ plan, index }) => (
         viewport={{ once: true }}
         whileHover={{ y: -6 }}
         className={`relative overflow-hidden flex flex-col group rounded-2xl bg-white border p-9 transition-all ${
-            plan.popular ? 'border-[#C9A84C] border-2 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(201,168,76,0.12)]' : 'border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)]'
+            plan.popular ? 'border-[#2563EB] border-2 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(37,99,235,0.12)]' : 'border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)]'
         } hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)]`}
     >
         {/* Gold gradient top line */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
 
         {plan.popular && (
-            <div className="absolute top-8 right-8 bg-[#C9A84C] text-[#0A0A0A] px-6 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em]">
+            <div className="absolute top-8 right-8 bg-[#2563EB] text-white px-6 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em]">
                 Most Popular
             </div>
         )}
 
         <div className="mb-10 space-y-4">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Sparkles className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+            <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Sparkles className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
             </div>
             <div>
                 <h3 className="text-[28px] font-bold text-[#0A0A0A]">{plan.name}</h3>
@@ -84,7 +84,7 @@ const PricingCard = ({ plan, index }) => (
         <ul className="space-y-6 mb-12 grow pt-8 border-t border-[#EFEFEF]">
             {plan.features.map((feature, fIdx) => (
                 <li key={fIdx} className="flex gap-4 items-center">
-                    <Check className="w-4 h-4 text-[#C9A84C]" strokeWidth={1.8} />
+                    <Check className="w-4 h-4 text-[#2563EB]" strokeWidth={1.8} />
                     <span className="text-[#555555] text-[15px] font-normal leading-[1.7]">{feature}</span>
                 </li>
             ))}
@@ -94,8 +94,8 @@ const PricingCard = ({ plan, index }) => (
             to={`/booking?service=${plan.name.toLowerCase()}`}
             className={`w-full py-4 rounded-lg font-semibold tracking-[-0.01em] text-[15px] transition-all duration-300 text-center flex items-center justify-center gap-4 relative overflow-hidden group/btn ${
                 plan.popular
-                    ? 'bg-[#0A0A0A] text-[#C9A84C] border-2 border-[#0A0A0A] hover:bg-[#C9A84C] hover:border-[#C9A84C] hover:text-[#0A0A0A] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)]'
-                    : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#C9A84C] hover:text-[#C9A84C] hover:-translate-y-0.5'
+                    ? 'bg-[#0A0A0A] text-[#2563EB] border-2 border-[#0A0A0A] hover:bg-[#2563EB] hover:border-[#2563EB] hover:text-[#0A0A0A] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.35)]'
+                    : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB] hover:-translate-y-0.5'
             }`}
         >
             {plan.buttonText} <ArrowRight className="w-4 h-4" />
@@ -109,7 +109,7 @@ const Pricing = () => {
             <div className="max-w-7xl mx-auto space-y-32 relative z-10">
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1>Ecosystem <span className="text-[#C9A84C]">Pricing</span></h1>
+                        <h1>Ecosystem <span className="text-[#2563EB]">Pricing</span></h1>
                         <p className="text-xl text-[#555555] max-w-2xl mx-auto leading-relaxed font-normal">
                             Transparent, direct, and zero-hassle pricing for every vehicle care ritual.
                         </p>
@@ -124,15 +124,15 @@ const Pricing = () => {
 
                 {/* Info Card */}
                 <div className="relative p-16 rounded-2xl bg-[#F8F8F8] border border-[#EFEFEF] text-center space-y-8 overflow-hidden">
-                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center mx-auto">
-                        <Zap className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center mx-auto">
+                        <Zap className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                     </div>
                     <h2 className="text-[#0A0A0A]">Need a Corporate Plan?</h2>
                     <p className="text-[#555555] max-w-2xl mx-auto text-[15px] leading-[1.7]">
                         We offer special arrangements for fleets, office hubs, and premium residential spaces. Get a custom low-pricing quote.
                     </p>
-                    <Link to="/contact" className="inline-flex items-center gap-4 text-[#C9A84C] font-semibold tracking-[-0.01em] text-[15px] hover:underline">
+                    <Link to="/contact" className="inline-flex items-center gap-4 text-[#2563EB] font-semibold tracking-[-0.01em] text-[15px] hover:underline">
                         Contact Sales <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>

@@ -14,7 +14,7 @@ const Contact = () => {
             <div className="max-w-7xl mx-auto space-y-32 relative z-10">
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Contact <span className="text-[#C9A84C]">Us</span></h1>
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Contact <span className="text-[#2563EB]">Us</span></h1>
                         <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
                             Have a question or request? Our ecosystem is built for you. Reach out anytime.
                         </p>
@@ -30,9 +30,9 @@ const Contact = () => {
                                 { title: "Email Support", desc: "support@vrumo.com", icon: Mail },
                                 { title: "Headquarters", desc: "Eco-Tech Hub, Sector 45, Bengaluru", icon: MapPin },
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-8 items-center p-8 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#C9A84C]/30 transition-all group">
-                                    <div className="w-16 h-16 shrink-0 bg-white rounded-xl flex items-center justify-center border border-[#EFEFEF] group-hover:bg-[#C9A84C] transition-colors duration-500">
-                                        <item.icon className="w-[26px] h-[26px] text-[#C9A84C] group-hover:text-white" strokeWidth={1.8} />
+                                <div key={i} className="flex gap-8 items-center p-8 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#2563EB]/30 transition-all group">
+                                    <div className="w-16 h-16 shrink-0 bg-white rounded-xl flex items-center justify-center border border-[#EFEFEF] group-hover:bg-[#2563EB] transition-colors duration-500">
+                                        <item.icon className="w-[26px] h-[26px] text-[#2563EB] group-hover:text-white" strokeWidth={1.8} />
                                     </div>
                                     <div className="space-y-1">
                                         <h4 className="text-md font-bold tracking-wide text-[#888888]">{item.title}</h4>
@@ -43,7 +43,7 @@ const Contact = () => {
                         </div>
 
                         <div className="p-12 rounded-xl bg-white text-[#0A0A0A] space-y-6">
-                            <Zap className="w-12 h-12 text-[#C9A84C]" />
+                            <Zap className="w-12 h-12 text-[#2563EB]" />
                             <h3 className="text-3xl font-black leading-tight">Instant Response <br /> Guaranteed</h3>
                             <p className="text-sm text-gray-400 leading-relaxed font-bold uppercase tracking-widest">Typical wait time: 2 minutes.</p>
                         </div>
@@ -60,19 +60,19 @@ const Contact = () => {
                             <div className="grid gap-8">
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#888888] ml-4">Full Identity</label>
-                                    <input type="text" placeholder="Johnathan Doe" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#C9A84C] transition-colors text-[#0A0A0A] font-medium" />
+                                    <input type="text" placeholder="Johnathan Doe" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#2563EB] transition-colors text-[#0A0A0A] font-medium" />
                                 </div>
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#888888] ml-4">Direct Email</label>
-                                    <input type="email" placeholder="identity@email.com" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#C9A84C] transition-colors text-[#0A0A0A] font-medium" />
+                                    <input type="email" placeholder="identity@email.com" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#2563EB] transition-colors text-[#0A0A0A] font-medium" />
                                 </div>
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#888888] ml-4">Your Request</label>
-                                    <textarea rows="4" placeholder="How can our ecosystem assist you today?" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#C9A84C] transition-colors text-[#0A0A0A] font-medium resize-none"></textarea>
+                                    <textarea rows="4" placeholder="How can our ecosystem assist you today?" className="w-full bg-white border border-[#EFEFEF] rounded-xl px-6 py-5 focus:outline-none focus:border-[#2563EB] transition-colors text-[#0A0A0A] font-medium resize-none"></textarea>
                                 </div>
                             </div>
 
-                            <button className="w-full bg-[#C9A84C] text-[#0A0A0A] py-6 rounded-md font-black text-lg border border-[#C9A84C] hover:bg-[#0A0A0A] hover:text-[#C9A84C] transition-all duration-300 flex items-center justify-center gap-4 group">
+                            <button className="w-full bg-[#2563EB] text-white py-6 rounded-md font-black text-lg border border-[#2563EB] hover:bg-[#0A0A0A] hover:text-[#2563EB] transition-all duration-300 flex items-center justify-center gap-4 group">
                                 Send Message <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </button>
                         </form>

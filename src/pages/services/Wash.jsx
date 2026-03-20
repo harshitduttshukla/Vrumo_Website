@@ -25,13 +25,13 @@ const itemVariants = {
 
 const Wash = () => {
     return (
-        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#C9A84C] selection:text-white font-sans">
+        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white font-sans">
             {/* HERO SECTION */}
             <section className="relative pt-48 pb-32 px-6 overflow-hidden border-b border-[#EFEFEF] luxury-pattern">
                 <div className="max-w-7xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div initial="hidden" animate="visible" variants={containerVariants} className="space-y-6">
                         <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-[0.03em]">
-                            Vehicle <span className="text-[#C9A84C]">Wash</span>
+                            Vehicle <span className="text-[#2563EB]">Wash</span>
                         </motion.h1>
                         <motion.p variants={itemVariants} className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed">
                             Deep foam cleaning and detailing delivered right to your doorstep. Get that showroom shine in minutes.
@@ -60,8 +60,8 @@ const Wash = () => {
                                 "Fragrance Treatment"
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 items-center group">
-                                    <div className="w-8 h-8 rounded-full bg-[#C9A84C]/10 flex items-center justify-center group-hover:bg-[#C9A84C]/20 transition-colors">
-                                        <CheckCircle2 className="w-4 h-4 text-[#C9A84C]" />
+                                    <div className="w-8 h-8 rounded-full bg-[#2563EB]/10 flex items-center justify-center group-hover:bg-[#2563EB]/20 transition-colors">
+                                        <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
                                     </div>
                                     <span className="text-[#2C2C2C] font-medium">{item}</span>
                                 </div>
@@ -86,8 +86,8 @@ const Wash = () => {
                         { title: "Eco-Friendly", desc: "We use bio-organic foam that's safe for your paint and the environment.", icon: ShieldCheck }
                     ].map((benefit, i) => (
                         <div key={i} className="p-10 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] relative overflow-hidden space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all">
-                            <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
-                                <benefit.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                            <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
+                                <benefit.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                             </div>
                             <h3 className="text-xl font-bold text-[#0A0A0A]">{benefit.title}</h3>
                             <p className="text-[#888888] text-[15px] leading-[1.7]">{benefit.desc}</p>
@@ -108,7 +108,7 @@ const Wash = () => {
                             { step: "03", title: "Showroom Shine", desc: "Your vehicle is restored in under 45 minutes.", icon: Droplets }
                         ].map((item, i) => (
                             <div key={i} className="relative z-10 text-center space-y-6">
-                                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#C9A84C] text-[#C9A84C] font-semibold text-xl shadow-[0_8px_24px_rgba(201,168,76,0.15)]">
+                                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#2563EB] text-[#2563EB] font-semibold text-xl shadow-[0_8px_24px_rgba(37,99,235,0.15)]">
                                     <item.icon className="w-8 h-8" />
                                 </div>
                                 <h4 className="text-xl font-bold text-[#0A0A0A]">{item.title}</h4>
@@ -121,11 +121,11 @@ const Wash = () => {
 
             {/* PRICING PREVIEW */}
             <section className="py-24 px-6 bg-white">
-                <div className="max-w-7xl mx-auto border-2 border-[#C9A84C]/30 bg-[#C9A84C]/5 rounded-2xl p-12 md:p-20 text-center space-y-8">
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#0A0A0A]">Starting from <span className="text-[#C9A84C]">₹199</span></h2>
+                <div className="max-w-7xl mx-auto border-2 border-[#2563EB]/30 bg-[#2563EB]/5 rounded-2xl p-12 md:p-20 text-center space-y-8">
+                    <h2 className="text-3xl md:text-5xl font-bold text-[#0A0A0A]">Starting from <span className="text-[#2563EB]">₹199</span></h2>
                     <p className="text-[#888888] max-w-xl mx-auto">Affordable pricing with zero hidden costs. Perfect for your daily car or bike care.</p>
                     <div className="pt-6">
-                        <Link to="/pricing" className="text-[#C9A84C] font-bold hover:underline flex items-center justify-center gap-2">
+                        <Link to="/pricing" className="text-[#2563EB] font-bold hover:underline flex items-center justify-center gap-2">
                             View all plans <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
@@ -137,7 +137,7 @@ const Wash = () => {
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-white">Ready for a fresh look?</h2>
                     <p className="text-lg text-gray-400">Book your first doorstep wash and join the ecosystem.</p>
-                    <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
+                    <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Book Your Wash
                     </Link>
                 </div>

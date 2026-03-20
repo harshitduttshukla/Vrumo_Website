@@ -57,12 +57,12 @@ const Services = () => {
                             whileHover={{ y: -6 }}
                             className="group relative overflow-hidden rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] flex flex-col hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all"
                         >
-                            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C] z-10" />
+                            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB] z-10" />
                             <div className="aspect-video relative overflow-hidden">
                                 <img src={service.image} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt={service.title} />
                                 <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent" />
-                                <div className="absolute top-8 right-8 w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] flex items-center justify-center">
-                                    <service.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                <div className="absolute top-8 right-8 w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center">
+                                    <service.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                 </div>
                             </div>
                             <div className="p-12 space-y-6 flex-1 flex flex-col justify-between">
@@ -71,7 +71,7 @@ const Services = () => {
                                     <p className="text-[#555555] text-[15px] leading-[1.7]">{service.description}</p>
                                 </div>
                                 <div className="pt-8">
-                                    <Link to={service.link} className="inline-flex items-center gap-4 text-[#C9A84C] font-semibold tracking-[-0.01em] text-[15px] group-hover:gap-6 transition-all duration-300">
+                                    <Link to={service.link} className="inline-flex items-center gap-4 text-[#2563EB] font-semibold tracking-[-0.01em] text-[15px] group-hover:gap-6 transition-all duration-300">
                                         Explore Service <ArrowRight className="w-5 h-5" />
                                     </Link>
                                 </div>

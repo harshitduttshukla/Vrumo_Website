@@ -19,7 +19,7 @@ const HowItWorks = () => {
                 {/* Hero */}
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">How It <span className="text-[#C9A84C]">Works</span></h1>
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">How It <span className="text-[#2563EB]">Works</span></h1>
                         <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
                             Experience the future of vehicle care in 3 simple digital steps. From selection to doorstep completion.
                         </p>
@@ -37,8 +37,8 @@ const HowItWorks = () => {
                         { step: "03", title: "Get Doorstep Service", desc: "Relax while we handle the work at your place.", icon: MapPin }
                     ].map((item, i) => (
                         <div key={i} className="text-center space-y-10 relative z-10 group">
-                            <div className="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#C9A84C] group-hover:bg-[#C9A84C]/5 transition-all duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
-                                <item.icon className="w-10 h-10 text-[#C9A84C] group-hover:scale-110 transition-transform" />
+                            <div className="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#2563EB] group-hover:bg-[#2563EB]/5 transition-all duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+                                <item.icon className="w-10 h-10 text-[#2563EB] group-hover:scale-110 transition-transform" />
                             </div>
                             <div className="space-y-4">
                                 <h3 className="text-3xl font-black text-[#0A0A0A]">{item.title}</h3>
@@ -59,8 +59,8 @@ const HowItWorks = () => {
                                 { title: "Showroom Result", desc: "Get high-end results and a digital health report instantly.", icon: Activity }
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-8 items-start group">
-                                    <div className="w-14 h-14 shrink-0 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center group-hover:bg-[#C9A84C] transition-colors">
-                                        <item.icon className="w-[26px] h-[26px] text-[#C9A84C] group-hover:text-white" strokeWidth={1.8} />
+                                    <div className="w-14 h-14 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
+                                        <item.icon className="w-[26px] h-[26px] text-[#2563EB] group-hover:text-white" strokeWidth={1.8} />
                                     </div>
                                     <div className="space-y-1">
                                         <h4 className="text-lg font-bold text-[#0A0A0A]">{item.title}</h4>
@@ -80,7 +80,7 @@ const HowItWorks = () => {
                 <div className="py-32 rounded-2xl bg-white text-[#0A0A0A] text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
+                        <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

@@ -141,7 +141,7 @@ const Navbar = () => {
                     >
                         <Link
                             to="/booking"
-                            className="bg-[#C9A84C] text-[#0A0A0A] px-6 py-2.5 rounded-lg font-semibold text-[15px] tracking-[-0.01em] relative overflow-hidden group border-2 border-[#C9A84C] hover:text-[#C9A84C] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
+                            className="bg-[#2563EB] text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] tracking-[-0.01em] relative overflow-hidden group border-2 border-[#2563EB] hover:bg-[#1D4ED8] hover:border-[#1D4ED8] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.35)] transition-all duration-300"
                         >
                             <span className="relative z-10">Book Now</span>
                             <span className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:left-[150%] transition-[left] duration-500" />
@@ -153,7 +153,7 @@ const Navbar = () => {
                 <motion.div variants={itemVariants} className="md:hidden flex items-center">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="p-2.5 text-[#2C2C2C] hover:text-[#C9A84C] transition-colors focus:outline-none relative"
+                        className="p-2.5 text-[#2C2C2C] hover:text-[#2563EB] transition-colors focus:outline-none relative"
                         aria-label="Toggle menu"
                     >
                         <AnimatePresence mode="wait">
@@ -187,7 +187,7 @@ const Navbar = () => {
                                             to={link.path}
                                             onClick={() => setIsOpen(false)}
                                             className={`text-[17px] font-medium tracking-[-0.01em] transition-all duration-300 ${
-                                                location.pathname === link.path ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] hover:text-[#C9A84C]'
+                                                location.pathname === link.path ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] hover:text-[#2563EB]'
                                             }`}
                                         >
                                             {link.name}
@@ -198,7 +198,7 @@ const Navbar = () => {
                                     <Link
                                         to="/booking"
                                         onClick={() => setIsOpen(false)}
-                                        className="block w-full text-center bg-[#C9A84C] text-[#0A0A0A] py-4 rounded-lg font-semibold text-[15px] tracking-[-0.01em] border-2 border-[#C9A84C] active:scale-[0.98]"
+                                        className="block w-full text-center bg-[#2563EB] text-white py-4 rounded-lg font-semibold text-[15px] tracking-[-0.01em] border-2 border-[#2563EB] active:scale-[0.98]"
                                     >
                                         Book Now
                                     </Link>
@@ -222,19 +222,19 @@ const NavLink = ({ link, isActive }) => {
                 whileHover={{ y: -2 }}
                 className={`
                     relative z-10 text-[15px] font-medium tracking-[-0.01em] transition-colors duration-500 flex items-center gap-1.5
-                    ${isActive ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] group-hover:text-[#C9A84C]'}
+                    ${isActive ? 'text-[#1A1A1A] font-bold' : 'text-[#1A1A1A] group-hover:text-[#2563EB]'}
                 `}
             >
                 {link.name}
                 {isActive && (
                     <motion.div 
                         layoutId="navActiveDot"
-                        className="w-1 h-1 bg-[#C9A84C] rounded-full transition-all"
+                        className="w-1 h-1 bg-[#2563EB] rounded-full transition-all"
                     />
                 )}
             </motion.span>
             <span className={`
-                absolute bottom-0 left-0 w-full h-[2px] bg-[#C9A84C] transform scale-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left
+                absolute bottom-0 left-0 w-full h-[2px] bg-[#2563EB] transform scale-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left
                 ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'}
             `} />
         </Link>

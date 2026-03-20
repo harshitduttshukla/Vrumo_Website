@@ -41,7 +41,7 @@ const ServiceCardHero = ({ service, idx }) => (
         className="group relative flex flex-col rounded-2xl bg-white border border-[#EFEFEF] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden h-full"
     >
         {/* Gold gradient top line */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
         <Link to={service.link} className="block h-full">
             <div className="relative h-32 overflow-hidden">
                 <img 
@@ -50,12 +50,12 @@ const ServiceCardHero = ({ service, idx }) => (
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] flex items-center justify-center">
-                    <service.icon className="w-4 h-4 text-[#C9A84C]" strokeWidth={1.8} />
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center">
+                    <service.icon className="w-4 h-4 text-[#2563EB]" strokeWidth={1.8} />
                 </div>
             </div>
             <div className="p-4 space-y-2">
-                <h3 className="text-sm font-semibold text-[#0A0A0A] group-hover:text-[#C9A84C] transition-colors">{service.title}</h3>
+                <h3 className="text-sm font-semibold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
                 <p className="text-[10px] text-[#888888] line-clamp-1">{service.description}</p>
             </div>
         </Link>
@@ -95,7 +95,7 @@ const Home = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#C9A84C] selection:text-white leading-relaxed">
+        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white leading-relaxed">
 
             {/* --- 1. HERO SECTION --- */}
             <section className="relative pt-48 pb-32 px-6 overflow-hidden luxury-pattern">
@@ -148,7 +148,7 @@ const Home = () => {
                             <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-[#EFEFEF]">
                                 <div className="flex -space-x-2">
                                     {[1,2,3,4].map(i => (
-                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8]" />
+                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE]" />
                                     ))}
                                 </div>
                                 <p className="text-sm text-[#888888]">Join <span className="text-[#0A0A0A] font-semibold">50,000+</span> owners</p>
@@ -174,13 +174,13 @@ const Home = () => {
                                 className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all text-center group overflow-hidden"
                             >
                                 {/* Gold gradient top line */}
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
-                                <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center mx-auto mb-6 group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(201,168,76,0.15)] transition-all">
-                                    <service.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+                                <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center mx-auto mb-6 group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(37,99,235,0.15)] transition-all">
+                                    <service.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                 </div>
                                 <h3 className="font-semibold mb-3 text-[#0A0A0A]">{service.title}</h3>
                                 <p className="text-[#555555] text-[15px] leading-[1.7] mb-6">{service.description}</p>
-                                <Link to={service.link} className="text-[14px] font-semibold uppercase tracking-[0.08em] text-[#C9A84C] hover:underline">
+                                <Link to={service.link} className="text-[14px] font-semibold uppercase tracking-[0.08em] text-[#2563EB] hover:underline">
                                     Explore Service
                                 </Link>
                             </motion.div>
@@ -204,8 +204,8 @@ const Home = () => {
                                     { title: "Fast Doorstep Service", desc: "No more workshop waits. We bring the care to your location.", icon: MapPin }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 items-start">
-                                        <div className="mt-1 w-14 h-14 shrink-0 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
-                                            <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                        <div className="mt-1 w-14 h-14 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
+                                            <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                         </div>
                                         <div>
                                             <h4 className="font-semibold mb-1 text-[#0A0A0A]">{item.title}</h4>
@@ -230,7 +230,7 @@ const Home = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                         {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-[#C9A84C]/20" />
+                        <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-[#2563EB]/20" />
 
                         {[
                             { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", icon: MousePointer2 },
@@ -238,7 +238,7 @@ const Home = () => {
                             { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", icon: MapPin }
                         ].map((item, i) => (
                             <div key={i} className="space-y-6 relative z-10 text-center">
-                                <div className="w-20 h-20 bg-[#C9A84C] rounded-full flex items-center justify-center mx-auto text-[#0A0A0A] shadow-[0_8px_24px_rgba(201,168,76,0.35)]">
+                                <div className="w-20 h-20 bg-[#2563EB] rounded-full flex items-center justify-center mx-auto text-[#0A0A0A] shadow-[0_8px_24px_rgba(37,99,235,0.35)]">
                                     <item.icon className="w-10 h-10" strokeWidth={1.8} />
                                 </div>
                                 <h4 className="font-semibold text-[#0A0A0A]">{item.title}</h4>
@@ -264,9 +264,9 @@ const Home = () => {
                             { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", icon: CloudRain }
                         ].map((item, i) => (
                             <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all space-y-8 overflow-hidden group">
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
-                                <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
-                                    <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+                                <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                    <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="font-semibold text-[#0A0A0A]">{item.title}</h3>
@@ -288,13 +288,13 @@ const Home = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[1, 2, 3].map(i => (
                             <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all overflow-hidden">
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-[#C9A84C]" />
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
                                 <div className="flex gap-1">
-                                    {[1, 2, 3, 4, 5].map(j => <Zap key={j} className="w-4 h-4 text-[#C9A84C] fill-[#C9A84C]" />)}
+                                    {[1, 2, 3, 4, 5].map(j => <Zap key={j} className="w-4 h-4 text-[#2563EB] fill-[#2563EB]" />)}
                                 </div>
                                 <p className="text-[#555555] italic text-[15px] leading-[1.7]">"The doorstep service is incredible. Extremely pro and my vehicle looks and runs perfectly every time."</p>
                                 <div className="flex items-center gap-4 pt-4 border-t border-[#EFEFEF]">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8]" />
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE]" />
                                     <div>
                                         <h4 className="text-sm font-semibold text-[#0A0A0A]">Customer Name</h4>
                                         <p className="text-[10px] text-[#888888] font-medium uppercase tracking-[0.08em]">Premium Owner</p>
@@ -314,7 +314,7 @@ const Home = () => {
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
                         <Link 
                             to="/booking" 
-                            className="bg-[#C9A84C] text-[#0A0A0A] px-12 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
+                            className="bg-[#2563EB] text-white px-12 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.35)] transition-all duration-300"
                         >
                             Book Your Service
                         </Link>

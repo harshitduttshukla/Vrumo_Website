@@ -41,14 +41,14 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`overflow-hidden rounded-xl border transition-all duration-500 ${isOpen ? 'border-[#C9A84C] bg-[#F8F8F8] shadow-[0_8px_32px_rgba(0,0,0,0.06)]' : 'border-[#EFEFEF] bg-white hover:border-[#C9A84C]/30'}`}
+            className={`overflow-hidden rounded-xl border transition-all duration-500 ${isOpen ? 'border-[#2563EB] bg-[#F8F8F8] shadow-[0_8px_32px_rgba(0,0,0,0.06)]' : 'border-[#EFEFEF] bg-white hover:border-[#2563EB]/30'}`}
         >
             <button 
                 onClick={toggle}
                 className="w-full p-8 flex items-center justify-between text-left group"
             >
                 <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#C9A84C] text-white' : 'bg-[#C9A84C]/10 text-[#C9A84C]'}`}>
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#2563EB] text-white' : 'bg-[#2563EB]/10 text-[#2563EB]'}`}>
                         <faq.icon size={24} />
                     </div>
                     <div>
@@ -59,7 +59,7 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
                 <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.4 }}
-                    className={`text-[#C9A84C] ${isOpen ? 'opacity-100' : 'opacity-40'}`}
+                    className={`text-[#2563EB] ${isOpen ? 'opacity-100' : 'opacity-40'}`}
                 >
                     <ChevronDown size={28} />
                 </motion.div>
@@ -89,16 +89,16 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden selection:bg-[#C9A84C] selection:text-white">
+        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden selection:bg-[#2563EB] selection:text-white">
             <div className="max-w-5xl mx-auto space-y-24 relative z-10">
                 
                 {/* Header */}
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="premium-badge mx-auto">
-                        <Zap className="w-4 h-4 text-[#C9A84C]" />
+                        <Zap className="w-4 h-4 text-[#2563EB]" />
                         Common Queries
                     </motion.div>
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Knowledge <br /> <span className="text-[#C9A84C]">Base</span></h1>
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Knowledge <br /> <span className="text-[#2563EB]">Base</span></h1>
                     <p className="text-[#888888] text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
                         Plain answers to your questions about our vehicle care ecosystem.
                     </p>
@@ -126,10 +126,10 @@ const FAQ = () => {
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6 uppercase tracking-widest font-black text-xs">
-                            <Link to="/contact" className="bg-[#0A0A0A] text-[#C9A84C] px-12 py-6 rounded-md flex items-center justify-center gap-3 border border-[#C9A84C]/30 hover:bg-[#C9A84C] hover:text-[#0A0A0A] transition-all duration-300">
+                            <Link to="/contact" className="bg-[#0A0A0A] text-[#2563EB] px-12 py-6 rounded-md flex items-center justify-center gap-3 border border-[#2563EB]/30 hover:bg-[#2563EB] hover:text-[#0A0A0A] transition-all duration-300">
                                 Contact Support <ArrowRight className="w-4 h-4" />
                             </Link>
-                            <Link to="/booking" className="bg-white text-[#0A0A0A] border border-[#EFEFEF] px-12 py-6 rounded-md hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all">
+                            <Link to="/booking" className="bg-white text-[#0A0A0A] border border-[#EFEFEF] px-12 py-6 rounded-md hover:border-[#2563EB] hover:text-[#2563EB] transition-all">
                                 Book Now
                             </Link>
                         </div>

@@ -25,13 +25,13 @@ const itemVariants = {
 
 const Insurance = () => {
     return (
-        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#C9A84C] selection:text-white font-sans">
+        <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white font-sans">
             {/* HERO SECTION */}
             <section className="relative pt-48 pb-32 px-6 overflow-hidden border-b border-[#EFEFEF] luxury-pattern">
                 <div className="max-w-7xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div initial="hidden" animate="visible" variants={containerVariants} className="space-y-6">
                         <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-[0.03em]">
-                            Vehicle <span className="text-[#C9A84C]">Insurance</span>
+                            Vehicle <span className="text-[#2563EB]">Insurance</span>
                         </motion.h1>
                         <motion.p variants={itemVariants} className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed">
                             Reliable coverage and zero-hassle claims for your precious car or bike. Protection that evolves with you.
@@ -60,8 +60,8 @@ const Insurance = () => {
                                 "Multi-Vehicle Discount"
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 items-center group">
-                                    <div className="w-8 h-8 rounded-full bg-[#C9A84C]/10 flex items-center justify-center group-hover:bg-[#C9A84C]/20 transition-colors">
-                                        <CheckCircle2 className="w-4 h-4 text-[#C9A84C]" />
+                                    <div className="w-8 h-8 rounded-full bg-[#2563EB]/10 flex items-center justify-center group-hover:bg-[#2563EB]/20 transition-colors">
+                                        <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
                                     </div>
                                     <span className="text-[#2C2C2C] font-medium">{item}</span>
                                 </div>
@@ -71,7 +71,7 @@ const Insurance = () => {
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video relative">
                         <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80&w=2069" className="w-full h-full object-cover opacity-80" alt="Insurance Service" />
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <ShieldCheck className="w-32 h-32 text-[#C9A84C] opacity-20" />
+                            <ShieldCheck className="w-32 h-32 text-[#2563EB] opacity-20" />
                         </div>
                     </div>
                 </div>
@@ -89,8 +89,8 @@ const Insurance = () => {
                         { title: "Trusted Network", desc: "Partnerships with thousands of high-end workshops for instant cashless repair.", icon: HandIcon }
                     ].map((benefit, i) => (
                         <div key={i} className="p-10 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] relative overflow-hidden space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all">
-                            <div className="w-14 h-14 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
-                                <benefit.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                            <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
+                                <benefit.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                             </div>
                             <h3 className="text-xl font-bold text-[#0A0A0A]">{benefit.title}</h3>
                             <p className="text-[#888888] text-[15px] leading-[1.7]">{benefit.desc}</p>
@@ -110,7 +110,7 @@ const Insurance = () => {
                             { step: "03", title: "Protected", desc: "Zero hassle. Complete safety for the road ahead.", icon: ShieldCheck }
                         ].map((item, i) => (
                             <div key={i} className="relative z-10 text-center space-y-6">
-                                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#C9A84C] text-[#C9A84C] font-semibold text-xl shadow-[0_8px_24px_rgba(201,168,76,0.15)]">
+                                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#2563EB] text-[#2563EB] font-semibold text-xl shadow-[0_8px_24px_rgba(37,99,235,0.15)]">
                                     <item.icon className="w-8 h-8" />
                                 </div>
                                 <h4 className="text-xl font-bold text-[#0A0A0A]">{item.title}</h4>
@@ -126,7 +126,7 @@ const Insurance = () => {
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-white">Secure your legacy today.</h2>
                     <p className="text-lg text-gray-400">Thousands of smart owners have already switched to Vrumo Protection.</p>
-                    <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
+                    <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Get Your Policy Now
                     </Link>
                 </div>

@@ -47,9 +47,9 @@ const About = () => {
                                     { title: "Tech Integration", desc: "Real-time health reports, digital claims, and doorstep tracking on your phone.", icon: Smartphone },
                                     { title: "Eco-Hybrid Tech", desc: "Advanced low-water foam tech that saves up to 80% water on every wash.", icon: Droplets }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-6 items-start p-6 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#C9A84C]/30 transition-all">
-                                        <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-[#FDF6E3] to-[#F5E6B8] rounded-[14px] flex items-center justify-center">
-                                            <item.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                    <div key={i} className="flex gap-6 items-start p-6 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#2563EB]/30 transition-all">
+                                        <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
+                                            <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                         </div>
                                         <div>
                                             <h4 className="text-lg font-bold mb-1 text-[#0A0A0A]">{item.title}</h4>
@@ -61,7 +61,7 @@ const About = () => {
                         </div>
                     </div>
                     <div className="relative aspect-square">
-                        <div className="absolute inset-0 bg-[#C9A84C]/5 rounded-2xl blur-[80px]" />
+                        <div className="absolute inset-0 bg-[#2563EB]/5 rounded-2xl blur-[80px]" />
                         <div className="relative h-full rounded-2xl overflow-hidden border border-[#EFEFEF] group">
                             <img src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
                         </div>
@@ -73,7 +73,7 @@ const About = () => {
                     {stats.map((stat, i) => (
                         <div key={i} className="text-center space-y-4">
                             <div className="w-12 h-12 bg-white rounded-full mx-auto flex items-center justify-center border border-[#EFEFEF]">
-                                <stat.icon className="w-[26px] h-[26px] text-[#C9A84C]" strokeWidth={1.8} />
+                                <stat.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                             </div>
                             <h3 className="text-5xl font-black text-[#0A0A0A]">{stat.value}</h3>
                             <p className="text-[#888888] font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
@@ -85,7 +85,7 @@ const About = () => {
                 <div className="py-32 rounded-2xl bg-white text-black text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
+                        <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>
