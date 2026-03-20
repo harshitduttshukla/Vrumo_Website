@@ -224,9 +224,9 @@ const Home = () => {
             </section>
 
             {/* --- 4. HOW IT WORKS --- */}
-            <section className="py-24 bg-[#0A0A0A] text-white overflow-hidden">
+            <section className="py-24 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h2 className="mb-20 text-white">3 Steps to Core Care</h2>
+                    <h2 className="mb-20 text-[#0A0A0A]">3 Steps to Core Care</h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                         {/* Connecting Line (Desktop) */}
@@ -241,8 +241,8 @@ const Home = () => {
                                 <div className="w-20 h-20 bg-[#C9A84C] rounded-full flex items-center justify-center mx-auto text-[#0A0A0A] shadow-[0_8px_24px_rgba(201,168,76,0.35)]">
                                     <item.icon className="w-10 h-10" strokeWidth={1.8} />
                                 </div>
-                                <h4 className="font-semibold text-white">{item.title}</h4>
-                                <p className="text-gray-400 text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
+                                <h4 className="font-semibold text-[#0A0A0A]">{item.title}</h4>
+                                <p className="text-[#555555] text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -307,10 +307,10 @@ const Home = () => {
             </section>
 
             {/* --- 7. FINAL CTA --- */}
-            <section className="py-32 relative overflow-hidden bg-[#0A0A0A]">
+            <section className="py-32 relative overflow-hidden bg-white">
                 <div className="max-w-4xl mx-auto px-6 text-center space-y-10 relative z-10">
-                    <h2 className="text-white">Join the Ecosystem <br /> Today.</h2>
-                    <p className="text-xl max-w-2xl mx-auto text-gray-400 font-normal leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
+                    <h2 className="text-[#0A0A0A]">Join the Ecosystem <br /> Today.</h2>
+                    <p className="text-xl max-w-2xl mx-auto text-[#555555] font-normal leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
                         <Link 
                             to="/booking" 

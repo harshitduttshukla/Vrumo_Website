@@ -42,7 +42,7 @@ const Contact = () => {
                             ))}
                         </div>
 
-                        <div className="p-12 rounded-xl bg-[#0A0A0A] text-white space-y-6">
+                        <div className="p-12 rounded-xl bg-white text-[#0A0A0A] space-y-6">
                             <Zap className="w-12 h-12 text-[#C9A84C]" />
                             <h3 className="text-3xl font-black leading-tight">Instant Response <br /> Guaranteed</h3>
                             <p className="text-sm text-gray-400 leading-relaxed font-bold uppercase tracking-widest">Typical wait time: 2 minutes.</p>
@@ -72,7 +72,7 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <button className="w-full bg-[#0A0A0A] text-[#C9A84C] py-6 rounded-md font-black text-lg border border-[#C9A84C]/30 hover:bg-[#C9A84C] hover:text-[#0A0A0A] transition-all duration-300 flex items-center justify-center gap-4 group">
+                            <button className="w-full bg-[#C9A84C] text-[#0A0A0A] py-6 rounded-md font-black text-lg border border-[#C9A84C] hover:bg-[#0A0A0A] hover:text-[#C9A84C] transition-all duration-300 flex items-center justify-center gap-4 group">
                                 Send Message <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </button>
                         </form>

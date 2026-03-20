@@ -77,7 +77,7 @@ const HowItWorks = () => {
                 </section>
 
                 {/* Final CTA */}
-                <div className="py-32 rounded-2xl bg-[#0A0A0A] text-white text-center space-y-12">
+                <div className="py-32 rounded-2xl bg-white text-[#0A0A0A] text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
                         <Link to="/booking" className="bg-[#C9A84C] text-[#0A0A0A] px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">

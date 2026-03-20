@@ -141,7 +141,7 @@ const Navbar = () => {
                     >
                         <Link
                             to="/booking"
-                            className="bg-[#0A0A0A] text-[#C9A84C] px-6 py-2.5 rounded-lg font-semibold text-[15px] tracking-[-0.01em] relative overflow-hidden group border-2 border-[#0A0A0A] hover:bg-[#C9A84C] hover:border-[#C9A84C] hover:text-[#0A0A0A] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
+                            className="bg-[#C9A84C] text-[#0A0A0A] px-6 py-2.5 rounded-lg font-semibold text-[15px] tracking-[-0.01em] relative overflow-hidden group border-2 border-[#C9A84C] hover:text-[#C9A84C] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)] transition-all duration-300"
                         >
                             <span className="relative z-10">Book Now</span>
                             <span className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:left-[150%] transition-[left] duration-500" />
@@ -198,7 +198,7 @@ const Navbar = () => {
                                     <Link
                                         to="/booking"
                                         onClick={() => setIsOpen(false)}
-                                        className="block w-full text-center bg-[#0A0A0A] text-[#C9A84C] py-4 rounded-lg font-semibold text-[15px] tracking-[-0.01em] border-2 border-[#0A0A0A] active:scale-[0.98]"
+                                        className="block w-full text-center bg-[#C9A84C] text-[#0A0A0A] py-4 rounded-lg font-semibold text-[15px] tracking-[-0.01em] border-2 border-[#C9A84C] active:scale-[0.98]"
                                     >
                                         Book Now
                                     </Link>

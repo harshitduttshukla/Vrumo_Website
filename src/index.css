@@ -414,8 +414,8 @@ small, .text-sm {
     padding: 14px 36px;
     border-radius: 8px;
     border: 2px solid #0A0A0A;
-    background: #0A0A0A;
-    color: #C9A84C;
+    background: #ffffff;
+    color: #000000;
     cursor: pointer;
     display: inline-flex;
     align-items: center;

@@ -11,7 +11,7 @@ const ecosystemPricing = [
         price: "199",
         unit: "/ wash",
         features: ["Foam Wash", "Tyre Dressing", "Interior Vacuum", "Eco-Friendly"],
-        popular: true,
+        popular: false,
         buttonText: "Book Wash"
     },
     {
