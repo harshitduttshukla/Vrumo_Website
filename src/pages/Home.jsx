@@ -43,13 +43,14 @@ const ServiceCardHero = ({ service, idx }) => (
         {/* Gold gradient top line */}
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
         <Link to={service.link} className="block h-full">
-            <div className="relative h-32 overflow-hidden">
+            <div className="relative h-48 overflow-hidden">
                 <img 
                     src={service.image} 
                     alt={service.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl" 
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
                 <div className="absolute top-3 right-3 w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center">
                     <service.icon className="w-4 h-4 text-[#2563EB]" strokeWidth={1.8} />
                 </div>
@@ -67,28 +68,28 @@ const Home = () => {
         { 
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep",
-            image: "/images/v_wash.png",
+            image: "/images/v_wash_doorstep.png",
             icon: Droplets,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert service and repairs",
-            image: "/images/v_maintenance.png",
+            image: "/images/v_maintenance_doorstep.png",
             icon: Wrench,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Hassle-free coverage and claims",
-            image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80&w=2069",
+            image: "/images/v_insurance_doorstep.png",
             icon: ShieldCheck,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value for your vehicle",
-            image: "/images/buy_sell_user.jpg",
+            image: "/images/buy_sell_doorstep_v2.png",
             icon: ArrowLeftRight,
             link: "/services/buy-sell"
         }
@@ -166,25 +167,43 @@ const Home = () => {
                         <p className="text-[#555555] max-w-2xl mx-auto">Everything your vehicle needs, all on one simple platform.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {services.map((service, i) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">                        {services.map((service, i) => (
                             <motion.div 
                                 key={i}
                                 whileHover={{ y: -6 }}
-                                className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all text-center group overflow-hidden"
+                                className="relative rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all group overflow-hidden"
                             >
                                 {/* Gold gradient top line */}
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
-                                <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center mx-auto mb-6 group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(37,99,235,0.15)] transition-all">
-                                    <service.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB] z-10" />
+                                
+                                <div className="relative h-48 overflow-hidden">
+                                    <img 
+                                        src={service.image} 
+                                        alt={service.title} 
+                                        loading="lazy"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
+                                    <div className="absolute top-4 right-4 w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center shadow-lg">
+                                        <service.icon className="w-5 h-5 text-[#2563EB]" strokeWidth={2} />
+                                    </div>
                                 </div>
-                                <h3 className="font-semibold mb-3 text-[#0A0A0A]">{service.title}</h3>
-                                <p className="text-[#555555] text-[15px] leading-[1.7] mb-6">{service.description}</p>
-                                <Link to={service.link} className="text-[14px] font-semibold uppercase tracking-[0.08em] text-[#2563EB] hover:underline">
-                                    Explore Service
-                                </Link>
+
+                                <div className="p-8 text-center space-y-4">
+                                    <h3 className="text-xl font-bold text-[#0A0A0A]">{service.title}</h3>
+                                    <p className="text-[#555555] text-sm line-clamp-2">{service.description}</p>
+                                    <div className="pt-4">
+                                        <Link 
+                                            to={service.link}
+                                            className="text-[#2563EB] font-bold text-sm tracking-widest uppercase hover:underline inline-flex items-center gap-2"
+                                        >
+                                            Explore Service <ArrowRight className="w-4 h-4" />
+                                        </Link>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
+
                     </div>
                 </div>
             </section>
@@ -216,8 +235,8 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group">
-                            <img src="/images/hero_main.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2s]" alt="Vrumo Service" />
-                            <div className="absolute inset-0 bg-linear-to-t from-white/40 via-transparent to-transparent" />
+                            <img src="/images/hero_doorstep.png" loading="lazy" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2s]" alt="Vrumo Doorstep Service" />
+                            <div className="absolute inset-0 bg-black/20" />
                         </div>
                     </div>
                 </div>

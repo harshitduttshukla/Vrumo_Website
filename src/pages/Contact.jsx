@@ -47,6 +47,14 @@ const Contact = () => {
                             <h3 className="text-3xl font-black leading-tight">Instant Response <br /> Guaranteed</h3>
                             <p className="text-sm text-gray-400 leading-relaxed font-bold uppercase tracking-widest">Typical wait time: 2 minutes.</p>
                         </div>
+
+                        <div className="p-12 rounded-xl bg-[#2563EB]/5 border border-[#2563EB]/20 text-[#0A0A0A] space-y-6">
+                            <h3 className="text-2xl font-bold">Follow Our Journey</h3>
+                            <p className="text-[#555555] text-sm">Get daily vehicle care tips and ecosystem updates on Instagram.</p>
+                            <a href="https://www.instagram.com/vrumo.in/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-[#2563EB] font-bold hover:underline">
+                                @vrumo.in <ArrowRight className="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
 
                     {/* Form */}

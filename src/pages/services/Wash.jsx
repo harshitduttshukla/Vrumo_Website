@@ -69,7 +69,7 @@ const Wash = () => {
                         </div>
                     </div>
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video">
-                        <img src="/images/v_wash.png" className="w-full h-full object-cover" alt="Wash Service" />
+                        <img src="/images/v_wash_doorstep.png" loading="lazy" className="w-full h-full object-cover" alt="Doorstep Wash Service" />
                     </div>
                 </div>
             </section>
@@ -133,9 +133,9 @@ const Wash = () => {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 bg-[#0A0A0A] text-white">
+            <section className="py-24 bg-white text-black">
                 <div className="max-w-4xl mx-auto text-center space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white">Ready for a fresh look?</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-black">Ready for a fresh look?</h2>
                     <p className="text-lg text-gray-400">Book your first doorstep wash and join the ecosystem.</p>
                     <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Book Your Wash

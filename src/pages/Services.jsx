@@ -13,28 +13,28 @@ const Services = () => {
         { 
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep. Eco-friendly and fast.",
-            image: "/images/v_wash.png",
+            image: "/images/v_wash_doorstep.png",
             icon: Droplets,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert diagnostics and repairs by certified mechanics.",
-            image: "/images/v_maintenance.png",
+            image: "/images/v_maintenance_doorstep.png",
             icon: Wrench,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Reliable coverage and digital-first claims processing.",
-            image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80&w=2069",
+            image: "/images/v_insurance_doorstep.png",
             icon: ShieldCheck,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value and verified deals for cars and bikes.",
-            image: "/images/buy_sell_user.jpg",
+            image: "/images/buy_sell_doorstep_v2.png",
             icon: ArrowLeftRight,
             link: "/services/buy-sell"
         }

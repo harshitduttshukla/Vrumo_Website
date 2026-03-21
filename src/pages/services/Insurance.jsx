@@ -69,10 +69,8 @@ const Insurance = () => {
                         </div>
                     </div>
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video relative">
-                        <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80&w=2069" className="w-full h-full object-cover opacity-80" alt="Insurance Service" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <ShieldCheck className="w-32 h-32 text-[#2563EB] opacity-20" />
-                        </div>
+                        <img src="/images/v_insurance_doorstep.png" loading="lazy" className="w-full h-full object-cover" alt="Doorstep Insurance Inspection" />
+                        <div className="absolute inset-0 bg-black/10" />
                     </div>
                 </div>
             </section>
@@ -122,9 +120,9 @@ const Insurance = () => {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 bg-[#0A0A0A] text-white">
+            <section className="py-24 bg-white text-black">
                 <div className="max-w-4xl mx-auto text-center space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white">Secure your legacy today.</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-black">Secure your legacy today.</h2>
                     <p className="text-lg text-gray-400">Thousands of smart owners have already switched to Vrumo Protection.</p>
                     <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Get Your Policy Now

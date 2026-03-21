@@ -69,7 +69,7 @@ const BuySell = () => {
                         </div>
                     </div>
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video relative">
-                        <img src="/images/buy_sell_user.jpg" className="w-full h-full object-cover" alt="Buy Sell Service" />
+                        <img src="/images/buy_sell_doorstep_v2.png" loading="lazy" className="w-full h-full object-cover" alt="Doorstep Vehicle Sale" />
                     </div>
                 </div>
             </section>
@@ -119,9 +119,9 @@ const BuySell = () => {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 bg-[#0A0A0A] text-white">
+            <section className="py-24 bg-white text-black">
                 <div className="max-w-4xl mx-auto text-center space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white">What's your car's worth?</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-black">What's your car's worth?</h2>
                     <p className="text-lg text-gray-400">Get a free digital valuation in under 2 minutes.</p>
                     <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Sell Now

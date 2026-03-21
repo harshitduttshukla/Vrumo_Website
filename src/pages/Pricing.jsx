@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Zap, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Zap, Sparkles, Droplets, Wrench, ShieldCheck, ArrowLeftRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ecosystemPricing = [
@@ -10,6 +10,8 @@ const ecosystemPricing = [
         subtitle: "Doorstep deep foam wash",
         price: "199",
         unit: "/ wash",
+        image: "/images/v_wash_doorstep.png",
+        icon: Droplets,
         features: ["Foam Wash", "Tyre Dressing", "Interior Vacuum", "Eco-Friendly"],
         popular: false,
         buttonText: "Book Wash"
@@ -20,6 +22,8 @@ const ecosystemPricing = [
         subtitle: "Professional diagnostics",
         price: "799",
         unit: "/ service",
+        image: "/images/v_maintenance_doorstep.png",
+        icon: Wrench,
         features: ["Engine Check", "Oil Change", "Brake Check", "Digital Report"],
         popular: false,
         buttonText: "Book Checkup"
@@ -30,6 +34,8 @@ const ecosystemPricing = [
         subtitle: "Monthly protection",
         price: "499",
         unit: "/ month",
+        image: "/images/v_insurance_doorstep.png",
+        icon: ShieldCheck,
         features: ["Zero-Depreciation", "Cashless Claim", "Digital-First", "3rd Party Prot."],
         popular: false,
         buttonText: "Get Quote"
@@ -40,6 +46,8 @@ const ecosystemPricing = [
         subtitle: "Professional valuation",
         price: "0",
         unit: "Fee",
+        image: "/images/buy_sell_doorstep_v2.png",
+        icon: ArrowLeftRight,
         features: ["200+ Point Inspection", "Verified History", "Instant Payout", "RC Transfer"],
         popular: false,
         buttonText: "Get Valuation"
@@ -60,19 +68,28 @@ const PricingCard = ({ plan, index }) => (
         {/* Gold gradient top line */}
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
 
-        {plan.popular && (
-            <div className="absolute top-8 right-8 bg-[#2563EB] text-white px-6 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em]">
-                Most Popular
+        <div className="relative -mx-9 -mt-9 mb-10 overflow-hidden h-48">
+            <img 
+                src={plan.image} 
+                alt={plan.name} 
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
+            <div className="absolute top-4 right-4 w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center shadow-lg">
+                <plan.icon className="w-5 h-5 text-[#2563EB]" strokeWidth={2} />
             </div>
-        )}
+            {plan.popular && (
+                <div className="absolute top-4 left-4 bg-[#2563EB] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] shadow-lg">
+                    Popular
+                </div>
+            )}
+        </div>
 
-        <div className="mb-10 space-y-4">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Sparkles className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
-            </div>
+        <div className="mb-6 space-y-2">
             <div>
-                <h3 className="text-[28px] font-bold text-[#0A0A0A]">{plan.name}</h3>
-                <p className="text-[11px] font-medium text-[#888888] uppercase tracking-[0.1em] mt-2">{plan.subtitle}</p>
+                <h3 className="text-[24px] font-bold text-[#0A0A0A]">{plan.name}</h3>
+                <p className="text-[11px] font-medium text-[#888888] uppercase tracking-[0.1em]">{plan.subtitle}</p>
             </div>
         </div>
 

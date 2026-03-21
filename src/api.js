@@ -7,7 +7,8 @@ export const fetchServices = async () => {
 };
 
 export const createBooking = async (bookingData) => {
-    const response = await fetch(`${BASE_URL}/bookings/`, {
+    // Note: User specified /api/bookings as the endpoint
+    const response = await fetch(`${BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -16,8 +17,8 @@ export const createBooking = async (bookingData) => {
     });
     
     if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Booking failed');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || errorData.detail || 'Booking failed. Please try again.');
     }
     return await response.json();
 };

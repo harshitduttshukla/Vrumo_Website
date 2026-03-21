@@ -69,7 +69,7 @@ const Maintenance = () => {
                         </div>
                     </div>
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video">
-                        <img src="/images/v_maintenance.png" className="w-full h-full object-cover" alt="Maintenance Service" />
+                        <img src="/images/v_maintenance_doorstep.png" loading="lazy" className="w-full h-full object-cover" alt="Doorstep Maintenance Service" />
                     </div>
                 </div>
             </section>
@@ -119,9 +119,9 @@ const Maintenance = () => {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 bg-[#0A0A0A] text-white">
+            <section className="py-24 bg-white text-black">
                 <div className="max-w-4xl mx-auto text-center space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white">Ready for a checkup?</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-black">Ready for a checkup?</h2>
                     <p className="text-lg text-gray-400">Join thousands of premium owners who trust Vrumo for maintenance.</p>
                     <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
                         Book Service Now

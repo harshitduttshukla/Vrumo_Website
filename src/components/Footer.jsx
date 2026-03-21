@@ -70,7 +70,10 @@ const Footer = () => {
                         </div>
 
                         <div className="flex gap-4">
-                            {[Instagram, Twitter, Facebook, Youtube].map((Social, i) => (
+                            <a href="https://www.instagram.com/vrumo.in/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-[#888888]">
+                                <Instagram size={20} />
+                            </a>
+                            {[Twitter, Facebook, Youtube].map((Social, i) => (
                                 <a key={i} href="#" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-[#888888]">
                                     <Social size={20} />
                                 </a>
