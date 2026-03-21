@@ -12,6 +12,7 @@ import Booking from './pages/Booking';
 import HowItWorks from './pages/HowItWorks';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Founders from './pages/Founders';
 
 // Individual Service Pages
 import Wash from './pages/services/Wash';
@@ -51,6 +52,7 @@ function App() {
                         <Route path="/booking" element={<Booking />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/founders" element={<Founders />} />
                     </Routes>
                 </main>
                 <Footer />

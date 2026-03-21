@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-    Droplets, 
     CheckCircle2, 
-    Zap, 
-    ShieldCheck, 
-    Clock, 
     ArrowRight,
-    MapPin,
 } from 'lucide-react';
 
 const containerVariants = {
@@ -27,17 +22,20 @@ const Wash = () => {
     return (
         <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white font-sans">
             {/* HERO SECTION */}
-            <section className="relative pt-48 pb-32 px-6 overflow-hidden border-b border-[#EFEFEF] luxury-pattern">
+            <section className="relative min-h-[60vh] flex items-center pt-32 pb-24 px-6 overflow-hidden bg-blue-100/50">
+                {/* Visual Accent */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2563EB]/5 rounded-l-[200px] blur-3xl -z-10" />
+                
                 <div className="max-w-7xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div initial="hidden" animate="visible" variants={containerVariants} className="space-y-6">
-                        <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-[0.03em]">
+                        <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-[0.03em] text-[#0A0A0A]">
                             Vehicle <span className="text-[#2563EB]">Wash</span>
                         </motion.h1>
-                        <motion.p variants={itemVariants} className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed">
+                        <motion.p variants={itemVariants} className="text-xl text-[#555555] max-w-2xl mx-auto leading-relaxed">
                             Deep foam cleaning and detailing delivered right to your doorstep. Get that showroom shine in minutes.
                         </motion.p>
                         <motion.div variants={itemVariants} className="pt-8">
-                            <Link to="/booking?service=wash" className="btn-premium inline-flex items-center gap-4">
+                            <Link to="/booking?service=wash" className="btn-premium inline-flex items-center gap-4 bg-[#2563EB] text-white hover:bg-royal transition-all">
                                 Book Now <ArrowRight className="w-5 h-5" />
                             </Link>
                         </motion.div>
@@ -81,17 +79,34 @@ const Wash = () => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                     {[
-                        { title: "No Water Waste", desc: "Our hybrid washing tech saves up to 80% more water than traditional workshops.", icon: Droplets },
-                        { title: "Zero Travel Time", desc: "Stop waiting at wash centers. We come to your garage, office, or sanctuary.", icon: Clock },
-                        { title: "Eco-Friendly", desc: "We use bio-organic foam that's safe for your paint and the environment.", icon: ShieldCheck }
+                        { title: "No Water Waste", desc: "Our hybrid washing tech saves up to 80% more water than traditional workshops.", icon: "01" },
+                        { title: "Zero Travel Time", desc: "Stop waiting at wash centers. We come to your garage, office, or sanctuary.", icon: "02" },
+                        { title: "Eco-Friendly", desc: "We use bio-organic foam that's safe for your paint and the environment.", icon: "03" }
                     ].map((benefit, i) => (
-                        <div key={i} className="p-10 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] relative overflow-hidden space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all">
-                            <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
-                                <benefit.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
+                        <motion.div 
+                            key={i}
+                            whileHover={{ y: -8 }}
+                            className="p-10 rounded-2xl bg-white border border-blue-50 shadow-[0_4px_20px_rgba(0,0,0,0.03)] relative overflow-hidden group transition-all duration-500"
+                        >
+                            {/* Accent Glow */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-500/10 transition-colors" />
+                            
+                            <div className="relative z-10 space-y-6">
+                                <div className="flex items-center justify-between">
+                                    <div className="w-1 h-12 bg-[#2563EB] rounded-full shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
+                                    <span className="text-4xl font-black text-blue-500/10 group-hover:text-blue-500/20 transition-colors">{benefit.icon}</span>
+                                </div>
+                                <div className="space-y-4">
+                                    <h3 className="text-xl font-bold text-[#0A0A0A] tracking-tight">{benefit.title}</h3>
+                                    <p className="text-[#555555] text-[15px] leading-[1.8] font-light italic">
+                                        "{benefit.desc}"
+                                    </p>
+                                </div>
                             </div>
-                            <h3 className="text-xl font-bold text-[#0A0A0A]">{benefit.title}</h3>
-                            <p className="text-[#888888] text-[15px] leading-[1.7]">{benefit.desc}</p>
-                        </div>
+                            
+                            {/* Bottom Border Accent */}
+                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-[#2563EB]/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                        </motion.div>
                     ))}
                 </div>
             </section>
@@ -103,16 +118,19 @@ const Wash = () => {
                     <div className="grid md:grid-cols-3 gap-16 relative">
                         <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-px bg-[#E5E5E5]" />
                         {[
-                            { step: "01", title: "Select Package", desc: "Choose the wash plan that fits your needs.", icon: Zap },
-                            { step: "02", title: "Wait for Arrival", desc: "Our pro detailing van arrives at your location.", icon: MapPin },
-                            { step: "03", title: "Showroom Shine", desc: "Your vehicle is restored in under 45 minutes.", icon: Droplets }
+                            { step: "01", title: "Select Package", desc: "Choose the wash plan that fits your needs.", img: "/images/step_select.png" },
+                            { step: "02", title: "Wait for Arrival", desc: "Our pro detailing van arrives at your location.", img: "/images/step_book.png" },
+                            { step: "03", title: "Showroom Shine", desc: "Your vehicle is restored in under 45 minutes.", img: "/images/step_results.png" }
                         ].map((item, i) => (
                             <div key={i} className="relative z-10 text-center space-y-6">
-                                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center border-2 border-[#2563EB] text-[#2563EB] font-semibold text-xl shadow-[0_8px_24px_rgba(37,99,235,0.15)]">
-                                    <item.icon className="w-8 h-8" />
+                                <div className="w-24 h-24 rounded-2xl overflow-hidden mx-auto shadow-lg border-4 border-white mb-6">
+                                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
                                 </div>
-                                <h4 className="text-xl font-bold text-[#0A0A0A]">{item.title}</h4>
-                                <p className="text-[#888888] text-sm">{item.desc}</p>
+                                <div className="space-y-2">
+                                    <span className="text-[#2563EB] font-black text-xl italic opacity-30">{item.step}</span>
+                                    <h4 className="text-xl font-bold text-[#0A0A0A]">{item.title}</h4>
+                                    <p className="text-[#555555] text-sm">{item.desc}</p>
+                                </div>
                             </div>
                         ))}
                     </div>

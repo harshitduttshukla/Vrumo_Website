@@ -1,19 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-    Droplets, 
-    Shield, 
     ArrowRight, 
-    Zap, 
-    ShieldCheck, 
-    Wrench,
-    ArrowLeftRight,
-    MapPin,
-    Calendar,
-    MousePointer2,
-    BarChart3,
-    Smartphone,
-    CloudRain,
 } from 'lucide-react';
 
 const containerVariants = {
@@ -37,27 +25,21 @@ const ServiceCardHero = ({ service, idx }) => (
     <motion.div 
         key={idx}
         variants={itemVariants}
-        whileHover={{ y: -6 }}
-        className="group relative flex flex-col rounded-2xl bg-white border border-[#EFEFEF] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden h-full"
+        className="group relative flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full"
     >
-        {/* Gold gradient top line */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
-        <Link to={service.link} className="block h-full">
-            <div className="relative h-48 overflow-hidden">
+        <Link to={service.link} className="block h-full p-4">
+            <div className="relative h-44 overflow-hidden rounded-xl mb-4">
                 <img 
                     src={service.image} 
                     alt={service.title} 
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl" 
+                    className="w-full h-full object-cover transition-transform duration-500" 
                 />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center">
-                    <service.icon className="w-4 h-4 text-[#2563EB]" strokeWidth={1.8} />
-                </div>
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
             </div>
-            <div className="p-4 space-y-2">
-                <h3 className="text-sm font-semibold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
-                <p className="text-[10px] text-[#888888] line-clamp-1">{service.description}</p>
+            <div className="space-y-2">
+                <h3 className="text-sm font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
+                <p className="text-[11px] text-[#555555] line-clamp-2 leading-relaxed">{service.description}</p>
             </div>
         </Link>
     </motion.div>
@@ -69,28 +51,24 @@ const Home = () => {
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep",
             image: "/images/v_wash_doorstep.png",
-            icon: Droplets,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert service and repairs",
             image: "/images/v_maintenance_doorstep.png",
-            icon: Wrench,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Hassle-free coverage and claims",
             image: "/images/v_insurance_doorstep.png",
-            icon: ShieldCheck,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value for your vehicle",
             image: "/images/buy_sell_doorstep_v2.png",
-            icon: ArrowLeftRight,
             link: "/services/buy-sell"
         }
     ];
@@ -99,7 +77,9 @@ const Home = () => {
         <div className="min-h-screen bg-white text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white leading-relaxed">
 
             {/* --- 1. HERO SECTION --- */}
-            <section className="relative pt-48 pb-32 px-6 overflow-hidden luxury-pattern">
+            <section className="relative min-h-[90vh] flex items-center pt-32 pb-24 px-6 overflow-hidden bg-blue-100/50">
+                {/* Visual Accent */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2563EB]/5 rounded-l-[200px] blur-3xl -z-10" />
                 <div className="max-w-7xl mx-auto">
                     <motion.div 
                         variants={containerVariants}
@@ -115,21 +95,34 @@ const Home = () => {
                         </div>
 
                         {/* RIGHT: Hero Text Content */}
-                        <div className="order-1 lg:order-2 space-y-8">
-                            <motion.div variants={itemVariants}>
-                                <div className="premium-badge mb-6">
-                                    EST. 2024 · ELITE DETAILING
-                                </div>
-                            </motion.div>
-                            <motion.div variants={itemVariants} className="space-y-4">
-                                <h1 className="text-[#0A0A0A]">
+                        <div className="order-1 lg:order-2 space-y-8 relative z-10">
+                            <div className="space-y-10 lg:pr-12">
+                            <div className="space-y-6">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20"
+                                >
+                                    <span className="text-[10px] font-bold text-[#2563EB] tracking-widest uppercase">Est. 2024 · Elite Detailing</span>
+                                </motion.div>
+                                <motion.h1 
+                                    variants={itemVariants}
+                                    className="text-6xl md:text-8xl font-bold tracking-[0.03em] text-[#0A0A0A]"
+                                >
                                     All-in-One <br />
-                                    <span className="gold-underline text-[#0A0A0A]">Vehicle Care</span> Ecosystem
-                                </h1>
-                                <p className="text-lg md:text-xl text-[#555555] max-w-lg font-normal">
+                                    <span className="text-[#2563EB] relative">
+                                        Vehicle Care
+                                        <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#2563EB]/30 rounded-full" />
+                                    </span> <br />
+                                    Ecosystem
+                                </motion.h1>
+                                <motion.p 
+                                    variants={itemVariants}
+                                    className="text-lg text-[#555555] max-w-xl leading-relaxed"
+                                >
                                     Quality doorstep services for your car and bike. Trusted professionals, affordable pricing, and fast results guaranteed.
-                                </p>
-                            </motion.div>
+                                </motion.p>
+                            </div>
+                            </div>
 
                             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
                                 <Link 
@@ -146,14 +139,6 @@ const Home = () => {
                                 </Link>
                             </motion.div>
 
-                            <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-[#EFEFEF]">
-                                <div className="flex -space-x-2">
-                                    {[1,2,3,4].map(i => (
-                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE]" />
-                                    ))}
-                                </div>
-                                <p className="text-sm text-[#888888]">Join <span className="text-[#0A0A0A] font-semibold">50,000+</span> owners</p>
-                            </motion.div>
                         </div>
                     </motion.div>
                 </div>
@@ -166,45 +151,34 @@ const Home = () => {
                         <h2 className="section-title">Our Portfolio</h2>
                         <p className="text-[#555555] max-w-2xl mx-auto">Everything your vehicle needs, all on one simple platform.</p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">                        {services.map((service, i) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {services.map((service, i) => (
                             <motion.div 
                                 key={i}
-                                whileHover={{ y: -6 }}
-                                className="relative rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all group overflow-hidden"
+                                className="group relative rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden"
                             >
-                                {/* Gold gradient top line */}
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB] z-10" />
-                                
-                                <div className="relative h-48 overflow-hidden">
-                                    <img 
-                                        src={service.image} 
-                                        alt={service.title} 
-                                        loading="lazy"
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
-                                    <div className="absolute top-4 right-4 w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center shadow-lg">
-                                        <service.icon className="w-5 h-5 text-[#2563EB]" strokeWidth={2} />
+                                <Link to={service.link} className="block p-4 space-y-4">
+                                    <div className="relative h-44 overflow-hidden rounded-xl">
+                                        <img 
+                                            src={service.image} 
+                                            alt={service.title} 
+                                            loading="lazy"
+                                            className="w-full h-full object-cover transition-transform duration-500" 
+                                        />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
                                     </div>
-                                </div>
-
-                                <div className="p-8 text-center space-y-4">
-                                    <h3 className="text-xl font-bold text-[#0A0A0A]">{service.title}</h3>
-                                    <p className="text-[#555555] text-sm line-clamp-2">{service.description}</p>
-                                    <div className="pt-4">
-                                        <Link 
-                                            to={service.link}
-                                            className="text-[#2563EB] font-bold text-sm tracking-widest uppercase hover:underline inline-flex items-center gap-2"
-                                        >
-                                            Explore Service <ArrowRight className="w-4 h-4" />
-                                        </Link>
+                                    <div className="text-center space-y-3">
+                                        <h3 className="text-lg font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
+                                        <p className="text-[#555555] text-sm line-clamp-2">{service.description}</p>
+                                        <div className="pt-2 text-[#2563EB] font-bold text-xs tracking-widest uppercase inline-flex items-center gap-2">
+                                            Details <ArrowRight className="w-3 h-3" />
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </motion.div>
                         ))}
-
                     </div>
+
                 </div>
             </section>
 
@@ -216,18 +190,16 @@ const Home = () => {
                             <h2 className="section-title">Why the Ecosystem?</h2>
                             <p className="text-lg text-[#555555]">We prioritize your convenience and vehicle health through tech and trust.</p>
                             
-                            <div className="space-y-6">
+                            <div className="space-y-8">
                                 {[
-                                    { title: "Affordable Pricing", desc: "No hidden costs. Get direct market rates for every service.", icon: Zap },
-                                    { title: "Trusted Professionals", desc: "Our team consists of certified experts with years of experience.", icon: ShieldCheck },
-                                    { title: "Fast Doorstep Service", desc: "No more workshop waits. We bring the care to your location.", icon: MapPin }
+                                    { title: "Affordable Pricing", desc: "No hidden costs. Get direct market rates for every service." },
+                                    { title: "Trusted Professionals", desc: "Our team consists of certified experts with years of experience." },
+                                    { title: "Fast Doorstep Service", desc: "No more workshop waits. We bring the care to your location." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 items-start">
-                                        <div className="mt-1 w-14 h-14 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
-                                            <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
-                                        </div>
+                                        <div className="w-1.5 h-12 bg-[#2563EB] rounded-full shrink-0 mt-1" />
                                         <div>
-                                            <h4 className="font-semibold mb-1 text-[#0A0A0A]">{item.title}</h4>
+                                            <h4 className="font-bold mb-1 text-lg text-[#0A0A0A]">{item.title}</h4>
                                             <p className="text-[#555555] text-[15px] leading-[1.7]">{item.desc}</p>
                                         </div>
                                     </div>
@@ -252,16 +224,19 @@ const Home = () => {
                         <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-[#2563EB]/20" />
 
                         {[
-                            { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", icon: MousePointer2 },
-                            { step: "02", title: "Book Instantly", desc: "Pick a date and doorstep location.", icon: Calendar },
-                            { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", icon: MapPin }
+                            { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", img: "/images/step_select.png" },
+                            { step: "02", title: "Book Instantly", desc: "Pick a date and doorstep location.", img: "/images/step_book.png" },
+                            { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", img: "/images/step_results.png" }
                         ].map((item, i) => (
                             <div key={i} className="space-y-6 relative z-10 text-center">
-                                <div className="w-20 h-20 bg-[#2563EB] rounded-full flex items-center justify-center mx-auto text-[#0A0A0A] shadow-[0_8px_24px_rgba(37,99,235,0.35)]">
-                                    <item.icon className="w-10 h-10" strokeWidth={1.8} />
+                                <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto shadow-xl border-4 border-white mb-6">
+                                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
                                 </div>
-                                <h4 className="font-semibold text-[#0A0A0A]">{item.title}</h4>
-                                <p className="text-[#555555] text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
+                                <div className="space-y-2">
+                                    <span className="text-[#2563EB] font-black text-xl italic opacity-30">{item.step}</span>
+                                    <h4 className="font-bold text-[#0A0A0A] text-lg">{item.title}</h4>
+                                    <p className="text-[#555555] text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -278,18 +253,24 @@ const Home = () => {
 
                     <div className="grid md:grid-cols-3 gap-10">
                         {[
-                            { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", icon: BarChart3 },
-                            { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", icon: Smartphone },
-                            { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", icon: CloudRain }
+                            { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", img: "/images/low_pricing.png" },
+                            { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", img: "/images/tech_workflow.png" },
+                            { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", img: "/images/hybrid_wash.png" }
                         ].map((item, i) => (
-                            <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all space-y-8 overflow-hidden group">
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
-                                <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:scale-105 transition-transform">
-                                    <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="font-semibold text-[#0A0A0A]">{item.title}</h3>
-                                    <p className="text-[#555555] text-[15px] leading-[1.7]">{item.desc}</p>
+                            <div key={i} className="group relative rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full">
+                                <div className="p-4 space-y-6">
+                                    <div className="relative h-44 overflow-hidden rounded-xl">
+                                        <img 
+                                            src={item.img} 
+                                            alt={item.title} 
+                                            className="w-full h-full object-cover transition-transform duration-500" 
+                                        />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
+                                    </div>
+                                    <div className="space-y-4 px-2 pb-2">
+                                        <h3 className="text-xl font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{item.title}</h3>
+                                        <p className="text-[#555555] text-[15px] leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -306,10 +287,9 @@ const Home = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[1, 2, 3].map(i => (
-                            <div key={i} className="relative p-9 rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] space-y-6 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all overflow-hidden">
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+                            <div key={i} className="relative p-9 rounded-xl bg-white border border-gray-100 shadow-sm space-y-6 hover:shadow-xl hover:scale-[1.02] transition-all overflow-hidden">
                                 <div className="flex gap-1">
-                                    {[1, 2, 3, 4, 5].map(j => <Zap key={j} className="w-4 h-4 text-[#2563EB] fill-[#2563EB]" />)}
+                                    <span className="text-[#2563EB] text-xl font-bold italic">Excellent Service</span>
                                 </div>
                                 <p className="text-[#555555] italic text-[15px] leading-[1.7]">"The doorstep service is incredible. Extremely pro and my vehicle looks and runs perfectly every time."</p>
                                 <div className="flex items-center gap-4 pt-4 border-t border-[#EFEFEF]">

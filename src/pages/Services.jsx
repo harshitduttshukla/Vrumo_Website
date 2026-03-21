@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-    Droplets, 
-    Wrench, 
-    ShieldCheck, 
-    ArrowLeftRight, 
     ArrowRight 
 } from 'lucide-react';
 
@@ -14,28 +10,24 @@ const Services = () => {
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep. Eco-friendly and fast.",
             image: "/images/v_wash_doorstep.png",
-            icon: Droplets,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert diagnostics and repairs by certified mechanics.",
             image: "/images/v_maintenance_doorstep.png",
-            icon: Wrench,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Reliable coverage and digital-first claims processing.",
             image: "/images/v_insurance_doorstep.png",
-            icon: ShieldCheck,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value and verified deals for cars and bikes.",
             image: "/images/buy_sell_doorstep_v2.png",
-            icon: ArrowLeftRight,
             link: "/services/buy-sell"
         }
     ];
@@ -54,25 +46,20 @@ const Services = () => {
                     {services.map((service, i) => (
                         <motion.div 
                             key={i}
-                            whileHover={{ y: -6 }}
-                            className="group relative overflow-hidden rounded-2xl bg-white border border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] flex flex-col hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)] transition-all"
+                            className="group relative overflow-hidden rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
                         >
-                            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB] z-10" />
-                            <div className="aspect-video relative overflow-hidden">
+                            <div className="aspect-video relative overflow-hidden rounded-t-xl">
                                 <img src={service.image} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt={service.title} />
-                                <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent" />
-                                <div className="absolute top-8 right-8 w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center">
-                                    <service.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
-                                </div>
+                                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
                             </div>
-                            <div className="p-12 space-y-6 flex-1 flex flex-col justify-between">
+                            <div className="p-10 space-y-6 flex-1 flex flex-col justify-between">
                                 <div className="space-y-4">
-                                    <h2 className="text-[32px]">{service.title}</h2>
-                                    <p className="text-[#555555] text-[15px] leading-[1.7]">{service.description}</p>
+                                    <h2 className="text-2xl font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h2>
+                                    <p className="text-[#555555] text-sm leading-relaxed">{service.description}</p>
                                 </div>
-                                <div className="pt-8">
-                                    <Link to={service.link} className="inline-flex items-center gap-4 text-[#2563EB] font-semibold tracking-[-0.01em] text-[15px] group-hover:gap-6 transition-all duration-300">
-                                        Explore Service <ArrowRight className="w-5 h-5" />
+                                <div className="pt-6">
+                                    <Link to={service.link} className="inline-flex items-center gap-3 text-[#2563EB] font-bold tracking-widest uppercase text-xs">
+                                        Explore Service <ArrowRight className="w-4 h-4" />
                                     </Link>
                                 </div>
                             </div>

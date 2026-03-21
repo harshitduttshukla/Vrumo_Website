@@ -42,8 +42,8 @@ const Footer = () => {
             title: 'COMPANY',
             links: [
                 { name: 'About Vrumo', path: '/about' },
+                { name: 'Meet Founders', path: '/founders' },
                 { name: 'Sustainability', path: '/about' },
-                { name: 'Process Logic', path: '/how-it-works' },
                 { name: 'Careers', path: '#' },
             ]
         }
@@ -70,7 +70,7 @@ const Footer = () => {
                         </div>
 
                         <div className="flex gap-4">
-                            <a href="https://www.instagram.com/vrumo.in/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-[#888888]">
+                            <a href="https://www.instagram.com/vrumo.in/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-silver">
                                 <Instagram size={20} />
                             </a>
                             {[Twitter, Facebook, Youtube].map((Social, i) => (

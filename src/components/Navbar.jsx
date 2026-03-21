@@ -25,6 +25,7 @@ const Navbar = () => {
     const rightLinks = [
         { name: 'How It Works', path: '/how-it-works' },
         { name: 'About', path: '/about' },
+        { name: 'Founders', path: '/founders' },
         { name: 'Contact', path: '/contact' },
     ];
 
