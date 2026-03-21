@@ -69,7 +69,6 @@ const About = () => {
                 </section>
 
                 {/* Stats */}
-                <section className="py-12 bg-white">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 lg:py-20 border-y border-[#EFEFEF] bg-[#F8F8F8] rounded-2xl px-6 lg:px-12">
                     {stats.map((stat, i) => (
                         <div key={i} className="text-center space-y-4">
