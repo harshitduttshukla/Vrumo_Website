@@ -26,8 +26,15 @@ const About = () => {
                 {/* Hero */}
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+                        <div className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-2">
+                            <div className="flex items-center justify-center bg-[#0F172A] w-6 h-6 rounded-md">
+                                <span className="text-white text-[10px] font-bold tracking-wider">IIT</span>
+                            </div>
+                            <span className="text-[#0A0A0A] font-bold text-sm">IIT Kanpur Founders</span>
+                            <span className="text-silver text-sm">&middot; Deep tech, built in UP</span>
+                        </div>
                         <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Who is Vrumo?</h1>
-                        <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p className="text-xl text-silver max-w-2xl mx-auto leading-relaxed font-medium">
                             An all-in-one vehicle care ecosystem designed for the modern owner. We bring trust, tech, and quality doorstep convenience to your life.
                         </p>
                     </motion.div>

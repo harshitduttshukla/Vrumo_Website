@@ -11,10 +11,10 @@ const containerVariants = {
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-        opacity: 1, 
-        y: 0, 
-        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
 };
 
@@ -28,14 +28,14 @@ const Founders = () => {
 
     const founders = [
         {
-            name: "[Founder Name]",
-            role: "CEO & Co-Founder",
+            name: "Divyaman Pal",
+            role: "Founder",
             bio: "IIT Kanpur alumni. Deep expertise in scalable backend architecture, distributed systems, and operational efficiency. Led tech teams across early-stage ventures.",
             tags: ["IIT Kanpur", "Backend Systems", "Product"]
         },
         {
             name: "[Co-Founder Name]",
-            role: "COO & Co-Founder",
+            role: "CTO & Co-Founder",
             bio: "IIT Kanpur alumni. Expert in B2B sales, RWA management, and on-ground deployment. Built and scaled field operations teams across Tier-2 markets.",
             tags: ["IIT Kanpur", "Operations", "B2B Sales"]
         }
@@ -44,7 +44,7 @@ const Founders = () => {
     return (
         <div className="min-h-screen bg-[#F8FAFF] pt-48 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -54,20 +54,20 @@ const Founders = () => {
                     {/* LEFT COL: CONTENT AND FOUNDERS */}
                     <div className="lg:col-span-7 space-y-16">
                         <div className="space-y-6">
-                            <motion.span 
+                            <motion.span
                                 variants={itemVariants}
                                 className="text-[11px] font-bold tracking-[0.3em] uppercase text-amber-600 block"
                             >
                                 THE TEAM
                             </motion.span>
-                            <motion.h1 
+                            <motion.h1
                                 variants={itemVariants}
                                 className="text-5xl md:text-7xl font-bold tracking-tight text-[#0A0A0A] leading-[1.1]"
                             >
                                 Built by <span className="text-[#2563EB]">IIT Kanpur</span> <br />
                                 <span className="italic font-normal serif-font">alumni.</span>
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 variants={itemVariants}
                                 className="text-xl text-[#555555] max-w-xl leading-relaxed font-light"
                             >
@@ -77,7 +77,7 @@ const Founders = () => {
 
                         <div className="space-y-8">
                             {founders.map((founder, i) => (
-                                <motion.div 
+                                <motion.div
                                     key={i}
                                     variants={itemVariants}
                                     className="flex gap-6 p-8 rounded-2xl bg-white border border-blue-100/50 shadow-sm hover:shadow-md transition-shadow"
@@ -97,8 +97,8 @@ const Founders = () => {
                                         </p>
                                         <div className="flex flex-wrap gap-2">
                                             {founder.tags.map((tag, j) => (
-                                                <span 
-                                                    key={j} 
+                                                <span
+                                                    key={j}
                                                     className="px-3 py-1 rounded-full bg-[#F0F7FF] text-[#2563EB] text-[10px] font-bold tracking-tight border border-blue-100"
                                                 >
                                                     {tag}
@@ -113,13 +113,13 @@ const Founders = () => {
 
                     {/* RIGHT COL: WHY IIT KANPUR CARD */}
                     <div className="lg:col-span-5 h-full">
-                        <motion.div 
+                        <motion.div
                             variants={itemVariants}
                             className="bg-white rounded-4xl border border-blue-100 p-10 shadow-xl shadow-blue-500/5 sticky top-32"
                         >
                             <div className="space-y-10">
                                 <div className="space-y-6">
-                                    <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl tracking-tighter shadow-lg shadow-black/10">
+                                    <div className="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl tracking-tighter shadow-lg shadow-black/10">
                                         IIT K
                                     </div>
                                     <h2 className="text-3xl font-bold text-[#0A0A0A] leading-tight">
@@ -132,8 +132,8 @@ const Founders = () => {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     {stats.map((stat, i) => (
-                                        <div 
-                                            key={i} 
+                                        <div
+                                            key={i}
                                             className="p-6 rounded-2xl bg-blue-50/50 border border-blue-100/50 space-y-2 hover:bg-blue-50 transition-colors"
                                         >
                                             <div className="text-2xl font-black text-[#0A0A0A] tracking-tight">

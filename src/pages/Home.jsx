@@ -38,7 +38,7 @@ const ServiceCardHero = ({ service, idx }) => (
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
             </div>
             <div className="space-y-2">
-                <h3 className="text-sm font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
+                <h3 className="text-[15px] font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
                 <p className="text-[11px] text-[#555555] line-clamp-2 leading-relaxed">{service.description}</p>
             </div>
         </Link>
@@ -100,9 +100,13 @@ const Home = () => {
                             <div className="space-y-6">
                                 <motion.div 
                                     variants={itemVariants}
-                                    className="inline-flex items-center justify-center lg:justify-start gap-3 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20"
+                                    className="inline-flex items-center justify-center lg:justify-start gap-2 px-3 py-1.5 rounded-full border border-blue-600 bg-white shadow-sm"
                                 >
-                                    <span className="text-[10px] font-bold text-[#2563EB] tracking-widest uppercase">Est. 2024 · Elite Detailing</span>
+                                    <div className="flex items-center justify-center bg-blue-600 w-6 h-6 rounded-md">
+                                        <span className="text-white text-[10px] font-bold tracking-wider">IIT</span>
+                                    </div>
+                                    <span className="text-[#0A0A0A] font-bold text-sm">IIT Kanpur Founders</span>
+                                    <span className="text-black text-sm">&middot; Deep tech, built in UP</span>
                                 </motion.div>
                                 <motion.h1 
                                     variants={itemVariants}
@@ -113,7 +117,7 @@ const Home = () => {
                                         Vehicle Care
                                         <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#2563EB]/30 rounded-full" />
                                     </span> <br />
-                                    Ecosystem
+                                    <div className="mt-2">Ecosystem</div>
                                 </motion.h1>
                                 <motion.p 
                                     variants={itemVariants}
