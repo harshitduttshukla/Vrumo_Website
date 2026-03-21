@@ -96,17 +96,17 @@ const Home = () => {
 
                         {/* RIGHT: Hero Text Content */}
                         <div className="order-1 lg:order-2 space-y-8 relative z-10">
-                            <div className="space-y-10 lg:pr-12">
+                            <div className="space-y-10 lg:pr-12 text-center lg:text-left">
                             <div className="space-y-6">
                                 <motion.div 
                                     variants={itemVariants}
-                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20"
+                                    className="inline-flex items-center justify-center lg:justify-start gap-3 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20"
                                 >
                                     <span className="text-[10px] font-bold text-[#2563EB] tracking-widest uppercase">Est. 2024 · Elite Detailing</span>
                                 </motion.div>
                                 <motion.h1 
                                     variants={itemVariants}
-                                    className="text-6xl md:text-8xl font-bold tracking-[0.03em] text-[#0A0A0A]"
+                                    className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-[0.03em] text-[#0A0A0A]"
                                 >
                                     All-in-One <br />
                                     <span className="text-[#2563EB] relative">
@@ -117,23 +117,23 @@ const Home = () => {
                                 </motion.h1>
                                 <motion.p 
                                     variants={itemVariants}
-                                    className="text-lg text-[#555555] max-w-xl leading-relaxed"
+                                    className="text-base sm:text-lg text-[#555555] max-w-xl mx-auto lg:mx-0 leading-relaxed break-words"
                                 >
                                     Quality doorstep services for your car and bike. Trusted professionals, affordable pricing, and fast results guaranteed.
                                 </motion.p>
                             </div>
                             </div>
 
-                            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
+                            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
                                 <Link 
                                     to="/booking" 
-                                    className="btn-premium"
+                                    className="btn-premium w-full sm:w-auto text-center"
                                 >
                                     Book Service
                                 </Link>
                                 <Link 
                                     to="/services" 
-                                    className="btn-outline"
+                                    className="btn-outline w-full sm:w-auto text-center"
                                 >
                                     Explore Ecosystem
                                 </Link>
@@ -183,9 +183,9 @@ const Home = () => {
             </section>
 
             {/* --- 3. WHY CHOOSE US --- */}
-            <section className="py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <section className="py-12 sm:py-16 md:py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-20 items-center">
                         <div className="space-y-8">
                             <h2 className="section-title">Why the Ecosystem?</h2>
                             <p className="text-lg text-[#555555]">We prioritize your convenience and vehicle health through tech and trust.</p>
@@ -206,7 +206,7 @@ const Home = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group">
+                        <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group w-full lg:w-1/2 shrink-0">
                             <img 
                                 src="/images/ecosystem_doorstep_clean.png" 
                                 loading="lazy" 
@@ -238,7 +238,7 @@ const Home = () => {
                         variants={{
                             visible: { transition: { staggerChildren: 0.3 } }
                         }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 relative"
                     >
                         {/* Connecting Line (Desktop) */}
                         <motion.div 
@@ -277,7 +277,7 @@ const Home = () => {
                                         whileHover={{ scale: 1.05 }}
                                         className="w-full h-full rounded-2xl overflow-hidden shadow-xl border-4 border-white relative z-10 bg-white"
                                     >
-                                        <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <img src={item.img} loading="lazy" alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                         <div className="absolute inset-0 bg-[#2563EB]/10 group-hover:bg-transparent transition-all" />
                                     </motion.div>
                                 </div>
@@ -307,7 +307,7 @@ const Home = () => {
                         <p className="text-[#555555] max-w-2xl mx-auto">We use tech and sustainable rituals to better your experience.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
                         {[
                             { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", img: "/images/low_pricing.png" },
                             { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", img: "/images/tech_workflow.png" },
@@ -319,6 +319,7 @@ const Home = () => {
                                         <img 
                                             src={item.img} 
                                             alt={item.title} 
+                                            loading="lazy"
                                             className="w-full h-full object-cover transition-transform duration-500" 
                                         />
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
@@ -341,7 +342,7 @@ const Home = () => {
                         <h2 className="section-title">Ecosystem Reviews</h2>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         {[
                             {
                                 name: "Rahul Sharma",
@@ -369,7 +370,7 @@ const Home = () => {
                                 <p className="text-[#555555] italic text-[15px] leading-[1.7]">"{item.quote}"</p>
                                 <div className="flex items-center gap-4 pt-4 border-t border-[#EFEFEF]">
                                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-50">
-                                        <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+                                        <img src={item.img} loading="lazy" alt={item.name} className="w-full h-full object-cover" />
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-semibold text-[#0A0A0A]">{item.name}</h4>
@@ -383,20 +384,20 @@ const Home = () => {
             </section>
 
             {/* --- 7. FINAL CTA --- */}
-            <section className="py-32 relative overflow-hidden bg-white">
-                <div className="max-w-4xl mx-auto px-6 text-center space-y-10 relative z-10">
-                    <h2 className="text-[#0A0A0A]">Join the Ecosystem <br /> Today.</h2>
-                    <p className="text-xl max-w-2xl mx-auto text-[#555555] font-normal leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
-                    <div className="flex flex-wrap justify-center gap-6 pt-6">
+            <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden bg-white">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 sm:space-y-10 relative z-10">
+                    <h2 className="text-[#0A0A0A] text-3xl sm:text-5xl lg:text-6xl leading-tight font-bold break-words">Join the Ecosystem <br /> Today.</h2>
+                    <p className="text-base sm:text-lg lg:text-xl max-w-2xl mx-auto text-[#555555] font-normal leading-relaxed">Experience why thousands of owners trust Vrumo for their car and bike care rituals.</p>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 pt-6">
                         <Link 
                             to="/booking" 
-                            className="bg-[#2563EB] text-white px-12 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.35)] transition-all duration-300"
+                            className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-6 py-4 sm:px-12 sm:py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all duration-300 w-full sm:w-auto text-center"
                         >
                             Book Your Service
                         </Link>
                         <Link 
                             to="/services" 
-                            className="btn-outline"
+                            className="btn-outline w-full sm:w-auto text-center px-6 py-4 sm:px-12 sm:py-4"
                         >
                             Explore Ecosystem
                         </Link>

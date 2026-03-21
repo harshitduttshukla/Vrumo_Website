@@ -151,7 +151,7 @@ const Booking = () => {
                                 </div>
                                 <button 
                                     onClick={() => window.location.href = "/"} 
-                                    className="bg-[#2563EB] text-white px-12 py-4 rounded-xl font-bold hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                                    className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-12 py-4 rounded-xl font-bold hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     Return Home
                                 </button>
@@ -183,7 +183,7 @@ const Booking = () => {
                                                 onClick={() => setFormData(prev => ({ ...prev, vehicleType: type }))}
                                                 className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                                                     formData.vehicleType === type 
-                                                    ? 'bg-[#2563EB] text-white shadow-lg' 
+                                                    ? 'bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] shadow-lg' 
                                                     : 'text-[#888888] hover:text-[#0A0A0A]'
                                                 }`}
                                             >
@@ -193,7 +193,7 @@ const Booking = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                                     {/* Personal Info */}
                                     <div className="space-y-6">
                                         <div className="space-y-2">
@@ -262,7 +262,7 @@ const Booking = () => {
                                             {errors.serviceType && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.serviceType}</p>}
                                         </div>
 
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Preferred Date</label>
                                                 <input 
@@ -313,7 +313,7 @@ const Booking = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     disabled={isSubmitting}
-                                    className="w-full bg-[#0A0A0A] text-[#2563EB] py-6 rounded-2xl font-black text-xl border border-[#2563EB]/30 hover:bg-[#2563EB] hover:text-[#0A0A0A] transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-blue-500/5 mt-4"
+                                    className="w-full bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] py-6 rounded-md font-black text-lg border-none hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-blue-500/5 mt-4"
                                 >
                                     {isSubmitting ? (
                                         <>

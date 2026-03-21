@@ -9,6 +9,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+body {
+  @apply overflow-x-hidden w-full;
+}
+
 /* ─────────────────────────────────────────────
    Design Tokens  (@theme — Tailwind v4)
 ───────────────────────────────────────────── */
@@ -408,14 +412,14 @@ small, .text-sm {
   .btn-premium {
     font-family: 'Inter', sans-serif;
     font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     line-height: 1;
     padding: 14px 36px;
     border-radius: 8px;
-    border: 2px solid #2563EB;
-    background: #2563EB;
-    color: #FFFFFF;
+    border: none;
+    background: linear-gradient(90deg, #1D4ED8, #2563EB);
+    color: #FFFFFF !important;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -424,6 +428,7 @@ small, .text-sm {
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   }
   .btn-premium::after {
     content: '';
@@ -439,11 +444,10 @@ small, .text-sm {
     left: 150%;
   }
   .btn-premium:hover {
-    background: #1D4ED8;
-    border-color: #1D4ED8;
-    color: #FFFFFF;
+    background: linear-gradient(90deg, #1E40AF, #1D4ED8);
+    color: #FFFFFF !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
   }
   .btn-premium:active {
     transform: translateY(0);

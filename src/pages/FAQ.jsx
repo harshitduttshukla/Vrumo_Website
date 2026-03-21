@@ -48,7 +48,7 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
                 className="w-full p-8 flex items-center justify-between text-left group"
             >
                 <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#2563EB] text-white' : 'bg-[#2563EB]/10 text-[#2563EB]'}`}>
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8]' : 'bg-[#2563EB]/10 text-[#2563EB]'}`}>
                         <faq.icon size={24} />
                     </div>
                     <div>
@@ -126,7 +126,7 @@ const FAQ = () => {
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6 uppercase tracking-widest font-black text-xs">
-                            <Link to="/contact" className="bg-[#0A0A0A] text-[#2563EB] px-12 py-6 rounded-md flex items-center justify-center gap-3 border border-[#2563EB]/30 hover:bg-[#2563EB] hover:text-[#0A0A0A] transition-all duration-300">
+                            <Link to="/contact" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white px-12 py-6 rounded-md flex items-center justify-center gap-3 border-none hover:from-[#1E40AF] hover:to-[#1D4ED8] hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 transition-all duration-300">
                                 Contact Support <ArrowRight className="w-4 h-4" />
                             </Link>
                             <Link to="/booking" className="bg-white text-[#0A0A0A] border border-[#EFEFEF] px-12 py-6 rounded-md hover:border-[#2563EB] hover:text-[#2563EB] transition-all">

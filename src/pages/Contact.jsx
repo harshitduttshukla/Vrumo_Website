@@ -14,14 +14,14 @@ const Contact = () => {
             <div className="max-w-7xl mx-auto space-y-32 relative z-10">
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">Contact <span className="text-[#2563EB]">Us</span></h1>
-                        <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-[0.03em] break-words">Contact <span className="text-[#2563EB]">Us</span></h1>
+                        <p className="text-base sm:text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
                             Have a question or request? Our ecosystem is built for you. Reach out anytime.
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-20">
+                <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20">
                     {/* Information */}
                     <div className="space-y-12">
                         <div className="grid gap-8">
@@ -80,7 +80,7 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <button className="w-full bg-[#2563EB] text-white py-6 rounded-md font-black text-lg border border-[#2563EB] hover:bg-[#0A0A0A] hover:text-[#2563EB] transition-all duration-300 flex items-center justify-center gap-4 group">
+                            <button className="w-full bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] py-6 rounded-md font-black text-lg border-none hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all duration-300 flex items-center justify-center gap-4 group">
                                 Send Message <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </button>
                         </form>

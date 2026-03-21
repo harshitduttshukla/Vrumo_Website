@@ -35,8 +35,8 @@ const Maintenance = () => {
                             Certified mechanics and precision diagnostics delivered right to your garage. We keep your vehicle running like new.
                         </motion.p>
                         <motion.div variants={itemVariants} className="pt-8">
-                            <Link to="/booking?service=maintenance" className="btn-premium inline-flex items-center gap-4 bg-[#2563EB] text-white hover:bg-royal transition-all">
-                                Book Service <ArrowRight className="w-5 h-5" />
+                            <Link to="/booking?service=maintenance" className="btn-premium inline-flex items-center gap-4 transition-all hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]">
+                                Book Now <ArrowRight className="w-5 h-5" />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -77,7 +77,7 @@ const Maintenance = () => {
                 <div className="max-w-7xl mx-auto text-center mb-16">
                     <h2 className="text-4xl font-bold section-title">Why Professional Maintenance?</h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {[
                         { title: "Longevity", desc: "Regular maintenance extends the healthy life of your vehicle by up to 40%.", icon: "01" },
                         { title: "Resale Value", desc: "A detailed service history is the key to getting the best market price.", icon: "02" },
@@ -115,7 +115,7 @@ const Maintenance = () => {
             <section className="py-24 px-6 bg-[#F8F8F8] border-y border-[#EFEFEF]">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-4xl font-bold mb-20 text-center section-title">Step-by-Step Flow</h2>
-                    <div className="grid md:grid-cols-3 gap-16 relative">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 relative">
                         {[
                             { step: "01", title: "Select Package", desc: "Choose the service level needed for your vehicle.", img: "/images/step_select.png" },
                             { step: "02", title: "Book Instantly", desc: "Select a date and shared your doorstep location.", img: "/images/step_book.png" },
@@ -141,7 +141,7 @@ const Maintenance = () => {
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-black">Ready for a checkup?</h2>
                     <p className="text-lg text-gray-400">Join thousands of premium owners who trust Vrumo for maintenance.</p>
-                    <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
+                    <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all inline-block">
                         Book Service Now
                     </Link>
                 </div>

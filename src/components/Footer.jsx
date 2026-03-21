@@ -55,7 +55,7 @@ const Footer = () => {
             <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-[#2563EB]/3 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-20 lg:gap-x-20 mb-28">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-x-20 mb-28 text-center md:text-left">
                     {/* Brand Identity */}
                     <div className="lg:col-span-4 space-y-12">
                         <div className="space-y-8">
@@ -100,7 +100,7 @@ const Footer = () => {
                     </div>
 
                     {/* Navigation */}
-                    <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                         {sections.map((section, idx) => (
                             <div key={idx} className="space-y-10">
                                 <h4 className="text-[10px] font-black text-[#0A0A0A] uppercase tracking-[0.4em] flex items-center gap-3">

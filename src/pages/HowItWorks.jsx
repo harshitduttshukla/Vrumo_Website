@@ -27,7 +27,7 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Steps Section */}
-                <div className="grid md:grid-cols-3 gap-16 relative">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 relative">
                     {/* Connecting Line (Desktop) */}
                     <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-px bg-[#E5E5E5]" />
                     
@@ -49,8 +49,8 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Detailed Walkthrough */}
-                <section className="grid lg:grid-cols-2 gap-20 items-center bg-[#F8F8F8] rounded-2xl p-12 md:p-20 border border-[#EFEFEF]">
-                    <div className="space-y-12">
+                <section className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center bg-[#F8F8F8] rounded-2xl p-6 md:p-12 lg:p-20 border border-[#EFEFEF] my-16 sm:my-24">
+                    <div className="space-y-6 text-center lg:text-left">
                         <h2 className="text-4xl md:text-6xl font-bold tracking-[0.03em]">The Process</h2>
                         <div className="space-y-8">
                             {[
@@ -71,7 +71,7 @@ const HowItWorks = () => {
                         </div>
                     </div>
                     <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#EFEFEF] bg-white flex items-center justify-center group">
-                        <img src="/images/hero_main.png" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]" alt="Vrumo Process" />
+                        <img loading="lazy" src="/images/hero_main.png" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]" alt="Vrumo Process" />
                         <div className="absolute inset-0 bg-linear-to-t from-white/50 via-transparent to-transparent" />
                     </div>
                 </section>
@@ -80,7 +80,7 @@ const HowItWorks = () => {
                 <div className="py-32 rounded-2xl bg-white text-[#0A0A0A] text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
+                        <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

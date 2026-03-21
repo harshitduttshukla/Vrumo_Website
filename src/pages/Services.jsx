@@ -49,7 +49,7 @@ const Services = () => {
                             className="group relative overflow-hidden rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
                         >
                             <div className="aspect-video relative overflow-hidden rounded-t-xl">
-                                <img src={service.image} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt={service.title} />
+                                <img loading="lazy" src={service.image} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt={service.title} />
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
                             </div>
                             <div className="p-10 space-y-6 flex-1 flex flex-col justify-between">

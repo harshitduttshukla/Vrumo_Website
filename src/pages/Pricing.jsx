@@ -70,7 +70,7 @@ const PricingCard = ({ plan, index }) => (
 
         <div className="relative -mx-9 -mt-9 mb-10 overflow-hidden h-48">
             <img 
-                src={plan.image} 
+                src="/images/ecosystem_doorstep_clean.png" 
                 alt={plan.name} 
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -80,7 +80,7 @@ const PricingCard = ({ plan, index }) => (
                 <plan.icon className="w-5 h-5 text-[#2563EB]" strokeWidth={2} />
             </div>
             {plan.popular && (
-                <div className="absolute top-4 left-4 bg-[#2563EB] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] shadow-lg">
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] shadow-lg">
                     Popular
                 </div>
             )}
@@ -111,7 +111,7 @@ const PricingCard = ({ plan, index }) => (
             to={`/booking?service=${plan.name.toLowerCase()}`}
             className={`w-full py-4 rounded-lg font-semibold tracking-[-0.01em] text-[15px] transition-all duration-300 text-center flex items-center justify-center gap-4 relative overflow-hidden group/btn ${
                 plan.popular
-                    ? 'bg-[#0A0A0A] text-[#2563EB] border-2 border-[#0A0A0A] hover:bg-[#2563EB] hover:border-[#2563EB] hover:text-[#0A0A0A] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,99,235,0.35)]'
+                    ? 'bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white border-none hover:from-[#1E40AF] hover:to-[#1D4ED8] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]'
                     : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB] hover:-translate-y-0.5'
             }`}
         >
@@ -133,7 +133,7 @@ const Pricing = () => {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                     {ecosystemPricing.map((plan, idx) => (
                         <PricingCard key={plan.name} plan={plan} index={idx} />
                     ))}

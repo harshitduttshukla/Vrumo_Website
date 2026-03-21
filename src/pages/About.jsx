@@ -63,13 +63,14 @@ const About = () => {
                     <div className="relative aspect-square">
                         <div className="absolute inset-0 bg-[#2563EB]/5 rounded-2xl blur-[80px]" />
                         <div className="relative h-full rounded-2xl overflow-hidden border border-[#EFEFEF] group">
-                            <img src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
+                            <img loading="lazy" src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
                         </div>
                     </div>
                 </section>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-20 border-y border-[#EFEFEF] bg-[#F8F8F8] rounded-2xl px-12">
+                <section className="py-12 bg-white">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 lg:py-20 border-y border-[#EFEFEF] bg-[#F8F8F8] rounded-2xl px-6 lg:px-12">
                     {stats.map((stat, i) => (
                         <div key={i} className="text-center space-y-4">
                             <div className="w-12 h-12 bg-white rounded-full mx-auto flex items-center justify-center border border-[#EFEFEF]">
@@ -85,7 +86,7 @@ const About = () => {
                 <div className="py-32 rounded-2xl bg-white text-black text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform flex items-center gap-4">
+                        <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

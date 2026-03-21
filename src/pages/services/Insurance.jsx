@@ -35,8 +35,8 @@ const Insurance = () => {
                             Reliable coverage and zero-hassle claims for your precious car or bike. Protection that evolves with you.
                         </motion.p>
                         <motion.div variants={itemVariants} className="pt-8">
-                            <Link to="/booking?service=insurance" className="btn-premium inline-flex items-center gap-4 bg-[#2563EB] text-white hover:bg-royal transition-all">
-                                Get Quote <ArrowRight className="w-5 h-5" />
+                            <Link to="/booking?service=insurance" className="btn-premium inline-flex items-center gap-4 transition-all hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]">
+                                Book Now <ArrowRight className="w-5 h-5" />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -78,7 +78,7 @@ const Insurance = () => {
                 <div className="max-w-7xl mx-auto text-center mb-16">
                     <h2 className="text-4xl font-bold section-title">Smart Protection</h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {[
                         { title: "Paperless Logic", desc: "No more long forms. Everything from quotes to claims is 100% digital.", icon: "01" },
                         { title: "No Hidden Costs", desc: "Honest, affordable pricing with transparent terms and no entry-level traps.", icon: "02" },
@@ -116,7 +116,7 @@ const Insurance = () => {
             <section className="py-24 px-6 bg-[#F8F8F8] border-y border-[#EFEFEF]">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-4xl font-bold mb-20 text-center section-title">Digital Path to Safety</h2>
-                    <div className="grid md:grid-cols-3 gap-16 relative">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 relative">
                         {[
                             { step: "01", title: "Select Coverage", desc: "Choose the protection level for your vehicle.", img: "/images/step_select.png" },
                             { step: "02", title: "Digital Verify", desc: "Instantly upload details on our platform.", img: "/images/step_book.png" },
@@ -142,8 +142,8 @@ const Insurance = () => {
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-black">Secure your legacy today.</h2>
                     <p className="text-lg text-gray-400">Thousands of smart owners have already switched to Vrumo Protection.</p>
-                    <Link to="/booking" className="bg-[#2563EB] text-white px-10 py-4 rounded-lg font-semibold text-[14px] uppercase tracking-[0.1em] hover:scale-105 transition-transform inline-block">
-                        Get Your Policy Now
+                    <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all inline-block">
+                        Get Your Policy
                     </Link>
                 </div>
             </section>
