@@ -74,7 +74,7 @@ const Footer = () => {
                                 <Instagram size={20} />
                             </a>
                             {[Twitter, Facebook, Youtube].map((Social, i) => (
-                                <a key={i} href="#" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-[#888888]">
+                                <a key={i} href="#" className="w-12 h-12 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] flex items-center justify-center hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all duration-300 text-silver">
                                     <Social size={20} />
                                 </a>
                             ))}
@@ -92,7 +92,7 @@ const Footer = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <span className="text-sm font-bold text-[#0A0A0A] tracking-tight">{contact.text}</span>
-                                        <span className="text-[10px] uppercase font-black tracking-widest text-[#888888]">{contact.sub}</span>
+                                        <span className="text-[10px] uppercase font-black tracking-widest text-silver">{contact.sub}</span>
                                     </div>
                                 </div>
                             ))}
@@ -127,14 +127,14 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-14">
                         <div className="flex items-center gap-3">
                             <ShieldCheck size={20} className="text-[#2563EB]" />
-                            <span className="text-[10px] font-black text-[#888888] uppercase tracking-[0.4em]">Secure Protocol</span>
+                            <span className="text-[10px] font-black text-silver uppercase tracking-[0.4em]">Secure Protocol</span>
                         </div>
-                        <p className="text-[11px] font-black text-[#888888] uppercase tracking-[0.3em]">
+                        <p className="text-silver text-sm max-w-xs mt-4">
                             © {currentYear} VRUMO ECOSYSTEM. ALL RIGHTS RESERVED.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-10 text-[10px] font-black text-[#888888] uppercase tracking-[0.3em]">
+                    <div className="flex items-center gap-10 text-[10px] font-black text-silver uppercase tracking-[0.3em]">
                         {['Privacy', 'T&C', 'Status'].map((item) => (
                             <Link key={item} to="#" className="hover:text-[#2563EB] transition-all">
                                 {item}

@@ -207,7 +207,12 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group">
-                            <img src="/images/hero_doorstep.png" loading="lazy" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2s]" alt="Vrumo Doorstep Service" />
+                            <img 
+                                src="/images/ecosystem_doorstep_clean.png" 
+                                loading="lazy" 
+                                className="w-full h-full object-cover rounded-xl" 
+                                alt="Vrumo Doorstep Service" 
+                            />
                             <div className="absolute inset-0 bg-black/20" />
                         </div>
                     </div>
@@ -217,29 +222,80 @@ const Home = () => {
             {/* --- 4. HOW IT WORKS --- */}
             <section className="py-24 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h2 className="mb-20 text-[#0A0A0A]">3 Steps to Core Care</h2>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-20 text-[#0A0A0A]"
+                    >
+                        3 Steps to Core Care
+                    </motion.h2>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                    <motion.div 
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={{
+                            visible: { transition: { staggerChildren: 0.3 } }
+                        }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
+                    >
                         {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-[#2563EB]/20" />
+                        <motion.div 
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+                            style={{ originX: 0 }}
+                            className="hidden md:block absolute top-[25%] left-[20%] right-[20%] h-0.5 bg-linear-to-r from-[#2563EB]/0 via-[#2563EB]/40 to-[#2563EB]/0" 
+                        />
 
                         {[
                             { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", img: "/images/step_select.png" },
                             { step: "02", title: "Book Instantly", desc: "Pick a date and doorstep location.", img: "/images/step_book.png" },
                             { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", img: "/images/step_results.png" }
                         ].map((item, i) => (
-                            <div key={i} className="space-y-6 relative z-10 text-center">
-                                <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto shadow-xl border-4 border-white mb-6">
-                                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                            <motion.div 
+                                key={i} 
+                                variants={{
+                                    hidden: { opacity: 0, y: 30 },
+                                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                                }}
+                                className="space-y-6 relative z-10 text-center group"
+                            >
+                                <div className="relative w-32 h-32 mx-auto mb-6">
+                                    {/* Rotating Border Layer (Thin & Anticlockwise) */}
+                                    <div className="absolute inset-[-2px] rounded-2xl overflow-hidden group-hover:inset-[-4px] transition-all duration-300">
+                                        <motion.div 
+                                            animate={{ rotate: -360 }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                            className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_70%,#2563EB_100%)] opacity-60"
+                                        />
+                                    </div>
+
+                                    <motion.div 
+                                        whileHover={{ scale: 1.05 }}
+                                        className="w-full h-full rounded-2xl overflow-hidden shadow-xl border-4 border-white relative z-10 bg-white"
+                                    >
+                                        <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-[#2563EB]/10 group-hover:bg-transparent transition-all" />
+                                    </motion.div>
                                 </div>
                                 <div className="space-y-2">
-                                    <span className="text-[#2563EB] font-black text-xl italic opacity-30">{item.step}</span>
+                                    <motion.span 
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 0.3, x: 0 }}
+                                        transition={{ delay: 0.8 + (i * 0.2) }}
+                                        className="text-[#2563EB] font-black text-xl italic"
+                                    >
+                                        {item.step}
+                                    </motion.span>
                                     <h4 className="font-bold text-[#0A0A0A] text-lg">{item.title}</h4>
                                     <p className="text-[#555555] text-[15px] leading-[1.7] max-w-[200px] mx-auto">{item.desc}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -286,17 +342,38 @@ const Home = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[1, 2, 3].map(i => (
-                            <div key={i} className="relative p-9 rounded-xl bg-white border border-gray-100 shadow-sm space-y-6 hover:shadow-xl hover:scale-[1.02] transition-all overflow-hidden">
+                        {[
+                            {
+                                name: "Rahul Sharma",
+                                role: "Premium Sedan Owner",
+                                quote: "The doorstep foam wash is a game-changer. My car looks showroom-fresh without me ever leaving my living room. Extremely professional team!",
+                                img: "/images/customer_rahul.png"
+                            },
+                            {
+                                name: "Priya Patel",
+                                role: "Daily Commuter",
+                                quote: "Vrumo's maintenance service is so transparent. The health report they sent to my phone was detailed and easy to understand. Highly recommended!",
+                                img: "/images/customer_priya.png"
+                            },
+                            {
+                                name: "Arjun Singh",
+                                role: "SUV Enthusiast",
+                                quote: "Selling my old car through the Vrumo ecosystem was stress-free. I got a much better price than local dealers and the paperwork was instant.",
+                                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop"
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="relative p-9 rounded-xl bg-white border border-gray-100 shadow-sm space-y-6 hover:shadow-xl hover:scale-[1.02] transition-all overflow-hidden group">
                                 <div className="flex gap-1">
                                     <span className="text-[#2563EB] text-xl font-bold italic">Excellent Service</span>
                                 </div>
-                                <p className="text-[#555555] italic text-[15px] leading-[1.7]">"The doorstep service is incredible. Extremely pro and my vehicle looks and runs perfectly every time."</p>
+                                <p className="text-[#555555] italic text-[15px] leading-[1.7]">"{item.quote}"</p>
                                 <div className="flex items-center gap-4 pt-4 border-t border-[#EFEFEF]">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE]" />
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-50">
+                                        <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+                                    </div>
                                     <div>
-                                        <h4 className="text-sm font-semibold text-[#0A0A0A]">Customer Name</h4>
-                                        <p className="text-[10px] text-[#888888] font-medium uppercase tracking-[0.08em]">Premium Owner</p>
+                                        <h4 className="text-sm font-semibold text-[#0A0A0A]">{item.name}</h4>
+                                        <p className="text-[10px] text-[#888888] font-medium uppercase tracking-[0.08em]">{item.role}</p>
                                     </div>
                                 </div>
                             </div>
