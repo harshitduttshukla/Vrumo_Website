@@ -41,10 +41,9 @@ const Footer = () => {
         {
             title: 'COMPANY',
             links: [
-                { name: 'About Vrumo', path: '/about' },
-                { name: 'Meet Founders', path: '/founders' },
-                { name: 'Sustainability', path: '/about' },
-                { name: 'Careers', path: '#' },
+                { name: 'About', path: '/about' },
+                { name: 'Founders', path: '/founders' },
+                { name: 'Contact', path: '/contact' },
             ]
         }
     ];

@@ -20,9 +20,6 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
         { name: 'Pricing', path: '/pricing' },
-        { name: 'About', path: '/about' },
-        { name: 'Founders', path: '/founders' },
-        { name: 'Contact', path: '/contact' },
     ];
 
     const navContainerVariants = {
@@ -72,7 +69,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pointer-events-none pt-4">
+        <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pointer-events-none pt-4 px-4 sm:px-6">
             <motion.nav
                 variants={navContainerVariants}
                 initial="hidden"
@@ -80,9 +77,9 @@ const Navbar = () => {
                 className={`
                     pointer-events-auto
                     relative flex items-center justify-between
-                    w-full max-w-5xl px-5 py-3 sm:px-6 sm:py-3.5
+                    w-full max-w-5xl px-5 py-3.5 sm:px-6 sm:py-3.5
                     transition-all duration-700 ease-[0.16,1,0.3,1]
-                    bg-white md:rounded-full border border-blue-400 shadow-md md:shadow-xl mx-auto
+                    bg-white/95 backdrop-blur-md rounded-full border border-blue-400/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] md:shadow-xl mx-auto
                 `}
             >
                 {/* Left Logo */}

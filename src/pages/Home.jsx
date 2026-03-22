@@ -27,8 +27,8 @@ const ServiceCardHero = ({ service, idx }) => (
         variants={itemVariants}
         className="group relative flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full"
     >
-        <Link to={service.link} className="block h-full p-4">
-            <div className="relative h-44 overflow-hidden rounded-xl mb-4">
+        <Link to={service.link} className="block h-full p-3 sm:p-4">
+            <div className="relative h-40 sm:h-44 overflow-hidden rounded-xl mb-3 sm:mb-4">
                 <img 
                     src={service.image} 
                     alt={service.title} 
@@ -37,9 +37,9 @@ const ServiceCardHero = ({ service, idx }) => (
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
             </div>
-            <div className="space-y-2">
-                <h3 className="text-[15px] font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors">{service.title}</h3>
-                <p className="text-[11px] text-[#555555] line-clamp-2 leading-relaxed">{service.description}</p>
+            <div className="space-y-1.5 sm:space-y-2">
+                <h3 className="text-[14px] sm:text-[15px] font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors line-clamp-1">{service.title}</h3>
+                <p className="text-[10px] sm:text-[11px] text-[#555555] line-clamp-2 leading-relaxed">{service.description}</p>
             </div>
         </Link>
     </motion.div>
@@ -88,7 +88,7 @@ const Home = () => {
                         className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center"
                     >
                         {/* LEFT: 4 Service Cards */}
-                        <div className="order-2 lg:order-1 grid grid-cols-2 gap-4">
+                        <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                             {services.map((service, idx) => (
                                 <ServiceCardHero key={idx} service={service} idx={idx} />
                             ))}
@@ -98,16 +98,7 @@ const Home = () => {
                         <div className="order-1 lg:order-2 space-y-8 relative z-10">
                             <div className="space-y-10 lg:pr-12 text-center lg:text-left">
                             <div className="space-y-6">
-                                <motion.div 
-                                    variants={itemVariants}
-                                    className="inline-flex items-center justify-center lg:justify-start gap-2 px-3 py-1.5 rounded-full border border-blue-600 bg-white shadow-sm"
-                                >
-                                    <div className="flex items-center justify-center bg-blue-600 w-6 h-6 rounded-md">
-                                        <span className="text-white text-[10px] font-bold tracking-wider">IIT</span>
-                                    </div>
-                                    <span className="text-[#0A0A0A] font-bold text-sm">IIT Kanpur Founders</span>
-                                    <span className="text-black text-sm">&middot; Deep tech, built in UP</span>
-                                </motion.div>
+
                                 <motion.h1 
                                     variants={itemVariants}
                                     className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-[0.03em] text-[#0A0A0A]"
