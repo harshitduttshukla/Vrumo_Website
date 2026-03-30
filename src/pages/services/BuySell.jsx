@@ -5,6 +5,12 @@ import {
     ArrowRight,
 } from 'lucide-react';
 
+// Import images
+import buySellImg from '../../assets/images/buy_sell_doorstep_v2.png';
+import stepSelectImg from '../../assets/images/step_select.png';
+import stepBookImg from '../../assets/images/step_book.png';
+import stepResultsImg from '../../assets/images/step_results.png';
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -61,13 +67,13 @@ const BuySell = () => {
                                     <div className="w-8 h-8 rounded-full bg-[#2563EB]/10 flex items-center justify-center group-hover:bg-[#2563EB]/20 transition-colors">
                                         <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
                                     </div>
-                                    <span className="text-[#2C2C2C] font-medium">{item}</span>
+                                    <span className="text-charcoal font-medium">{item}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
                     <div className="rounded-2xl overflow-hidden border border-[#EFEFEF] aspect-video relative">
-                        <img src="/images/buy_sell_doorstep_v2.png" loading="lazy" className="w-full h-full object-cover" alt="Doorstep Vehicle Sale" />
+                        <img src={buySellImg} loading="lazy" className="w-full h-full object-cover" alt="Doorstep Vehicle Sale" />
                     </div>
                 </div>
             </section>
@@ -117,9 +123,9 @@ const BuySell = () => {
                     <h2 className="text-4xl font-bold mb-20 text-center section-title">Seamless Handover</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 relative">
                         {[
-                            { step: "01", title: "Free Inspection", desc: "Our expert arrives at your doorstep for a pro check.", img: "/images/step_select.png" },
-                            { step: "02", title: "Instant Quote", desc: "Accept our digital offer based on vehicle health.", img: "/images/step_book.png" },
-                            { step: "03", title: "Get Paid", desc: "Immediate transfer and zero-hassle documentation.", img: "/images/step_results.png" }
+                            { step: "01", title: "Free Inspection", desc: "Our expert arrives at your doorstep for a pro check.", img: stepSelectImg },
+                            { step: "02", title: "Instant Quote", desc: "Accept our digital offer based on vehicle health.", img: stepBookImg },
+                            { step: "03", title: "Get Paid", desc: "Immediate transfer and zero-hassle documentation.", img: stepResultsImg }
                         ].map((item, i) => (
                             <div key={i} className="relative z-10 text-center space-y-6">
                                 <div className="w-24 h-24 rounded-2xl overflow-hidden mx-auto shadow-lg border-4 border-white mb-6">
@@ -141,7 +147,7 @@ const BuySell = () => {
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-black">What's your car's worth?</h2>
                     <p className="text-lg text-gray-400">Get a free digital valuation in under 2 minutes.</p>
-                    <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all inline-block">
+                    <Link to="/booking" className="bg-linear-to-r from-royal to-primary text-white! hover:from-[#1E40AF] hover:to-royal px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-widest hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all inline-block">
                         Submit Vehicle Details
                     </Link>
                 </div>

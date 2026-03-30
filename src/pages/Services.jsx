@@ -4,30 +4,36 @@ import {
     ArrowRight 
 } from 'lucide-react';
 
+// Import images
+import vWashImg from '../assets/images/v_wash_doorstep.png';
+import vMaintenanceImg from '../assets/images/v_maintenance_doorstep.png';
+import vInsuranceImg from '../assets/images/v_insurance_doorstep.png';
+import buySellImg from '../assets/images/buy_sell_doorstep_v2.png';
+
 const Services = () => {
     const services = [
         { 
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep. Eco-friendly and fast.",
-            image: "/images/v_wash_doorstep.png",
+            image: vWashImg,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert diagnostics and repairs by certified mechanics.",
-            image: "/images/v_maintenance_doorstep.png",
+            image: vMaintenanceImg,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Reliable coverage and digital-first claims processing.",
-            image: "/images/v_insurance_doorstep.png",
+            image: vInsuranceImg,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value and verified deals for cars and bikes.",
-            image: "/images/buy_sell_doorstep_v2.png",
+            image: buySellImg,
             link: "/services/buy-sell"
         }
     ];

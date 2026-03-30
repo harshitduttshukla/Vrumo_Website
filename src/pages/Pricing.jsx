@@ -1,118 +1,177 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Zap, Sparkles, Droplets, Wrench, ShieldCheck, ArrowLeftRight } from 'lucide-react';
+import { Check, ArrowRight, Zap, Sparkles, Droplets, Wrench, ShieldCheck, ArrowLeftRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const ecosystemPricing = [
-    {
-        name: "Vehicle Wash",
-        category: "Care",
-        subtitle: "Doorstep deep foam wash",
-        price: "199",
-        unit: "/ wash",
-        image: "/images/v_wash_doorstep.png",
-        icon: Droplets,
-        features: ["Foam Wash", "Tyre Dressing", "Interior Vacuum", "Eco-Friendly"],
-        popular: false,
-        buttonText: "Book Wash"
-    },
+// Import images
+import vWashImg from '../assets/images/v_wash_doorstep.png';
+import vMaintenanceImg from '../assets/images/v_maintenance_doorstep.png';
+import vInsuranceImg from '../assets/images/v_insurance_doorstep.png';
+import buySellImg from '../assets/images/buy_sell_doorstep_v2.png';
+
+const WASH_PACKAGES = {
+    instant: [
+        { 
+            id: 'swift', 
+            name: 'Vrumo Swift Wash', 
+            subtitle: 'Quick exterior refresh at doorstep',
+            price: "299",
+            unit: "/ session",
+            image: vWashImg,
+            features: ['PH-neutral shampoo foam', 'Pressure rinse (Microfiber dry)', 'Tyre & rim wipe (dressing)', 'Windshield clean'],
+            popular: false,
+            buttonText: "Book Swift"
+        },
+        { 
+            id: 'signature', 
+            name: 'Vrumo Signature Wash', 
+            subtitle: 'Full exterior + interior refresh',
+            price: "549",
+            unit: "/ session",
+            image: vWashImg,
+            features: ['Everything in Swift Wash', 'Dashboard & console UV dressing', 'Full interior vacuum', 'Odour neutraliser spray'],
+            popular: true,
+            buttonText: "Book Signature"
+        },
+    ],
+    monthly: [
+        { 
+            id: 'colony_care', 
+            name: 'Vrumo Colony Care', 
+            subtitle: 'Colony / Open Parking Monthly',
+            price: "999",
+            unit: "/ month",
+            image: vWashImg,
+            features: ['4 High-pressure foam washes', 'Pressure rinse + Microfiber dry', 'Tyre cleaning + shine', 'Before/after photo proof'],
+            popular: false,
+            buttonText: "Join Colony"
+        },
+        { 
+            id: 'society_shield', 
+            name: 'Vrumo Society Shield', 
+            subtitle: 'Gated Society Monthly',
+            price: "2000",
+            unit: "/ month",
+            image: vWashImg,
+            features: ['13-14 Alt-day bucket washes', 'PH-neutral lab-tested chemicals', 'Weekly full interior care', 'Dedicated RWA slot'],
+            popular: true,
+            buttonText: "Join Society"
+        },
+    ],
+    deep: [
+        { 
+            id: 'cabin', 
+            name: 'Cabin Detox', 
+            subtitle: 'Interior-only deep detailing',
+            price: "1499",
+            unit: "/ session",
+            image: vWashImg,
+            features: ['Full vacuum & all surfaces', 'Dashboard/Vents/Consoles', 'Fabric dry-shampoo method', 'Odour eliminator spray'],
+            popular: false,
+            buttonText: "Book Detox"
+        },
+        { 
+            id: 'grand', 
+            name: 'Grand Detox', 
+            subtitle: 'Complete interior + exterior',
+            price: "2499",
+            unit: "/ session",
+            image: vWashImg,
+            features: ['Full Exterior clay & wax', 'Full Interior deep clean', 'Engine bay external wipe', 'Nano ceramic spray sealant'],
+            popular: true,
+            buttonText: "Book Grand"
+        },
+    ],
+};
+
+const VALUE_SERVICES = [
     {
         name: "Maintenance",
-        category: "Expert",
         subtitle: "Professional diagnostics",
         price: "799",
         unit: "/ service",
-        image: "/images/v_maintenance_doorstep.png",
+        image: vMaintenanceImg,
         icon: Wrench,
         features: ["Engine Check", "Oil Change", "Brake Check", "Digital Report"],
-        popular: false,
         buttonText: "Book Checkup"
     },
     {
         name: "Insurance",
-        category: "Safety",
         subtitle: "Monthly protection",
         price: "499",
         unit: "/ month",
-        image: "/images/v_insurance_doorstep.png",
+        image: vInsuranceImg,
         icon: ShieldCheck,
         features: ["Zero-Depreciation", "Cashless Claim", "Digital-First", "3rd Party Prot."],
-        popular: false,
         buttonText: "Get Quote"
     },
     {
         name: "Buy & Sell",
-        category: "Deals",
         subtitle: "Professional valuation",
         price: "0",
         unit: "Fee",
-        image: "/images/buy_sell_doorstep_v2.png",
+        image: buySellImg,
         icon: ArrowLeftRight,
         features: ["200+ Point Inspection", "Verified History", "Instant Payout", "RC Transfer"],
-        popular: false,
         buttonText: "Get Valuation"
     }
 ];
 
-const PricingCard = ({ plan, index }) => (
+const PricingCard = ({ plan, index, isSmall = false }) => (
     <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: index * 0.1 }}
         viewport={{ once: true }}
         whileHover={{ y: -6 }}
-        className={`relative overflow-hidden flex flex-col group rounded-2xl bg-white border p-9 transition-all ${
-            plan.popular ? 'border-[#2563EB] border-2 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(37,99,235,0.12)]' : 'border-[#EFEFEF] shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)]'
-        } hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)]`}
+        className={`relative overflow-hidden flex flex-col group rounded-2xl bg-white border p-6 transition-all ${
+            plan.popular ? 'border-[#2563EB] border-2 shadow-2xl' : 'border-[#EFEFEF] shadow-sm'
+        } hover:shadow-2xl`}
     >
-        {/* Gold gradient top line */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+        {plan.popular && (
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+        )}
 
-        <div className="relative -mx-9 -mt-9 mb-10 overflow-hidden h-48">
+        <div className={`relative -mx-6 -mt-6 mb-8 overflow-hidden ${isSmall ? 'h-32' : 'h-48'}`}>
             <img 
-                src="/images/ecosystem_doorstep_clean.png" 
+                src={plan.image} 
                 alt={plan.name} 
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
-            <div className="absolute top-4 right-4 w-10 h-10 rounded-[12px] bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] flex items-center justify-center shadow-lg">
-                <plan.icon className="w-5 h-5 text-[#2563EB]" strokeWidth={2} />
-            </div>
             {plan.popular && (
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] shadow-lg">
-                    Popular
+                <div className="absolute top-3 left-3 bg-[#2563EB] text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
+                    Popular Choice
                 </div>
             )}
         </div>
 
-        <div className="mb-6 space-y-2">
-            <div>
-                <h3 className="text-[24px] font-bold text-[#0A0A0A]">{plan.name}</h3>
-                <p className="text-[11px] font-medium text-[#888888] uppercase tracking-[0.1em]">{plan.subtitle}</p>
-            </div>
+        <div className="mb-4">
+            <h3 className={`${isSmall ? 'text-xl' : 'text-2xl'} font-bold text-[#0A0A0A]`}>{plan.name}</h3>
+            <p className="text-[10px] font-bold text-[#888888] uppercase tracking-[0.15em] mt-1">{plan.subtitle}</p>
         </div>
 
-        <div className="flex items-baseline gap-2 mb-10">
-            <span className="text-[56px] font-bold text-[#0A0A0A]">₹{plan.price}</span>
-            <span className="text-[#888888] font-semibold uppercase text-[11px] tracking-[0.1em]">{plan.unit}</span>
+        <div className="flex items-baseline gap-2 mb-8">
+            <span className={`${isSmall ? 'text-3xl' : 'text-4xl'} font-black text-[#0A0A0A]`}>₹{plan.price}</span>
+            <span className="text-[#888888] font-bold uppercase text-[10px] tracking-widest">{plan.unit}</span>
         </div>
 
-        <ul className="space-y-6 mb-12 grow pt-8 border-t border-[#EFEFEF]">
+        <ul className="space-y-4 mb-8 grow border-t border-[#EFEFEF] pt-6">
             {plan.features.map((feature, fIdx) => (
-                <li key={fIdx} className="flex gap-4 items-center">
-                    <Check className="w-4 h-4 text-[#2563EB]" strokeWidth={1.8} />
-                    <span className="text-[#555555] text-[15px] font-normal leading-[1.7]">{feature}</span>
+                <li key={fIdx} className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" strokeWidth={2} />
+                    <span className="text-[#555555] text-sm leading-snug">{feature}</span>
                 </li>
             ))}
         </ul>
 
         <Link
             to={`/booking?service=${plan.name.toLowerCase()}`}
-            className={`w-full py-4 rounded-lg font-semibold tracking-[-0.01em] text-[15px] transition-all duration-300 text-center flex items-center justify-center gap-4 relative overflow-hidden group/btn ${
+            className={`w-full py-4 rounded-xl font-bold tracking-tight text-sm transition-all duration-300 text-center flex items-center justify-center gap-3 active:scale-[0.98] ${
                 plan.popular
-                    ? 'bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white border-none hover:from-[#1E40AF] hover:to-[#1D4ED8] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]'
-                    : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB] hover:-translate-y-0.5'
+                    ? 'bg-[#2563EB] text-white hover:bg-royal hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]'
+                    : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB]'
             }`}
         >
             {plan.buttonText} <ArrowRight className="w-4 h-4" />
@@ -121,37 +180,89 @@ const PricingCard = ({ plan, index }) => (
 );
 
 const Pricing = () => {
+    const [segment, setSegment] = useState('instant');
+
+    const segments = [
+        { id: 'instant', name: 'Instant Wash', icon: Zap },
+        { id: 'monthly', name: 'Monthly Plans', icon: Droplets },
+        { id: 'deep', name: 'Deep Detailing', icon: Sparkles },
+    ];
+
     return (
-        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden">
-            <div className="max-w-7xl mx-auto space-y-32 relative z-10">
-                <div className="text-center space-y-8">
+        <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6">
+            <div className="max-w-7xl mx-auto space-y-32">
+                <div className="text-center space-y-12">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                        <h1>Ecosystem <span className="text-[#2563EB]">Pricing</span></h1>
-                        <p className="text-xl text-[#555555] max-w-2xl mx-auto leading-relaxed font-normal">
-                            Transparent, direct, and zero-hassle pricing for every vehicle care ritual.
+                        <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">Pricing 2025</span>
+                        <h1 className="text-5xl md:text-7xl">Transparent <span className="text-[#2563EB]">Pricing</span></h1>
+                        <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                            No hidden fees. No bucket-washer scams. Just pure, tech-enabled vehicle care at Lucknow's most competitive rates.
                         </p>
                     </motion.div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                    {ecosystemPricing.map((plan, idx) => (
-                        <PricingCard key={plan.name} plan={plan} index={idx} />
-                    ))}
-                </div>
-
-                {/* Info Card */}
-                <div className="relative p-16 rounded-2xl bg-[#F8F8F8] border border-[#EFEFEF] text-center space-y-8 overflow-hidden">
-                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center mx-auto">
-                        <Zap className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
+                    {/* Wash Tabs */}
+                    <div className="flex flex-wrap justify-center gap-4 bg-[#F8F8F8] p-2 rounded-2xl max-w-fit mx-auto border border-[#EFEFEF]">
+                        {segments.map((s) => (
+                            <button
+                                key={s.id}
+                                onClick={() => setSegment(s.id)}
+                                className={`flex items-center gap-3 px-8 py-3.5 rounded-xl transition-all font-bold text-sm ${
+                                    segment === s.id 
+                                    ? 'bg-white text-[#2563EB] shadow-md border border-[#EFEFEF]' 
+                                    : 'text-gray-400 hover:text-gray-600'
+                                }`}
+                            >
+                                <s.icon className="w-4 h-4" />
+                                {s.name}
+                            </button>
+                        ))}
                     </div>
-                    <h2 className="text-[#0A0A0A]">Need a Corporate Plan?</h2>
-                    <p className="text-[#555555] max-w-2xl mx-auto text-[15px] leading-[1.7]">
-                        We offer special arrangements for fleets, office hubs, and premium residential spaces. Get a custom low-pricing quote.
-                    </p>
-                    <Link to="/contact" className="inline-flex items-center gap-4 text-[#2563EB] font-semibold tracking-[-0.01em] text-[15px] hover:underline">
-                        Contact Sales <ArrowRight className="w-4 h-4" />
-                    </Link>
+                </div>
+
+                {/* Wash Plans Grid */}
+                <AnimatePresence mode="wait">
+                    <motion.div 
+                        key={segment}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
+                    >
+                        {WASH_PACKAGES[segment].map((plan, idx) => (
+                            <PricingCard key={plan.id} plan={plan} index={idx} />
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* --- VALUE SERVICES (SECONDARY) --- */}
+                <div className="space-y-16">
+                    <div className="text-center space-y-4">
+                        <h2 className="text-4xl font-bold">Ecosystem Pillars</h2>
+                        <p className="text-gray-500">Beyond detailing. Complete life-cycle management.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {VALUE_SERVICES.map((plan, idx) => (
+                            <PricingCard key={plan.name} plan={plan} index={idx} isSmall={true} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* --- FINAL CTA --- */}
+                <div className="relative p-16 rounded-3xl bg-[#2563EB] text-center space-y-8 overflow-hidden">
+                    <div className="absolute inset-0 opacity-10 luxury-pattern" />
+                    <div className="relative z-10 space-y-8 text-white">
+                        <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-[24px] flex items-center justify-center mx-auto border border-white/20">
+                            <ArrowLeftRight className="w-8 h-8 text-white" />
+                        </div>
+                        <h2 className="text-white text-4xl md:text-5xl">Corporate & Fleet Plans</h2>
+                        <p className="text-blue-100 max-w-2xl mx-auto text-lg leading-relaxed">
+                            Managing 10+ vehicles? Get a dedicated technician and custom low-pricing for your society or office hub.
+                        </p>
+                        <Link to="/contact" className="inline-flex items-center gap-4 bg-white text-[#2563EB] px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-blue-50 transition-all shadow-2xl">
+                            Request Quote <ArrowRight className="w-5 h-5" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

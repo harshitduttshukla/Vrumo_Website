@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Calendar, 
@@ -13,20 +13,21 @@ import {
     ArrowRight,
     ArrowLeft,
     Loader2,
-    AlertCircle
+    AlertCircle,
+    UserCircle
 } from 'lucide-react';
-import { fetchServices, createBooking, createUser } from '../api';
+import { fetchServices, createBooking, fetchCurrentUser } from '../api';
 
 const Booking = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
+    const [isLoadingUser, setIsLoadingUser] = useState(true);
 
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
         vehicleType: 'Car',
         serviceType: '',
         date: '',
@@ -37,26 +38,38 @@ const Booking = () => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
+        const checkAuth = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                navigate('/login-phone?redirect=/booking');
+                return;
+            }
+
+            try {
+                const userData = await fetchCurrentUser();
+                if (!userData) {
+                    navigate('/login-phone?redirect=/booking');
+                    return;
+                }
+                setUser(userData);
+            } catch (err) {
+                navigate('/login-phone?redirect=/booking');
+            } finally {
+                setIsLoadingUser(false);
+            }
+        };
+
+        checkAuth();
+
         const query = new URLSearchParams(location.search);
         const serviceParam = query.get('service');
         if (serviceParam) {
             setFormData(prev => ({ ...prev, serviceType: serviceParam }));
         }
-    }, [location]);
+    }, [location, navigate]);
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Invalid email format';
-        }
-        if (!formData.phone.trim()) {
-            newErrors.phone = 'Phone number is required';
-        } else if (!/^\d{10}$/.test(formData.phone.replace(/[^0-9]/g, ''))) {
-            newErrors.phone = 'Invalid phone number (10 digits required)';
-        }
         if (!formData.serviceType) newErrors.serviceType = 'Please select a service';
         if (!formData.date) newErrors.date = 'Date is required';
         if (!formData.time) newErrors.time = 'Time is required';
@@ -101,6 +114,14 @@ const Booking = () => {
         "Deep Interior Cleaning",
         "Periodic Maintenance"
     ];
+
+    if (isLoadingUser) {
+        return (
+            <div className="min-h-screen bg-white flex items-center justify-center">
+                <Loader2 className="w-10 h-10 text-[#2563EB] animate-spin" />
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 relative overflow-hidden">
@@ -162,12 +183,39 @@ const Booking = () => {
                                     <motion.div 
                                         initial={{ opacity: 0, height: 0 }}
                                         animate={{ opacity: 1, height: 'auto' }}
-                                        className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-center gap-3 text-red-600 text-sm"
+                                        className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-center gap-3 text-red-600 text-sm mb-6"
                                     >
                                         <AlertCircle className="w-5 h-5 shrink-0" />
                                         <span>{error}</span>
                                     </motion.div>
                                 )}
+
+                                {/* User Banner */}
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                                            <UserCircle className="w-8 h-8" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-lg font-bold text-gray-900">Booking for {user?.name} 👋</h3>
+                                            <p className="text-sm text-gray-500 font-medium">{user?.phone || user?.email}</p>
+                                        </div>
+                                    </div>
+                                    <button 
+                                        type="button"
+                                        onClick={() => {
+                                            localStorage.removeItem('token');
+                                            navigate('/login-phone?redirect=/booking');
+                                        }}
+                                        className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 bg-white px-4 py-2 rounded-lg border border-blue-100 transition-all font-bold"
+                                    >
+                                        Switch Account
+                                    </button>
+                                </motion.div>
 
                                 {/* Vehicle Type Toggle */}
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[#F5F5F5]">
@@ -193,59 +241,8 @@ const Booking = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                                    {/* Personal Info */}
-                                    <div className="space-y-6">
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Full Name</label>
-                                            <div className="relative">
-                                                <input 
-                                                    name="name"
-                                                    value={formData.name}
-                                                    onChange={handleChange}
-                                                    placeholder="John Doe"
-                                                    className={`w-full bg-[#F8F8F8] border ${errors.name ? 'border-red-300' : 'border-[#EFEFEF]'} rounded-xl px-6 py-4 pl-12 focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none transition-all`} 
-                                                />
-                                                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#2563EB]" />
-                                            </div>
-                                            {errors.name && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.name}</p>}
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Email Address</label>
-                                            <div className="relative">
-                                                <input 
-                                                    name="email"
-                                                    type="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
-                                                    placeholder="john@example.com"
-                                                    className={`w-full bg-[#F8F8F8] border ${errors.email ? 'border-red-300' : 'border-[#EFEFEF]'} rounded-xl px-6 py-4 pl-12 focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none transition-all`} 
-                                                />
-                                                <Zap className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#2563EB]" />
-                                            </div>
-                                            {errors.email && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.email}</p>}
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Phone Number</label>
-                                            <div className="relative">
-                                                <input 
-                                                    name="phone"
-                                                    type="tel"
-                                                    value={formData.phone}
-                                                    onChange={handleChange}
-                                                    placeholder="10-digit number"
-                                                    className={`w-full bg-[#F8F8F8] border ${errors.phone ? 'border-red-300' : 'border-[#EFEFEF]'} rounded-xl px-6 py-4 pl-12 focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none transition-all`} 
-                                                />
-                                                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#2563EB]" />
-                                            </div>
-                                            {errors.phone && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.phone}</p>}
-                                        </div>
-                                    </div>
-
-                                    {/* Service Details */}
-                                    <div className="space-y-6">
+                                {/* Service Details Grid */}
+                                <div className="grid grid-cols-1 gap-6 sm:gap-8">
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Select Service</label>
                                             <select 
@@ -293,7 +290,7 @@ const Booking = () => {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Pickup Address</label>
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Address</label>
                                             <div className="relative">
                                                 <input 
                                                     name="address"
@@ -304,10 +301,8 @@ const Booking = () => {
                                                 />
                                                 <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#2563EB]" />
                                             </div>
-                                            {errors.address && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.address}</p>}
                                         </div>
                                     </div>
-                                </div>
 
                                 <motion.button 
                                     whileHover={{ scale: 1.02 }}

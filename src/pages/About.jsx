@@ -12,6 +12,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Import images
+import heroMainImg from '../assets/images/hero_main.png';
+import vrumoLogo from '../assets/images/vrumo_logo.png';
+
 const stats = [
     { label: "Vehicles Cleaned", value: "50k+", icon: Droplets },
     { label: "Hours Saved", value: "100k+", icon: Zap },
@@ -39,7 +43,7 @@ const About = () => {
                     <div className="space-y-12">
                         <h2 className="text-4xl md:text-6xl font-bold tracking-[0.03em] section-title">Our Mission</h2>
                         <div className="space-y-8">
-                            <p className="text-xl text-[#888888] leading-relaxed font-light italic">
+                            <p className="text-xl text-silver leading-relaxed font-light italic">
                                 "To build the world's most trusted and simple vehicle care ecosystem where quality is standard, and convenience is guaranteed."
                             </p>
                             <div className="space-y-6">
@@ -49,12 +53,12 @@ const About = () => {
                                     { title: "Eco-Hybrid Tech", desc: "Advanced low-water foam tech that saves up to 80% water on every wash.", icon: Droplets }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 items-start p-6 rounded-xl bg-[#F8F8F8] border border-[#EFEFEF] hover:border-[#2563EB]/30 transition-all">
-                                        <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
+                                        <div className="w-12 h-12 shrink-0 bg-linear-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center">
                                             <item.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                                         </div>
                                         <div>
                                             <h4 className="text-lg font-bold mb-1 text-[#0A0A0A]">{item.title}</h4>
-                                            <p className="text-[#888888] text-[13px] leading-relaxed">{item.desc}</p>
+                                            <p className="text-silver text-[13px] leading-relaxed">{item.desc}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -64,7 +68,7 @@ const About = () => {
                     <div className="relative aspect-square">
                         <div className="absolute inset-0 bg-[#2563EB]/5 rounded-2xl blur-[80px]" />
                         <div className="relative h-full rounded-2xl overflow-hidden border border-[#EFEFEF] group">
-                            <img loading="lazy" src="/images/hero_main.png" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
+                            <img loading="lazy" src={heroMainImg} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] opacity-80" alt="Vrumo Concept" />
                         </div>
                     </div>
                 </section>
@@ -77,7 +81,7 @@ const About = () => {
                                 <stat.icon className="w-[26px] h-[26px] text-[#2563EB]" strokeWidth={1.8} />
                             </div>
                             <h3 className="text-5xl font-black text-[#0A0A0A]">{stat.value}</h3>
-                            <p className="text-[#888888] font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
+                            <p className="text-silver font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
                         </div>
                     ))}
                 </div>
@@ -86,7 +90,7 @@ const About = () => {
                 <div className="py-32 rounded-2xl bg-white text-black text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
+                        <Link to="/booking" className="bg-linear-to-r from-royal to-primary text-white! hover:from-[#1E40AF] hover:to-royal px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-widest hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

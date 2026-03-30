@@ -549,13 +549,10 @@ a {
    Subtle diagonal line background pattern
 ───────────────────────────────────────────── */
 .luxury-pattern {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 40px,
-    rgba(37,99,235,0.03) 40px,
-    rgba(37,99,235,0.03) 41px
-  );
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(37,99,235,0.05) 1px, transparent 0),
+    linear-gradient(45deg, transparent 48%, rgba(37,99,235,0.02) 50%, transparent 52%);
+  background-size: 24px 24px, 100px 100px;
 }
 
 /* ─────────────────────────────────────────────

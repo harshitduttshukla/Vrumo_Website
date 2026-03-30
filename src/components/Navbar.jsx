@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, User, LogOut, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { fetchCurrentUser } from '../api';
+
+// Import logo
+import vrumoLogo from '../assets/images/vrumo_logo.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [user, setUser] = useState(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +21,29 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        const loadUser = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    const userData = await fetchCurrentUser();
+                    setUser(userData);
+                } catch (err) {
+                    setUser(null);
+                }
+            } else {
+                setUser(null);
+            }
+        };
+        loadUser();
+    }, [location]);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        navigate('/');
+    };
 
     const links = [
         { name: 'Home', path: '/' },
@@ -87,10 +116,11 @@ const Navbar = () => {
                     variants={itemVariants}
                     className="shrink-0 flex items-center"
                 >
-                    <Link to="/" className="relative group ml-4 lg:ml-6">
-                        <div className="relative z-10 text-2xl font-extrabold tracking-[-0.02em] text-[#0A0A0A] flex items-center transition-transform duration-500 group-hover:scale-[1.02]">
+                    <Link to="/" className="relative group ml-4 lg:ml-6 flex items-center gap-3">
+                        <img src={vrumoLogo} alt="VRUMO" className="h-8 w-auto transition-transform duration-500 group-hover:scale-105" />
+                        <span className="relative z-10 text-2xl font-extrabold tracking-[-0.02em] text-[#0A0A0A] hidden sm:block">
                             VRUMO
-                        </div>
+                        </span>
                     </Link>
                 </motion.div>
 
@@ -101,6 +131,41 @@ const Navbar = () => {
                             <NavLink link={link} isActive={location.pathname === link.path} />
                         </motion.div>
                     ))}
+                    {user ? (
+                        <div className="flex items-center gap-4">
+                            <motion.div 
+                                variants={itemVariants}
+                                className="flex items-center gap-2 text-[#2563EB] font-bold px-4 py-2 rounded-full bg-[#2563EB]/5 border border-[#2563EB]/10"
+                            >
+                                <User size={18} />
+                                <span className="max-w-[120px] truncate">{user.name.split(' ')[0]}</span>
+                            </motion.div>
+                            <motion.button
+                                variants={itemVariants}
+                                onClick={handleLogout}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="p-2 text-neutral-400 hover:text-red-500 transition-colors"
+                                title="Logout"
+                            >
+                                <LogOut size={18} />
+                            </motion.button>
+                        </div>
+                    ) : (
+                        <motion.div 
+                            variants={itemVariants}
+                            whileHover={{ y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <Link
+                                to="/login-phone"
+                                className="flex items-center gap-2 text-neutral-600 hover:text-[#2563EB] font-bold transition-all px-4 py-2 rounded-full border border-transparent hover:border-[#2563EB]/20 hover:bg-[#2563EB]/5"
+                            >
+                                <User size={18} />
+                                <span>Login / Signup</span>
+                            </Link>
+                        </motion.div>
+                    )}
                     <motion.div 
                         variants={itemVariants}
                         whileHover={{ y: -2 }}
@@ -108,9 +173,9 @@ const Navbar = () => {
                     >
                         <Link
                             to="/booking"
-                            className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white px-7 py-2.5 rounded-full font-bold text-[15px] tracking-wide relative overflow-hidden group hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] hover:from-[#1E40AF] hover:to-[#1D4ED8] transition-all duration-300 ml-2"
+                            className="bg-linear-to-r from-royal to-primary text-white! px-7 py-2.5 rounded-full font-bold text-[15px] tracking-wide relative overflow-hidden group hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] hover:from-[#1E40AF] hover:to-royal transition-all duration-300 ml-2"
                         >
-                            <span className="relative z-10 !text-white">Book Now</span>
+                            <span className="relative z-10 text-white!">Book Now</span>
                         </Link>
                     </motion.div>
                 </div>
@@ -119,7 +184,7 @@ const Navbar = () => {
                 <motion.div variants={itemVariants} className="md:hidden flex items-center mr-1">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="p-2 text-[#2C2C2C] hover:text-[#2563EB] transition-colors focus:outline-none relative"
+                        className="p-2 text-charcoal hover:text-[#2563EB] transition-colors focus:outline-none relative"
                         aria-label="Toggle menu"
                     >
                         <AnimatePresence mode="wait">
@@ -162,14 +227,38 @@ const Navbar = () => {
                                         </Link>
                                     </motion.div>
                                 ))}
-                                <motion.div variants={itemVariants} className="pt-4 w-full max-w-[200px]">
-                                    <Link
-                                        to="/booking"
-                                        onClick={() => setIsOpen(false)}
-                                        className="block w-full text-center bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] hover:from-[#1E40AF] hover:to-[#1D4ED8] !text-white py-3.5 rounded-xl font-bold text-[16px] active:scale-95 transition-all shadow-md"
-                                    >
-                                        <span className="!text-white">Book Now</span>
-                                    </Link>
+                                <motion.div variants={itemVariants} className="pt-4 w-full max-w-[200px] flex flex-col gap-3">
+                                    {user ? (
+                                        <div className="space-y-3">
+                                            <div className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-blue-50 text-blue-600 font-bold border border-blue-100">
+                                                <User size={18} />
+                                                <span>{user.name}</span>
+                                            </div>
+                                            <button
+                                                onClick={handleLogout}
+                                                className="flex items-center justify-center gap-2 w-full text-center border border-red-200 text-red-500 py-3 rounded-xl font-bold text-[16px] active:scale-95 transition-all"
+                                            >
+                                                <LogOut size={18} />
+                                                <span>Logout</span>
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            to="/login-phone"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center justify-center gap-2 w-full text-center border border-[#2563EB] text-[#2563EB] py-3 rounded-xl font-bold text-[16px] active:scale-95 transition-all shadow-sm"
+                                        >
+                                            <User size={18} />
+                                            <span>Login / Signup</span>
+                                        </Link>
+                                    )}
+                                     <Link
+                                         to="/booking"
+                                         onClick={() => setIsOpen(false)}
+                                         className="block w-full text-center bg-linear-to-r from-royal to-primary hover:from-[#1E40AF] hover:to-royal text-white! py-3.5 rounded-xl font-bold text-[16px] active:scale-95 transition-all shadow-md"
+                                     >
+                                         <span className="text-white!">Book Now</span>
+                                     </Link>
                                 </motion.div>
                             </div>
                         </motion.div>

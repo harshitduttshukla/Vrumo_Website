@@ -12,6 +12,9 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Import images
+import heroMainImg from '../assets/images/hero_main.png';
+
 const HowItWorks = () => {
     return (
         <div className="min-h-screen bg-white text-[#0A0A0A] pt-48 pb-24 px-6 overflow-hidden">
@@ -20,7 +23,7 @@ const HowItWorks = () => {
                 <div className="text-center space-y-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
                         <h1 className="text-6xl md:text-8xl font-bold tracking-[0.03em]">How It <span className="text-[#2563EB]">Works</span></h1>
-                        <p className="text-xl text-[#888888] max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p className="text-xl text-silver max-w-2xl mx-auto leading-relaxed font-medium">
                             Experience the future of vehicle care in 3 simple digital steps. From selection to doorstep completion.
                         </p>
                     </motion.div>
@@ -42,7 +45,7 @@ const HowItWorks = () => {
                             </div>
                             <div className="space-y-4">
                                 <h3 className="text-3xl font-black text-[#0A0A0A]">{item.title}</h3>
-                                <p className="text-[#888888] text-sm max-w-[200px] mx-auto leading-relaxed">{item.desc}</p>
+                                <p className="text-silver text-sm max-w-[200px] mx-auto leading-relaxed">{item.desc}</p>
                             </div>
                         </div>
                     ))}
@@ -59,19 +62,19 @@ const HowItWorks = () => {
                                 { title: "Showroom Result", desc: "Get high-end results and a digital health report instantly.", icon: Activity }
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-8 items-start group">
-                                    <div className="w-14 h-14 shrink-0 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
+                                    <div className="w-14 h-14 shrink-0 bg-linear-to-br from-[#EFF6FF] to-[#DBEAFE] rounded-[14px] flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
                                         <item.icon className="w-[26px] h-[26px] text-[#2563EB] group-hover:text-white" strokeWidth={1.8} />
                                     </div>
                                     <div className="space-y-1">
                                         <h4 className="text-lg font-bold text-[#0A0A0A]">{item.title}</h4>
-                                        <p className="text-[#888888] text-sm">{item.desc}</p>
+                                        <p className="text-silver text-sm">{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                     <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#EFEFEF] bg-white flex items-center justify-center group">
-                        <img loading="lazy" src="/images/hero_main.png" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]" alt="Vrumo Process" />
+                        <img loading="lazy" src={heroMainImg} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]" alt="Vrumo Process" />
                         <div className="absolute inset-0 bg-linear-to-t from-white/50 via-transparent to-transparent" />
                     </div>
                 </section>
@@ -80,7 +83,7 @@ const HowItWorks = () => {
                 <div className="py-32 rounded-2xl bg-white text-[#0A0A0A] text-center space-y-12">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-[0.02em] px-6">Ready to Experience <br /> the Ecosystem?</h2>
                     <div className="flex flex-wrap justify-center gap-6 pt-6">
-                        <Link to="/booking" className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
+                        <Link to="/booking" className="bg-linear-to-r from-royal to-primary text-white! hover:from-[#1E40AF] hover:to-royal px-10 py-4 rounded-lg font-bold text-[14px] uppercase tracking-widest hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-4">
                             Book Now <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

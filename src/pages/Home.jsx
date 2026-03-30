@@ -4,6 +4,21 @@ import {
     ArrowRight, 
 } from 'lucide-react';
 
+// Import images for robust Vite bundling
+import vWashImg from '../assets/images/v_wash_doorstep.png';
+import vMaintenanceImg from '../assets/images/v_maintenance_doorstep.png';
+import vInsuranceImg from '../assets/images/v_insurance_doorstep.png';
+import buySellImg from '../assets/images/buy_sell_doorstep_v2.png';
+import ecosystemHeroImg from '../assets/images/ecosystem_doorstep_clean.png';
+import stepSelectImg from '../assets/images/step_select.png';
+import stepBookImg from '../assets/images/step_book.png';
+import stepResultsImg from '../assets/images/step_results.png';
+import lowPricingImg from '../assets/images/low_pricing.png';
+import techWorkflowImg from '../assets/images/tech_workflow.png';
+import hybridWashImg from '../assets/images/hybrid_wash.png';
+import customerRahulImg from '../assets/images/customer_rahul.png';
+import customerPriyaImg from '../assets/images/customer_priya.png';
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,9 +52,13 @@ const ServiceCardHero = ({ service, idx }) => (
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
             </div>
-            <div className="space-y-1.5 sm:space-y-2">
-                <h3 className="text-[14px] sm:text-[15px] font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors line-clamp-1">{service.title}</h3>
-                <p className="text-[10px] sm:text-[11px] text-[#555555] line-clamp-2 leading-relaxed">{service.description}</p>
+            <div className="space-y-2 sm:space-y-3">
+                <h3 className="text-[14px] sm:text-[16px] font-bold text-[#0A0A0A] group-hover:text-[#2563EB] transition-colors leading-tight min-h-[1.2em]">
+                    {service.title}
+                </h3>
+                <p className="text-[10px] sm:text-[11px] text-[#555555] line-clamp-2 leading-relaxed h-8">
+                    {service.description}
+                </p>
             </div>
         </Link>
     </motion.div>
@@ -50,25 +69,25 @@ const Home = () => {
         { 
             title: "Vehicle Wash", 
             description: "Deep foam cleaning at your doorstep",
-            image: "/images/v_wash_doorstep.png",
+            image: vWashImg,
             link: "/services/wash"
         },
         { 
             title: "Vehicle Maintenance", 
             description: "Expert service and repairs",
-            image: "/images/v_maintenance_doorstep.png",
+            image: vMaintenanceImg,
             link: "/services/maintenance"
         },
         { 
             title: "Vehicle Insurance", 
             description: "Hassle-free coverage and claims",
-            image: "/images/v_insurance_doorstep.png",
+            image: vInsuranceImg,
             link: "/services/insurance"
         },
         { 
             title: "Buy & Sell Vehicles", 
             description: "Best market value for your vehicle",
-            image: "/images/buy_sell_doorstep_v2.png",
+            image: buySellImg,
             link: "/services/buy-sell"
         }
     ];
@@ -203,7 +222,7 @@ const Home = () => {
                         </div>
                         <div className="relative aspect-square bg-[#F8F8F8] rounded-2xl overflow-hidden border border-[#EFEFEF] group w-full lg:w-1/2 shrink-0">
                             <img 
-                                src="/images/ecosystem_doorstep_clean.png" 
+                                src={ecosystemHeroImg} 
                                 loading="lazy" 
                                 className="w-full h-full object-cover rounded-xl" 
                                 alt="Vrumo Doorstep Service" 
@@ -246,9 +265,9 @@ const Home = () => {
                         />
 
                         {[
-                            { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", img: "/images/step_select.png" },
-                            { step: "02", title: "Book Instantly", desc: "Pick a date and doorstep location.", img: "/images/step_book.png" },
-                            { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", img: "/images/step_results.png" }
+                            { step: "01", title: "Select Service", desc: "Choose care for your car or bike.", img: stepSelectImg },
+                            { step: "02", title: "Book Instantly", desc: "Pick a date and doorstep location.", img: stepBookImg },
+                            { step: "03", title: "Get Results", desc: "Relax while we care for your vehicle.", img: stepResultsImg }
                         ].map((item, i) => (
                             <motion.div 
                                 key={i} 
@@ -304,9 +323,9 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
                         {[
-                            { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", img: "/images/low_pricing.png" },
-                            { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", img: "/images/tech_workflow.png" },
-                            { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", img: "/images/hybrid_wash.png" }
+                            { title: "Low Pricing", desc: "Direct-to-owner service means you save up to 30% on every ritual.", img: lowPricingImg },
+                            { title: "Tech Workflow", desc: "Detailed digital health reports and real-time status updates on your phone.", img: techWorkflowImg },
+                            { title: "Hybrid Wash", desc: "Our advanced foam tech saves up to 80% water on every doorstep wash.", img: hybridWashImg }
                         ].map((item, i) => (
                             <div key={i} className="group relative rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full">
                                 <div className="p-4 space-y-6">
@@ -343,13 +362,13 @@ const Home = () => {
                                 name: "Rahul Sharma",
                                 role: "Premium Sedan Owner",
                                 quote: "The doorstep foam wash is a game-changer. My car looks showroom-fresh without me ever leaving my living room. Extremely professional team!",
-                                img: "/images/customer_rahul.png"
+                                img: customerRahulImg
                             },
                             {
                                 name: "Priya Patel",
                                 role: "Daily Commuter",
                                 quote: "Vrumo's maintenance service is so transparent. The health report they sent to my phone was detailed and easy to understand. Highly recommended!",
-                                img: "/images/customer_priya.png"
+                                img: customerPriyaImg
                             },
                             {
                                 name: "Arjun Singh",
