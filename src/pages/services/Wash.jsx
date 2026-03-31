@@ -35,7 +35,6 @@ const WASH_PACKAGES = {
             name: 'Vrumo Swift Wash', 
             desc: 'Quick exterior refresh with Pressure Washer. 30-40 mins.', 
             price: 299,
-            priceSUV: 349,
             unit: '/ session',
             include: ['PH-neutral shampoo foam', 'Pressure rinse (Microfiber dry)', 'Tyre & rim wipe (dressing)', 'Windshield clean']
         },
@@ -44,7 +43,6 @@ const WASH_PACKAGES = {
             name: 'Vrumo Signature Wash', 
             desc: 'Full exterior + interior refresh with Pressure Washer.', 
             price: 549,
-            priceSUV: 629,
             unit: '/ session',
             tag: 'BESTSELLER',
             include: ['Everything in Swift Wash', 'Dashboard & console UV dressing', 'Full interior vacuum (incl. boot)', 'Odour neutraliser spray']
@@ -56,7 +54,6 @@ const WASH_PACKAGES = {
             name: 'Vrumo Colony Care', 
             desc: '4 professional washes/month. Always on schedule.', 
             price: 999,
-            priceSUV: 1149,
             unit: '/ mo',
             include: ['4 High-pressure foam pre-soaks', 'Pressure rinse + Microfiber dry', 'Tyre cleaning + shine dressing', 'Before/after photo proof']
         },
@@ -65,7 +62,6 @@ const WASH_PACKAGES = {
             name: 'Vrumo Colony Elite', 
             desc: '4 foam washes + full interior every visit.', 
             price: 1499,
-            priceSUV: 1699,
             unit: '/ mo',
             tag: 'FEATURED',
             include: ['Everything in Colony Care', 'Full interior vacuum every visit', 'UV dressing on all panels', 'Paint wax seal (Quarterly)']
@@ -77,7 +73,6 @@ const WASH_PACKAGES = {
             name: 'Vrumo Society Shield', 
             desc: 'Alt-day bucket wash + weekly interior. RWA compliant.', 
             price: 2000,
-            priceSUV: 2300,
             unit: '/ mo',
             include: ['13-14 Alt-day bucket washes', 'PH-neutral lab-tested chemicals', 'Weekly full interior care', 'Dedicated slot: 6:30-8:00 AM']
         },
@@ -86,22 +81,61 @@ const WASH_PACKAGES = {
             name: 'Vrumo Society Prestige', 
             desc: 'Alt-day bucket + interior 4x + quarterly detail.', 
             price: 2800,
-            priceSUV: 3200,
             unit: '/ mo',
             tag: 'ULTIMATE',
             include: ['13-14 Alt-day bucket washes', 'Premium nano-ceramic seal (Monthly)', 'Weekly deep interior clean', 'Quarterly mini-detail included']
         },
     ],
     deep: [
-        { id: 'cabin', name: 'Cabin Detox', desc: 'Full cabin deep clean. 90-120 mins.', price: 1499, priceSUV: 1699, unit: '/ session' },
-        { id: 'paint', name: 'Paint Refresh', desc: 'Exterior decontamination + seal. 90-120 mins.', price: 1799, priceSUV: 1999, unit: '/ session' },
-        { id: 'grand', name: 'Vrumo Grand Detox', desc: 'Complete interior + exterior detailing. 3 hours.', price: 2499, priceSUV: 2899, unit: '/ session', tag: 'PREMIUM' },
+        { 
+            id: 'cabin', 
+            name: 'Cabin Detox', 
+            desc: 'Full cabin deep clean. Like new inside.', 
+            price: 1499, 
+            unit: '/ session',
+            include: [
+                'Full vacuum (incl. under seats & boot)',
+                'Dashboard, console & AC vents deep clean',
+                'Interior roof lining & door panels wipe',
+                'Seat fabric cleaning (Dry shampoo)',
+                'Odour eliminator & cabin freshener'
+            ]
+        },
+        { 
+            id: 'paint', 
+            name: 'Paint Refresh', 
+            desc: 'Multi-step exterior decontamination and seal.', 
+            price: 1799, 
+            unit: '/ session',
+            include: [
+                'Snow foam pre-soak & Two-bucket wash',
+                'Tar & iron decontamination spray',
+                'Clay bar treatment (removes dirt)',
+                'Liquid carnauba wax hand application',
+                'Headlight & tail light polish'
+            ]
+        },
+        { 
+            id: 'grand', 
+            name: 'Vrumo Grand Detox', 
+            desc: 'Complete interior + exterior. Nothing skipped.', 
+            price: 2499, 
+            unit: '/ session', 
+            tag: 'PREMIUM',
+            include: [
+                'Everything in Cabin + Paint Refresh',
+                'Engine bay external wipe',
+                'Windshield water-repellent (2 months)',
+                'Nano ceramic spray sealant (30-day)',
+                'Digital service certificate'
+            ]
+        },
     ],
 };
 
 const Wash = () => {
     const [segment, setSegment] = useState('instant');
-    const [vehicleType, setVehicleType] = useState('sedan');
+    // const [vehicleType, setVehicleType] = useState('sedan');
 
     const segments = [
         { id: 'instant', name: 'Instant', icon: Zap, color: 'text-orange-500' },
@@ -162,20 +196,7 @@ const Wash = () => {
                         ))}
                     </div>
 
-                    {/* Vehicle Toggle */}
-                    <div className="flex justify-center items-center gap-6">
-                        <span className={`text-sm font-bold uppercase tracking-wider ${vehicleType === 'sedan' ? 'text-[#2563EB]' : 'text-gray-400'}`}>Hatchback/Sedan</span>
-                        <button 
-                            onClick={() => setVehicleType(p => p === 'sedan' ? 'suv' : 'sedan')}
-                            className="w-16 h-8 bg-gray-200 rounded-full relative p-1 transition-colors hover:bg-gray-300"
-                        >
-                            <motion.div 
-                                animate={{ x: vehicleType === 'sedan' ? 0 : 32 }}
-                                className="w-6 h-6 bg-[#2563EB] rounded-full shadow-md"
-                            />
-                        </button>
-                        <span className={`text-sm font-bold uppercase tracking-wider ${vehicleType === 'suv' ? 'text-[#2563EB]' : 'text-gray-400'}`}>SUV/Luxury</span>
-                    </div>
+                    {/* Vehicle Toggle removed as per request */}
 
                     {/* Plans Grid */}
                     <AnimatePresence mode="wait">
@@ -187,7 +208,7 @@ const Wash = () => {
                             className="flex flex-wrap justify-center gap-8"
                         >
                             {WASH_PACKAGES[segment].map((pkg) => {
-                                const price = vehicleType === 'suv' ? pkg.priceSUV : pkg.price;
+                                const price = pkg.price;
                                 return (
                                     <div key={pkg.id} className="card-premium h-full flex flex-col group">
                                         <div className="flex justify-between items-start mb-6">

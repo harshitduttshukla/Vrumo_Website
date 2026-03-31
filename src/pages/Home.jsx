@@ -372,7 +372,7 @@ const Home = () => {
                             },
                             {
                                 name: "Arjun Singh",
-                                role: "SUV Enthusiast",
+                                role: "Premium Car Owner",
                                 quote: "Selling my old car through the Vrumo ecosystem was stress-free. I got a much better price than local dealers and the paperwork was instant.",
                                 img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop"
                             }

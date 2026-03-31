@@ -141,7 +141,7 @@ const Booking = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-[#888888] font-medium text-lg"
+                        className="text-silver font-medium text-lg"
                     >
                         Schedule your premium vehicle service in seconds.
                     </motion.p>
@@ -166,13 +166,13 @@ const Booking = () => {
                                 </div>
                                 <div className="space-y-4">
                                     <h2 className="text-4xl font-bold">Booking Confirmed!</h2>
-                                    <p className="text-[#888888] text-lg max-w-md mx-auto">
+                                    <p className="text-silver text-lg max-w-md mx-auto">
                                         Thank you, {formData.name}. We've received your request for {formData.serviceType}. Our team will contact you shortly.
                                     </p>
                                 </div>
                                 <button 
                                     onClick={() => window.location.href = "/"} 
-                                    className="bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] px-12 py-4 rounded-xl font-bold hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                                    className="bg-linear-to-r from-royal to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-royal px-12 py-4 rounded-xl font-bold hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     Return Home
                                 </button>
@@ -194,7 +194,7 @@ const Booking = () => {
                                 <motion.div 
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4"
+                                    className="bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg">
@@ -211,7 +211,7 @@ const Booking = () => {
                                             localStorage.removeItem('token');
                                             navigate('/login-phone?redirect=/booking');
                                         }}
-                                        className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 bg-white px-4 py-2 rounded-lg border border-blue-100 transition-all font-bold"
+                                        className="text-[10px] font-bold uppercase tracking-widest text-blue-600 hover:text-blue-700 bg-white px-4 py-2 rounded-lg border border-blue-100 transition-all"
                                     >
                                         Switch Account
                                     </button>
@@ -221,7 +221,7 @@ const Booking = () => {
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[#F5F5F5]">
                                     <div className="space-y-1">
                                         <h2 className="text-2xl font-bold">Service Details</h2>
-                                        <p className="text-sm text-[#888888]">Tell us what your vehicle needs</p>
+                                        <p className="text-sm text-silver">Tell us what your vehicle needs</p>
                                     </div>
                                     <div className="flex bg-[#F8F8F8] p-1.5 rounded-full border border-[#EFEFEF] w-fit">
                                         {['Car', 'Bike'].map(type => (
@@ -231,8 +231,8 @@ const Booking = () => {
                                                 onClick={() => setFormData(prev => ({ ...prev, vehicleType: type }))}
                                                 className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                                                     formData.vehicleType === type 
-                                                    ? 'bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] shadow-lg' 
-                                                    : 'text-[#888888] hover:text-[#0A0A0A]'
+                                                    ? 'bg-linear-to-r from-royal to-[#2563EB] text-white hover:from-[#1E40AF] hover:to-royal shadow-lg' 
+                                                    : 'text-silver hover:text-[#0A0A0A]'
                                                 }`}
                                             >
                                                 {type}
@@ -244,7 +244,7 @@ const Booking = () => {
                                 {/* Service Details Grid */}
                                 <div className="grid grid-cols-1 gap-6 sm:gap-8">
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Select Service</label>
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-silver ml-2">Select Service</label>
                                             <select 
                                                 name="serviceType"
                                                 value={formData.serviceType}
@@ -261,7 +261,7 @@ const Booking = () => {
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Preferred Date</label>
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-silver ml-2">Preferred Date</label>
                                                 <input 
                                                     name="date"
                                                     type="date"
@@ -272,25 +272,35 @@ const Booking = () => {
                                                 {errors.date && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.date}</p>}
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Time Slot</label>
-                                                <select 
-                                                    name="time"
-                                                    value={formData.time}
-                                                    onChange={handleChange}
-                                                    className={`w-full bg-[#F8F8F8] border ${errors.time ? 'border-red-300' : 'border-[#EFEFEF]'} rounded-xl px-4 py-4 focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none transition-all appearance-none cursor-pointer`}
-                                                >
-                                                    <option value="" disabled>Window</option>
-                                                    <option value="09:00 AM">09:00 AM</option>
-                                                    <option value="12:00 PM">12:00 PM</option>
-                                                    <option value="03:00 PM">03:00 PM</option>
-                                                    <option value="06:00 PM">06:00 PM</option>
-                                                </select>
+                                                <div className="flex justify-between items-center px-2">
+                                                    <label className="text-[10px] font-black uppercase tracking-widest text-silver">Time Slot</label>
+                                                    <div className="flex items-center gap-2 text-silver/60">
+                                                        <span className="text-[10px] font-bold uppercase tracking-wider">Scroll</span>
+                                                        <ArrowRight className="w-3 h-3" />
+                                                    </div>
+                                                </div>
+                                                <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide no-scrollbar">
+                                                    {['08:00 AM', '08:30 AM', '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM'].map(slot => (
+                                                        <button 
+                                                            key={slot}
+                                                            type="button"
+                                                            onClick={() => setFormData(prev => ({ ...prev, time: slot }))}
+                                                            className={`whitespace-nowrap px-6 py-3 rounded-xl text-xs font-bold transition-all duration-300 border ${
+                                                                formData.time === slot 
+                                                                ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-md' 
+                                                                : 'bg-[#F8F8F8] text-[#555555] border-[#EFEFEF] hover:border-[#2563EB]/30'
+                                                            }`}
+                                                        >
+                                                            {slot}
+                                                        </button>
+                                                    ))}
+                                                </div>
                                                 {errors.time && <p className="text-[10px] text-red-500 font-bold ml-2 uppercase tracking-wide">{errors.time}</p>}
                                             </div>
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-widest text-[#888888] ml-2">Address</label>
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-silver ml-2">Address</label>
                                             <div className="relative">
                                                 <input 
                                                     name="address"
@@ -308,7 +318,7 @@ const Booking = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     disabled={isSubmitting}
-                                    className="w-full bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] !text-white hover:from-[#1E40AF] hover:to-[#1D4ED8] py-6 rounded-md font-black text-lg border-none hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-blue-500/5 mt-4"
+                                    className="w-full bg-linear-to-r from-royal to-[#2563EB] text-white! hover:from-[#1E40AF] hover:to-royal py-6 rounded-md font-black text-lg border-none hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-blue-500/5 mt-4"
                                 >
                                     {isSubmitting ? (
                                         <>
@@ -327,7 +337,7 @@ const Booking = () => {
                     </AnimatePresence>
                 </motion.div>
 
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] text-[#888888]">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] text-silver">
                     <div className="flex items-center gap-3">
                         <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
                         <span>Private & Encrypted</span>

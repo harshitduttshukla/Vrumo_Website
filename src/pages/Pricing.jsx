@@ -46,6 +46,8 @@ const WASH_PACKAGES = {
             popular: false,
             buttonText: "Join Colony"
         },
+    ],
+    society: [
         { 
             id: 'society_shield', 
             name: 'Vrumo Society Shield', 
@@ -57,6 +59,17 @@ const WASH_PACKAGES = {
             popular: true,
             buttonText: "Join Society"
         },
+        { 
+            id: 'society_prestige', 
+            name: 'Vrumo Society Prestige', 
+            subtitle: 'Premium Gated Monthly',
+            price: "2800",
+            unit: "/ month",
+            image: vWashImg,
+            features: ['13-14 Alt-day bucket washes', 'Premium nano-ceramic seal', 'Weekly deep interior clean', 'Quarterly mini-detail'],
+            popular: false,
+            buttonText: "Join Prestige"
+        },
     ],
     deep: [
         { 
@@ -66,18 +79,47 @@ const WASH_PACKAGES = {
             price: "1499",
             unit: "/ session",
             image: vWashImg,
-            features: ['Full vacuum & all surfaces', 'Dashboard/Vents/Consoles', 'Fabric dry-shampoo method', 'Odour eliminator spray'],
+            features: [
+                'Full interior vacuum (incl. under seats & boot)',
+                'Dashboard, console & AC vents deep clean',
+                'Interior roof lining & door panels wipe',
+                'Seat fabric cleaning (Dry shampoo)',
+                'Odour eliminator & cabin freshener'
+            ],
             popular: false,
-            buttonText: "Book Detox"
+            buttonText: "Book Cabin"
+        },
+        { 
+            id: 'paint', 
+            name: 'Paint Refresh', 
+            subtitle: 'Exterior decontamination + seal',
+            price: "1799",
+            unit: "/ session",
+            image: vWashImg,
+            features: [
+                'Snow foam pre-soak & Two-bucket wash',
+                'Tar & iron decontamination spray',
+                'Clay bar treatment (removes dirt)',
+                'Liquid carnauba wax hand application',
+                'Headlight & tail light polish'
+            ],
+            popular: false,
+            buttonText: "Book Paint"
         },
         { 
             id: 'grand', 
-            name: 'Grand Detox', 
-            subtitle: 'Complete interior + exterior',
+            name: 'Vrumo Grand Detox', 
+            subtitle: 'Complete interior + exterior details',
             price: "2499",
             unit: "/ session",
             image: vWashImg,
-            features: ['Full Exterior clay & wax', 'Full Interior deep clean', 'Engine bay external wipe', 'Nano ceramic spray sealant'],
+            features: [
+                'Everything in Cabin + Paint Refresh',
+                'Engine bay external wipe',
+                'Windshield water-repellent (2 months)',
+                'Nano ceramic spray sealant (30-day)',
+                'Digital service certificate'
+            ],
             popular: true,
             buttonText: "Book Grand"
         },
@@ -183,9 +225,10 @@ const Pricing = () => {
     const [segment, setSegment] = useState('instant');
 
     const segments = [
-        { id: 'instant', name: 'Instant Wash', icon: Zap },
-        { id: 'monthly', name: 'Monthly Plans', icon: Droplets },
-        { id: 'deep', name: 'Deep Detailing', icon: Sparkles },
+        { id: 'instant', name: 'Instant', icon: Zap },
+        { id: 'monthly', name: 'Colony', icon: Droplets },
+        { id: 'society', name: 'Society', icon: ShieldCheck },
+        { id: 'deep', name: 'Deep Clean', icon: Sparkles },
     ];
 
     return (
