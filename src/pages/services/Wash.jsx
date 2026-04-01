@@ -201,7 +201,7 @@ const Wash = () => {
                     {/* Plans Grid */}
                     <AnimatePresence mode="wait">
                         <motion.div 
-                            key={segment + vehicleType}
+                            key={segment}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
@@ -285,7 +285,7 @@ const Wash = () => {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-32 px-6 bg-linear-to-br from-[#1D4ED8] via-[#2563EB] to-[#60A5FA] relative overflow-hidden">
+            <section className="py-32 px-6 bg-linear-to-br from-royal via-[#2563EB] to-[#60A5FA] relative overflow-hidden">
                 <div className="absolute inset-0 luxury-pattern opacity-20" />
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />

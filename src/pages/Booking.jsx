@@ -30,7 +30,7 @@ const Booking = () => {
     const [formData, setFormData] = useState({
         vehicleType: 'Car',
         serviceType: '',
-        date: '',
+        date: new Date().toISOString().split('T')[0],
         time: '',
         address: ''
     });
@@ -41,19 +41,19 @@ const Booking = () => {
         const checkAuth = async () => {
             const token = localStorage.getItem('token');
             if (!token) {
-                navigate('/login-phone?redirect=/booking');
+                navigate('/login?redirect=/booking');
                 return;
             }
 
             try {
                 const userData = await fetchCurrentUser();
                 if (!userData) {
-                    navigate('/login-phone?redirect=/booking');
+                    navigate('/login?redirect=/booking');
                     return;
                 }
                 setUser(userData);
             } catch (err) {
-                navigate('/login-phone?redirect=/booking');
+                navigate('/login?redirect=/booking');
             } finally {
                 setIsLoadingUser(false);
             }
@@ -209,7 +209,7 @@ const Booking = () => {
                                         type="button"
                                         onClick={() => {
                                             localStorage.removeItem('token');
-                                            navigate('/login-phone?redirect=/booking');
+                                            navigate('/login?redirect=/booking');
                                         }}
                                         className="text-[10px] font-bold uppercase tracking-widest text-blue-600 hover:text-blue-700 bg-white px-4 py-2 rounded-lg border border-blue-100 transition-all"
                                     >

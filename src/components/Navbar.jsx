@@ -158,7 +158,7 @@ const Navbar = () => {
                             whileTap={{ scale: 0.95 }}
                         >
                             <Link
-                                to="/login-phone"
+                                to="/login"
                                 className="flex items-center gap-2 text-neutral-600 hover:text-[#2563EB] font-bold transition-all px-4 py-2 rounded-full border border-transparent hover:border-[#2563EB]/20 hover:bg-[#2563EB]/5"
                             >
                                 <User size={18} />
@@ -244,7 +244,7 @@ const Navbar = () => {
                                         </div>
                                     ) : (
                                         <Link
-                                            to="/login-phone"
+                                            to="/login"
                                             onClick={() => setIsOpen(false)}
                                             className="flex items-center justify-center gap-2 w-full text-center border border-[#2563EB] text-[#2563EB] py-3 rounded-xl font-bold text-[16px] active:scale-95 transition-all shadow-sm"
                                         >

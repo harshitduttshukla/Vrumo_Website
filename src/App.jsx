@@ -13,8 +13,9 @@ import HowItWorks from './pages/HowItWorks';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Founders from './pages/Founders';
-import LoginPhone from './pages/LoginPhone';
 import VerifyOTP from './pages/VerifyOTP';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 // Individual Service Pages
 import Wash from './pages/services/Wash';
@@ -55,7 +56,8 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/founders" element={<Founders />} />
-                        <Route path="/login-phone" element={<LoginPhone />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
                         <Route path="/verify-otp" element={<VerifyOTP />} />
                     </Routes>
                 </main>

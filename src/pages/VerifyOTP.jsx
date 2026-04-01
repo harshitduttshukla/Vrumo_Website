@@ -17,7 +17,7 @@ const VerifyOTP = () => {
 
     useEffect(() => {
         if (!phone) {
-            navigate('/login-phone');
+            navigate('/login');
             return;
         }
 
@@ -101,7 +101,7 @@ const VerifyOTP = () => {
 
             <div className="max-w-md mx-auto relative z-10">
                 <button 
-                    onClick={() => navigate('/login-phone')}
+                    onClick={() => navigate('/login')}
                     className="flex items-center gap-2 text-[#888888] hover:text-[#2563EB] mb-8 transition-colors text-sm font-bold uppercase tracking-wider"
                 >
                     <ArrowLeft size={16} />

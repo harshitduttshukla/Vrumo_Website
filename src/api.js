@@ -1,4 +1,5 @@
-const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL = 'http://10.245.107.160:8000'; // Match app backend IP
+
 
 export const fetchServices = async () => {
     const response = await fetch(`${BASE_URL}/api/services/`);
@@ -74,6 +75,54 @@ export const verifyOTP = async (phoneNumber, otpCode) => {
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || 'Invalid OTP');
+    }
+    return await response.json();
+};
+
+export const login = async (emailOrPhone, password) => {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email_or_phone: emailOrPhone, password }),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Login failed');
+    }
+    return await response.json();
+};
+
+export const registerUser = async (name, emailOrPhone, password) => {
+    const response = await fetch(`${BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email_or_phone: emailOrPhone, password }),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Registration failed');
+    }
+    return await response.json();
+};
+
+export const googleLogin = async (idToken) => {
+    const response = await fetch(`${BASE_URL}/auth/google`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: idToken }),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Google login failed');
     }
     return await response.json();
 };
