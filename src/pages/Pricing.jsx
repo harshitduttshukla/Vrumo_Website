@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Zap, Sparkles, Droplets, Wrench, ShieldCheck, ArrowLeftRight, CheckCircle2 } from 'lucide-react';
+import { 
+    Check, 
+    ArrowRight, 
+    Zap, 
+    Sparkles, 
+    Droplets, 
+    Wrench, 
+    ShieldCheck, 
+    ArrowLeftRight, 
+    CheckCircle2,
+    Car,
+    Smartphone
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import images
@@ -15,7 +27,11 @@ const WASH_PACKAGES = {
             id: 'swift', 
             name: 'Vrumo Swift Wash', 
             subtitle: 'Quick exterior refresh at doorstep',
-            price: "299",
+            price: "249",
+            price_5_seater: "299",
+            discount_price_5_seater: "249",
+            price_7_seater: "499",
+            discount_price_7_seater: "399",
             unit: "/ session",
             image: vWashImg,
             features: ['PH-neutral shampoo foam', 'Pressure rinse (Microfiber dry)', 'Tyre & rim wipe (dressing)', 'Windshield clean'],
@@ -26,7 +42,11 @@ const WASH_PACKAGES = {
             id: 'signature', 
             name: 'Vrumo Signature Wash', 
             subtitle: 'Full exterior + interior refresh',
-            price: "549",
+            price: "349",
+            price_5_seater: "399",
+            discount_price_5_seater: "349",
+            price_7_seater: "599",
+            discount_price_7_seater: "499",
             unit: "/ session",
             image: vWashImg,
             features: ['Everything in Swift Wash', 'Dashboard & console UV dressing', 'Full interior vacuum', 'Odour neutraliser spray'],
@@ -40,11 +60,30 @@ const WASH_PACKAGES = {
             name: 'Vrumo Colony Care', 
             subtitle: 'Colony / Open Parking Monthly',
             price: "999",
+            price_5_seater: "1099",
+            discount_price_5_seater: "999",
+            price_7_seater: "1299",
+            discount_price_7_seater: "1199",
             unit: "/ month",
             image: vWashImg,
             features: ['4 High-pressure foam washes', 'Pressure rinse + Microfiber dry', 'Tyre cleaning + shine', 'Before/after photo proof'],
             popular: false,
             buttonText: "Join Colony"
+        },
+        { 
+            id: 'colony_elite', 
+            name: 'Vrumo Colony Elite', 
+            subtitle: 'Colony / Open Parking Monthly',
+            price: "1199",
+            price_5_seater: "1299",
+            discount_price_5_seater: "1199",
+            price_7_seater: "1599",
+            discount_price_7_seater: "1399",
+            unit: "/ month",
+            image: vWashImg,
+            features: ['Everything in Colony Care', 'Full interior vacuum every visit', 'UV dressing on all panels', 'Paint wax seal (Quarterly)'],
+            popular: true,
+            buttonText: "Join Elite"
         },
     ],
     society: [
@@ -52,7 +91,11 @@ const WASH_PACKAGES = {
             id: 'society_shield', 
             name: 'Vrumo Society Shield', 
             subtitle: 'Gated Society Monthly',
-            price: "2000",
+            price: "999",
+            price_5_seater: "1099",
+            discount_price_5_seater: "999",
+            price_7_seater: "1299",
+            discount_price_7_seater: "1199",
             unit: "/ month",
             image: vWashImg,
             features: ['13-14 Alt-day bucket washes', 'PH-neutral lab-tested chemicals', 'Weekly full interior care', 'Dedicated RWA slot'],
@@ -63,7 +106,11 @@ const WASH_PACKAGES = {
             id: 'society_prestige', 
             name: 'Vrumo Society Prestige', 
             subtitle: 'Premium Gated Monthly',
-            price: "2800",
+            price: "1199",
+            price_5_seater: "1499",
+            discount_price_5_seater: "1199",
+            price_7_seater: "1699",
+            discount_price_7_seater: "1499",
             unit: "/ month",
             image: vWashImg,
             features: ['13-14 Alt-day bucket washes', 'Premium nano-ceramic seal', 'Weekly deep interior clean', 'Quarterly mini-detail'],
@@ -159,70 +206,78 @@ const VALUE_SERVICES = [
     }
 ];
 
-const PricingCard = ({ plan, index, isSmall = false }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: index * 0.1 }}
-        viewport={{ once: true }}
-        whileHover={{ y: -6 }}
-        className={`relative overflow-hidden flex flex-col group rounded-2xl bg-white border p-6 transition-all ${
-            plan.popular ? 'border-[#2563EB] border-2 shadow-2xl' : 'border-[#EFEFEF] shadow-sm'
-        } hover:shadow-2xl`}
-    >
-        {plan.popular && (
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
-        )}
-
-        <div className={`relative -mx-6 -mt-6 mb-8 overflow-hidden ${isSmall ? 'h-32' : 'h-48'}`}>
-            <img 
-                src={plan.image} 
-                alt={plan.name} 
-                loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
-            {plan.popular && (
-                <div className="absolute top-3 left-3 bg-[#2563EB] text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
-                    Popular Choice
-                </div>
-            )}
-        </div>
-
-        <div className="mb-4">
-            <h3 className={`${isSmall ? 'text-xl' : 'text-2xl'} font-bold text-[#0A0A0A]`}>{plan.name}</h3>
-            <p className="text-[10px] font-bold text-[#888888] uppercase tracking-[0.15em] mt-1">{plan.subtitle}</p>
-        </div>
-
-        <div className="flex items-baseline gap-2 mb-8">
-            <span className={`${isSmall ? 'text-3xl' : 'text-4xl'} font-black text-[#0A0A0A]`}>₹{plan.price}</span>
-            <span className="text-[#888888] font-bold uppercase text-[10px] tracking-widest">{plan.unit}</span>
-        </div>
-
-        <ul className="space-y-4 mb-8 grow border-t border-[#EFEFEF] pt-6">
-            {plan.features.map((feature, fIdx) => (
-                <li key={fIdx} className="flex gap-3 items-start">
-                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" strokeWidth={2} />
-                    <span className="text-[#555555] text-sm leading-snug">{feature}</span>
-                </li>
-            ))}
-        </ul>
-
-        <Link
-            to={`/booking?service=${plan.name.toLowerCase()}`}
-            className={`w-full py-4 rounded-xl font-bold tracking-tight text-sm transition-all duration-300 text-center flex items-center justify-center gap-3 active:scale-[0.98] ${
-                plan.popular
-                    ? 'bg-[#2563EB] text-white hover:bg-royal hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]'
-                    : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB]'
-            }`}
+const PricingCard = ({ plan, index, isSmall = false }) => {
+    const isSeatSpecific = plan.price_5_seater && plan.price_7_seater;
+    
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -6 }}
+            className={`relative overflow-hidden flex flex-col group rounded-2xl bg-white border p-6 transition-all ${
+                plan.popular ? 'border-[#2563EB] border-2 shadow-2xl' : 'border-[#EFEFEF] shadow-sm'
+            } hover:shadow-2xl`}
         >
-            {plan.buttonText} <ArrowRight className="w-4 h-4" />
-        </Link>
-    </motion.div>
-);
+            {plan.popular && (
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-linear-to-r from-[#2563EB] via-[#93C5FD] to-[#2563EB]" />
+            )}
+
+            <div className={`relative -mx-6 -mt-6 mb-8 overflow-hidden ${isSmall ? 'h-32' : 'h-48'}`}>
+                <img 
+                    src={plan.image} 
+                    alt={plan.name} 
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
+                {plan.popular && (
+                    <div className="absolute top-3 left-3 bg-[#2563EB] text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
+                        Popular Choice
+                    </div>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <h3 className={`${isSmall ? 'text-xl' : 'text-2xl'} font-bold text-[#0A0A0A]`}>{plan.name}</h3>
+                <p className="text-[10px] font-bold text-silver uppercase tracking-[0.15em] mt-1">{plan.subtitle}</p>
+            </div>
+
+            <div className="flex items-baseline gap-2 mb-8">
+                {plan.hasDiscount && (
+                    <span className="text-sm text-gray-400 line-through font-bold">₹{plan.basePrice}</span>
+                )}
+                <span className={`${isSmall ? 'text-3xl' : 'text-4xl'} font-black ${plan.hasDiscount ? 'text-emerald-500' : 'text-[#0A0A0A]'}`}>₹{plan.price}</span>
+                <span className="text-silver font-bold uppercase text-[10px] tracking-widest">{plan.unit}</span>
+            </div>
+
+            <ul className="space-y-4 mb-8 grow border-t border-[#EFEFEF] pt-6">
+                {plan.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex gap-3 items-start">
+                        <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" strokeWidth={2} />
+                        <span className="text-[#555555] text-sm leading-snug">{feature}</span>
+                    </li>
+                ))}
+            </ul>
+
+            <Link
+                to={plan.bookingLink || `/booking?service=${plan.name.toLowerCase()}`}
+                className={`w-full py-4 rounded-xl font-bold tracking-tight text-sm transition-all duration-300 text-center flex items-center justify-center gap-3 active:scale-[0.98] ${
+                    plan.popular
+                        ? 'bg-[#2563EB] text-white hover:bg-royal hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)]'
+                        : 'bg-[#F8F8F8] text-[#0A0A0A] border-2 border-[#EFEFEF] hover:border-[#2563EB] hover:text-[#2563EB]'
+                }`}
+            >
+                {plan.buttonText} <ArrowRight className="w-4 h-4" />
+            </Link>
+        </motion.div>
+    );
+};
 
 const Pricing = () => {
     const [segment, setSegment] = useState('instant');
+    const [vehicleSeats, setVehicleSeats] = useState('5');
 
     const segments = [
         { id: 'instant', name: 'Instant', icon: Zap },
@@ -243,22 +298,44 @@ const Pricing = () => {
                         </p>
                     </motion.div>
 
-                    {/* Wash Tabs */}
-                    <div className="flex flex-wrap justify-center gap-4 bg-[#F8F8F8] p-2 rounded-2xl max-w-fit mx-auto border border-[#EFEFEF]">
-                        {segments.map((s) => (
-                            <button
-                                key={s.id}
-                                onClick={() => setSegment(s.id)}
-                                className={`flex items-center gap-3 px-8 py-3.5 rounded-xl transition-all font-bold text-sm ${
-                                    segment === s.id 
-                                    ? 'bg-white text-[#2563EB] shadow-md border border-[#EFEFEF]' 
-                                    : 'text-gray-400 hover:text-gray-600'
-                                }`}
-                            >
-                                <s.icon className="w-4 h-4" />
-                                {s.name}
-                            </button>
-                        ))}
+                    {/* Wash Tabs & Seater Toggle */}
+                    <div className="space-y-8">
+                        <div className="flex flex-wrap justify-center gap-4 bg-[#F8F8F8] p-2 rounded-2xl max-w-fit mx-auto border border-[#EFEFEF]">
+                            {segments.map((s) => (
+                                <button
+                                    key={s.id}
+                                    onClick={() => setSegment(s.id)}
+                                    className={`flex items-center gap-3 px-8 py-3.5 rounded-xl transition-all font-bold text-sm ${
+                                        segment === s.id 
+                                        ? 'bg-white text-[#2563EB] shadow-md border border-[#EFEFEF]' 
+                                        : 'text-gray-400 hover:text-gray-600'
+                                    }`}
+                                >
+                                    <s.icon className="w-4 h-4" />
+                                    {s.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="flex justify-center gap-4 bg-gray-50 p-1.5 rounded-2xl max-w-fit mx-auto border border-gray-100">
+                            {[
+                                { id: '5', name: '5 SEATER', icon: Car },
+                                { id: '7', name: '7 SEATER', icon: Smartphone }
+                            ].map((v) => (
+                                <button
+                                    key={v.id}
+                                    onClick={() => setVehicleSeats(v.id)}
+                                    className={`flex items-center gap-2 px-8 py-2.5 rounded-xl transition-all font-black text-[10px] tracking-widest ${
+                                        vehicleSeats === v.id 
+                                        ? 'bg-white text-[#2563EB] shadow-sm' 
+                                        : 'text-gray-400 hover:text-gray-500'
+                                    }`}
+                                >
+                                    <v.icon className="w-3.5 h-3.5" />
+                                    {v.name}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -271,9 +348,25 @@ const Pricing = () => {
                         exit={{ opacity: 0, x: -20 }}
                         className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
                     >
-                        {WASH_PACKAGES[segment].map((plan, idx) => (
-                            <PricingCard key={plan.id} plan={plan} index={idx} />
-                        ))}
+                        {WASH_PACKAGES[segment].map((plan, idx) => {
+                            const isSeatSpecific = plan.price_5_seater && plan.price_7_seater;
+                            const basePrice = isSeatSpecific 
+                                ? (vehicleSeats === '5' ? plan.price_5_seater : plan.price_7_seater)
+                                : plan.price;
+                            const discountedPrice = isSeatSpecific
+                                ? (vehicleSeats === '5' ? plan.discount_price_5_seater : plan.discount_price_7_seater)
+                                : plan.price;
+                            
+                            const enhancedPlan = {
+                                ...plan,
+                                basePrice,
+                                price: discountedPrice,
+                                hasDiscount: basePrice !== discountedPrice,
+                                bookingLink: `/booking?service=wash&pkg=${plan.id}&seats=${vehicleSeats}&price=${discountedPrice}`
+                            };
+
+                            return <PricingCard key={plan.id} plan={enhancedPlan} index={idx} />;
+                        })}
                     </motion.div>
                 </AnimatePresence>
 

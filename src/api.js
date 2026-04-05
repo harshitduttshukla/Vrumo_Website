@@ -1,4 +1,4 @@
-const BASE_URL = 'http://10.245.107.160:8000'; // Match app backend IP
+const BASE_URL = 'http://10.240.175.160:8000'; // Match app backend IP
 
 
 export const fetchServices = async () => {
@@ -123,6 +123,24 @@ export const googleLogin = async (idToken) => {
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || 'Google login failed');
+    }
+    return await response.json();
+};
+
+export const updateProfile = async (profileData) => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${BASE_URL}/auth/update-profile`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(profileData),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to update profile');
     }
     return await response.json();
 };

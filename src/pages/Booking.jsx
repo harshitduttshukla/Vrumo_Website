@@ -32,9 +32,12 @@ const Booking = () => {
         serviceType: '',
         date: new Date().toISOString().split('T')[0],
         time: '',
-        address: ''
+        address: '',
+        vehicleSeats: '',
+        totalPrice: null
     });
 
+    const [selectedPackage, setSelectedPackage] = useState(null);
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -63,8 +66,25 @@ const Booking = () => {
 
         const query = new URLSearchParams(location.search);
         const serviceParam = query.get('service');
+        const pkgParam = query.get('pkg');
+        const seatsParam = query.get('seats');
+        const priceParam = query.get('price');
+
         if (serviceParam) {
-            setFormData(prev => ({ ...prev, serviceType: serviceParam }));
+            setFormData(prev => ({ 
+                ...prev, 
+                serviceType: serviceParam,
+                vehicleSeats: seatsParam || '',
+                totalPrice: priceParam ? parseFloat(priceParam) : null
+            }));
+            
+            if (pkgParam) {
+                setSelectedPackage({
+                    id: pkgParam,
+                    seats: seatsParam,
+                    price: priceParam
+                });
+            }
         }
     }, [location, navigate]);
 
@@ -107,11 +127,18 @@ const Booking = () => {
     };
 
     const serviceOptions = [
+        "Vrumo Swift Wash",
+        "Vrumo Signature Wash",
+        "Vrumo Colony Care",
+        "Vrumo Colony Elite",
+        "Vrumo Society Shield",
+        "Vrumo Society Prestige",
+        "Cabin Detox",
+        "Paint Refresh",
+        "Vrumo Grand Detox",
         "Full Interior & Exterior Detail",
         "Exterior Wash & Wax",
         "Engine Bay Cleaning",
-        "Ceramic Coating",
-        "Deep Interior Cleaning",
         "Periodic Maintenance"
     ];
 
@@ -167,7 +194,7 @@ const Booking = () => {
                                 <div className="space-y-4">
                                     <h2 className="text-4xl font-bold">Booking Confirmed!</h2>
                                     <p className="text-silver text-lg max-w-md mx-auto">
-                                        Thank you, {formData.name}. We've received your request for {formData.serviceType}. Our team will contact you shortly.
+                                        Thank you, {user?.name}. We've received your request for {formData.serviceType}. Our team will contact you shortly.
                                     </p>
                                 </div>
                                 <button 
@@ -187,6 +214,32 @@ const Booking = () => {
                                     >
                                         <AlertCircle className="w-5 h-5 shrink-0" />
                                         <span>{error}</span>
+                                    </motion.div>
+                                )}
+
+                                {/* Selected Package Summary (Tiered Pricing) */}
+                                {selectedPackage && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="bg-emerald-50 border-2 border-emerald-100 rounded-2xl p-6 mb-8 flex justify-between items-center"
+                                    >
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-2">
+                                                <Zap className="w-4 h-4 text-emerald-600" />
+                                                <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Selected Plan</span>
+                                            </div>
+                                            <h3 className="text-xl font-bold text-gray-900">{formData.serviceType}</h3>
+                                            <div className="flex items-center gap-3 text-emerald-700 font-bold text-xs">
+                                                <span className="bg-emerald-100 px-2 py-0.5 rounded uppercase">{selectedPackage.seats} Seater</span>
+                                                <span>•</span>
+                                                <span>Professional Tech Assignment</span>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Estimated Total</div>
+                                            <div className="text-3xl font-black text-emerald-600">₹{selectedPackage.price}</div>
+                                        </div>
                                     </motion.div>
                                 )}
 

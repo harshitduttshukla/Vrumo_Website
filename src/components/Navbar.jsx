@@ -133,13 +133,16 @@ const Navbar = () => {
                     ))}
                     {user ? (
                         <div className="flex items-center gap-4">
-                            <motion.div 
-                                variants={itemVariants}
-                                className="flex items-center gap-2 text-[#2563EB] font-bold px-4 py-2 rounded-full bg-[#2563EB]/5 border border-[#2563EB]/10"
-                            >
-                                <User size={18} />
-                                <span className="max-w-[120px] truncate">{user.name.split(' ')[0]}</span>
-                            </motion.div>
+                            <Link to="/profile">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    whileHover={{ scale: 1.05 }}
+                                    className="flex items-center gap-2 text-[#2563EB] font-bold px-4 py-2 rounded-full bg-[#2563EB]/5 border border-[#2563EB]/10 cursor-pointer"
+                                >
+                                    <User size={18} />
+                                    <span className="max-w-[120px] truncate">{user.name.split(' ')[0]}</span>
+                                </motion.div>
+                            </Link>
                             <motion.button
                                 variants={itemVariants}
                                 onClick={handleLogout}
@@ -230,10 +233,14 @@ const Navbar = () => {
                                 <motion.div variants={itemVariants} className="pt-4 w-full max-w-[200px] flex flex-col gap-3">
                                     {user ? (
                                         <div className="space-y-3">
-                                            <div className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-blue-50 text-blue-600 font-bold border border-blue-100">
+                                            <Link 
+                                                to="/profile"
+                                                onClick={() => setIsOpen(false)}
+                                                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-blue-50 text-blue-600 font-bold border border-blue-100"
+                                            >
                                                 <User size={18} />
                                                 <span>{user.name}</span>
-                                            </div>
+                                            </Link>
                                             <button
                                                 onClick={handleLogout}
                                                 className="flex items-center justify-center gap-2 w-full text-center border border-red-200 text-red-500 py-3 rounded-xl font-bold text-[16px] active:scale-95 transition-all"

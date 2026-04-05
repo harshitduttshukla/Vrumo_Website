@@ -34,7 +34,11 @@ const WASH_PACKAGES = {
             id: 'swift', 
             name: 'Vrumo Swift Wash', 
             desc: 'Quick exterior refresh with Pressure Washer. 30-40 mins.', 
-            price: 299,
+            price: 249,
+            price_5_seater: 299,
+            discount_price_5_seater: 249,
+            price_7_seater: 499,
+            discount_price_7_seater: 399,
             unit: '/ session',
             include: ['PH-neutral shampoo foam', 'Pressure rinse (Microfiber dry)', 'Tyre & rim wipe (dressing)', 'Windshield clean']
         },
@@ -42,7 +46,11 @@ const WASH_PACKAGES = {
             id: 'signature', 
             name: 'Vrumo Signature Wash', 
             desc: 'Full exterior + interior refresh with Pressure Washer.', 
-            price: 549,
+            price: 349,
+            price_5_seater: 399,
+            discount_price_5_seater: 349,
+            price_7_seater: 599,
+            discount_price_7_seater: 499,
             unit: '/ session',
             tag: 'BESTSELLER',
             include: ['Everything in Swift Wash', 'Dashboard & console UV dressing', 'Full interior vacuum (incl. boot)', 'Odour neutraliser spray']
@@ -54,6 +62,10 @@ const WASH_PACKAGES = {
             name: 'Vrumo Colony Care', 
             desc: '4 professional washes/month. Always on schedule.', 
             price: 999,
+            price_5_seater: 1099,
+            discount_price_5_seater: 999,
+            price_7_seater: 1299,
+            discount_price_7_seater: 1199,
             unit: '/ mo',
             include: ['4 High-pressure foam pre-soaks', 'Pressure rinse + Microfiber dry', 'Tyre cleaning + shine dressing', 'Before/after photo proof']
         },
@@ -61,7 +73,11 @@ const WASH_PACKAGES = {
             id: 'colony_elite', 
             name: 'Vrumo Colony Elite', 
             desc: '4 foam washes + full interior every visit.', 
-            price: 1499,
+            price: 1199,
+            price_5_seater: 1299,
+            discount_price_5_seater: 1199,
+            price_7_seater: 1599,
+            discount_price_7_seater: 1399,
             unit: '/ mo',
             tag: 'FEATURED',
             include: ['Everything in Colony Care', 'Full interior vacuum every visit', 'UV dressing on all panels', 'Paint wax seal (Quarterly)']
@@ -72,7 +88,11 @@ const WASH_PACKAGES = {
             id: 'society_shield', 
             name: 'Vrumo Society Shield', 
             desc: 'Alt-day bucket wash + weekly interior. RWA compliant.', 
-            price: 2000,
+            price: 999,
+            price_5_seater: 1099,
+            discount_price_5_seater: 999,
+            price_7_seater: 1299,
+            discount_price_7_seater: 1199,
             unit: '/ mo',
             include: ['13-14 Alt-day bucket washes', 'PH-neutral lab-tested chemicals', 'Weekly full interior care', 'Dedicated slot: 6:30-8:00 AM']
         },
@@ -80,7 +100,11 @@ const WASH_PACKAGES = {
             id: 'society_prestige', 
             name: 'Vrumo Society Prestige', 
             desc: 'Alt-day bucket + interior 4x + quarterly detail.', 
-            price: 2800,
+            price: 1199,
+            price_5_seater: 1499,
+            discount_price_5_seater: 1199,
+            price_7_seater: 1699,
+            discount_price_7_seater: 1499,
             unit: '/ mo',
             tag: 'ULTIMATE',
             include: ['13-14 Alt-day bucket washes', 'Premium nano-ceramic seal (Monthly)', 'Weekly deep interior clean', 'Quarterly mini-detail included']
@@ -135,7 +159,7 @@ const WASH_PACKAGES = {
 
 const Wash = () => {
     const [segment, setSegment] = useState('instant');
-    // const [vehicleType, setVehicleType] = useState('sedan');
+    const [vehicleSeats, setVehicleSeats] = useState('5');
 
     const segments = [
         { id: 'instant', name: 'Instant', icon: Zap, color: 'text-orange-500' },
@@ -196,7 +220,33 @@ const Wash = () => {
                         ))}
                     </div>
 
-                    {/* Vehicle Toggle removed as per request */}
+                    {/* Vehicle Toggle */}
+                    <div className="flex justify-center gap-6">
+                        <div className="bg-[#EFEFEF] p-1.5 rounded-2xl flex gap-1 border border-gray-200">
+                            <button
+                                onClick={() => setVehicleSeats('5')}
+                                className={`px-10 py-3 rounded-xl font-black text-xs transition-all flex items-center gap-2 ${
+                                    vehicleSeats === '5' 
+                                    ? 'bg-white text-[#2563EB] shadow-sm' 
+                                    : 'text-gray-400 hover:text-gray-600'
+                                }`}
+                            >
+                                <Car className="w-4 h-4" />
+                                5 SEATER
+                            </button>
+                            <button
+                                onClick={() => setVehicleSeats('7')}
+                                className={`px-10 py-3 rounded-xl font-black text-xs transition-all flex items-center gap-2 ${
+                                    vehicleSeats === '7' 
+                                    ? 'bg-white text-[#2563EB] shadow-sm' 
+                                    : 'text-gray-400 hover:text-gray-600'
+                                }`}
+                            >
+                                <Smartphone className="w-4 h-4" />
+                                7 SEATER
+                            </button>
+                        </div>
+                    </div>
 
                     {/* Plans Grid */}
                     <AnimatePresence mode="wait">
@@ -208,7 +258,16 @@ const Wash = () => {
                             className="flex flex-wrap justify-center gap-8"
                         >
                             {WASH_PACKAGES[segment].map((pkg) => {
-                                const price = pkg.price;
+                                const isSeatSpecific = pkg.price_5_seater && pkg.price_7_seater;
+                                const basePrice = isSeatSpecific 
+                                    ? (vehicleSeats === '5' ? pkg.price_5_seater : pkg.price_7_seater)
+                                    : pkg.price;
+                                const discountedPrice = isSeatSpecific
+                                    ? (vehicleSeats === '5' ? pkg.discount_price_5_seater : pkg.discount_price_7_seater)
+                                    : pkg.price;
+                                
+                                const hasDiscount = basePrice !== discountedPrice;
+
                                 return (
                                     <div key={pkg.id} className="card-premium h-full flex flex-col group">
                                         <div className="flex justify-between items-start mb-6">
@@ -221,7 +280,10 @@ const Wash = () => {
                                                 )}
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-3xl font-black text-[#2563EB]">₹{price}</div>
+                                                {hasDiscount && (
+                                                    <div className="text-xs text-gray-400 line-through font-bold mb-1">₹{basePrice}</div>
+                                                )}
+                                                <div className={`text-3xl font-black ${hasDiscount ? 'text-emerald-500' : 'text-[#2563EB]'}`}>₹{discountedPrice}</div>
                                                 <div className="text-[10px] uppercase font-bold text-gray-400">{pkg.unit}</div>
                                             </div>
                                         </div>
@@ -241,7 +303,7 @@ const Wash = () => {
                                             </ul>
                                         )}
 
-                                        <Link to={`/booking?service=wash&pkg=${pkg.id}`} className="w-full btn-premium justify-center">
+                                        <Link to={`/booking?service=wash&pkg=${pkg.id}&seats=${vehicleSeats}&price=${discountedPrice}`} className="w-full btn-premium justify-center">
                                             Book Now
                                         </Link>
                                     </div>
